@@ -1974,4 +1974,15 @@ function onWebsiteLoaded(event) {
 }
 
 
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    // Was the audio playing when the page changed to hidden?
+    audioManager.listener.gain.gain.value = 0;
+  } else {
+    // Page became visible, resume if audio was playing when hidden
+    audioManager.listener.gain.gain.value = 1;
+  }
+});
+
 window.addEventListener('load', onWebsiteLoaded, false)
