@@ -1979,7 +1979,7 @@ function onWebsiteLoaded(event) {
 	audioManager.load('guncock2', 'guncock2', '/audio/guncock2.mp3')
 	audioManager.load('guncock3', 'guncock3', '/audio/guncock3.mp3')
 	
-	audioManager.load('heart', 'heart', '/audio/heart.mp3')
+	//audioManager.load('heart', 'heart', '/audio/heart.mp3')
 	
 	audioManager.load('coin1', 'coin', '/audio/coin1.mp3')
 	audioManager.load('coin2', 'coin', '/audio/coin2.mp3')
