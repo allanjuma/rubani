@@ -1498,7 +1498,9 @@ function loop() {
 			game.status = "waitingReplay"
 			audioManager.play('water-splash')
 			
-					ui.showScoreScreen()
+					
+					
+					setTimeout(ui.hideScoreScreen(), 3000)
 		}
 	}
 	else if (game.status == "waitingReplay"){
@@ -1629,11 +1631,7 @@ class UI {
 
 
 	handleMouseMove(event) {
-	    if (this.game.status == "waitingReplay" || this.game.status==='playing'){
-		// nothing to do
-		
-					ui.hideScoreScreen()
-	}
+	   
 
 	    console.log(event);
 		var tx = -1 + (event.clientX / this.width)*2
@@ -1642,11 +1640,7 @@ class UI {
 	}
 
 	handleTouchMove(event) {
-	    if (this.game.status == "waitingReplay" || this.game.status==='playing'){
-		// nothing to do
-		
-					ui.hideScoreScreen()
-	}
+	   
 
 		event.preventDefault()
 		var tx = -1 + (event.touches[0].pageX / this.width)*2
@@ -1796,7 +1790,7 @@ if (game.status == "waitingReplay"){
 		const elemScreen = document.getElementById('score-screen')
 
 		// make visible
-		elemScreen.classList.add('hidden')
+		elemScreen.classList.remove('visible')
 
 	}
 
