@@ -1624,6 +1624,7 @@ class UI {
 
 
 	handleMouseMove(event) {
+	    console.log(event);
 		var tx = -1 + (event.clientX / this.width)*2
 		var ty = 1 - (event.clientY / this.height)*2
 		this.mousePos = {x:tx, y:ty}
