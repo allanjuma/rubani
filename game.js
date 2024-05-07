@@ -1501,6 +1501,10 @@ function loop() {
 					
 					
 					setTimeout(ui.hideScoreScreen(), 3000)
+					
+		document.getElementById('score-coins-lost').innerText = game.statistics.coinsCollected
+		document.getElementById('score-coins-potential').innerText = game.statistics.coinsSpawned
+
 		}
 	}
 	else if (game.status == "waitingReplay"){
