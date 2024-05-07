@@ -1628,7 +1628,7 @@ class UI {
 
 
 	handleMouseMove(event) {
-	    if (game.status == "waitingReplay"){
+	    if (game.status == "waitingReplay" || game.status==='playing'){
 		// nothing to do
 		
 					ui.hideScoreScreen()
@@ -1641,7 +1641,7 @@ class UI {
 	}
 
 	handleTouchMove(event) {
-	    if (game.status == "waitingReplay"){
+	    if (game.status == "waitingReplay" || game.status==='playing'){
 		// nothing to do
 		
 					ui.hideScoreScreen()
