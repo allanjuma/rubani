@@ -986,6 +986,8 @@ function spawnSimpleGunCollectible() {
 
 	new Collectible(gun, () => {
 		airplane.equipWeapon(new SimpleGun())
+		audioManager.play('guncock') 
+		
 	})
 }
 
@@ -997,6 +999,7 @@ function spawnBetterGunCollectible() {
 
 	new Collectible(gun, () => {
 		airplane.equipWeapon(new BetterGun())
+		audioManager.play('guncock') 
 	})
 }
 
@@ -1018,6 +1021,7 @@ function spawnDoubleGunCollectible() {
 
 	new Collectible(guns, () => {
 		airplane.equipWeapon(new DoubleGun())
+		audioManager.play('guncock') 
 	})
 }
 
@@ -1034,6 +1038,7 @@ function spawnLifeCollectible() {
 
 	new Collectible(heart, () => {
 		addLife()
+		audioManager.play('heart') 
 	})
 }
 
@@ -1970,6 +1975,9 @@ function onWebsiteLoaded(event) {
 	audioManager.load('ocean', null, '/audio/trap.mp3')
 	audioManager.load('propeller', null, '/audio/propeller.mp3')
 
+	audioManager.load('guncock1', 'guncock', '/audio/guncock.mp3')
+	audioManager.load('heart', 'heart', '/audio/heart.mp3')
+	
 	audioManager.load('coin1', 'coin', '/audio/coin1.mp3')
 	audioManager.load('coin2', 'coin', '/audio/coin2.mp3')
 	audioManager.load('coin3', 'coin', '/audio/coin3.mp3')
