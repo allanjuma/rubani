@@ -1497,10 +1497,13 @@ function loop() {
 			ui.showReplay()
 			game.status = "waitingReplay"
 			audioManager.play('water-splash')
+			
+					ui.showScoreScreen()
 		}
 	}
 	else if (game.status == "waitingReplay"){
 		// nothing to do
+		
 	}
 
 	if (!game.paused) {
@@ -1590,6 +1593,7 @@ class UI {
 		document.addEventListener('mouseup', this.handleMouseUp.bind(this), false)
 		document.addEventListener('mousemove', this.handleMouseMove.bind(this), false)
 		document.addEventListener('touchmove', this.handleTouchMove.bind(this), false)
+		document.addEventListener('touchstart', this.handleTouchStart.bind(this), false)
 		document.addEventListener('blur', this.handleBlur.bind(this), false)
 
 		document.oncontextmenu = document.body.oncontextmenu = function() {return false;}
@@ -1624,6 +1628,12 @@ class UI {
 
 
 	handleMouseMove(event) {
+	    if (game.status == "waitingReplay"){
+		// nothing to do
+		
+					ui.hideScoreScreen()
+	}
+
 	    console.log(event);
 		var tx = -1 + (event.clientX / this.width)*2
 		var ty = 1 - (event.clientY / this.height)*2
@@ -1631,14 +1641,36 @@ class UI {
 	}
 
 	handleTouchMove(event) {
+	    if (game.status == "waitingReplay"){
+		// nothing to do
+		
+					ui.hideScoreScreen()
+	}
+
 		event.preventDefault()
 		var tx = -1 + (event.touches[0].pageX / this.width)*2
 		var ty = 1 - (event.touches[0].pageY / this.height)*2
 		this.mousePos = {x: tx, y: ty}
 	}
 
+
+
+	handleTouchStart(event) {
+
+
+	if (game.status==='playing') {
+			airplane.shoot()
+		}
+		
+	}
+	
 	handleMouseDown(event) {
 		this.mouseButtons[event.button] = true
+if (game.status == "waitingReplay"){
+		// nothing to do
+		
+					ui.hideScoreScreen()
+	}
 
 		if (event.button===1 && game.status==='playing') {
 			airplane.shoot()
@@ -1647,6 +1679,12 @@ class UI {
 
 	handleKeyDown(event) {
 		this.keysDown[event.code] = true
+		if (game.status == "waitingReplay"){
+		// nothing to do
+		
+					ui.hideScoreScreen()
+	}
+
 		if (event.code === 'KeyP') {
 			game.paused = !game.paused
 		}
@@ -1752,6 +1790,14 @@ class UI {
 		}, 1000)
 	}
 
+
+	hideScoreScreen() {
+		const elemScreen = document.getElementById('score-screen')
+
+		// make visible
+		elemScreen.classList.add('hidden')
+
+	}
 
 	showScoreScreen() {
 		const elemScreen = document.getElementById('score-screen')
