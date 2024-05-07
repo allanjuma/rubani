@@ -1836,10 +1836,10 @@ function createWorld() {
 		doubleGunLevelDrop: 2.3,
 		betterGunLevelDrop: 3.5,
 
-		maxLifes: 4,
+		maxLifes: 3,
 		pauseLifeSpawn: 400,
 
-		levelCount: 3,
+		levelCount: 6,
 		distanceForLevelUpdate: 1000,
 
 		planeDefaultHeight: 100,
