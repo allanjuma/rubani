@@ -1829,7 +1829,7 @@ function createWorld() {
 		initSpeed: 0.00035,
 		incrementSpeedByTime: 0.0000025,
 		incrementSpeedByLevel: 0.000005,
-		distanceForSpeedUpdate: 100,
+		distanceForSpeedUpdate: 200,
 		ratioSpeedDistance: 50,
 
 		simpleGunLevelDrop: 1.1,
@@ -1840,7 +1840,7 @@ function createWorld() {
 		pauseLifeSpawn: 400,
 
 		levelCount: 3,
-		distanceForLevelUpdate: 600,
+		distanceForLevelUpdate: 1000,
 
 		planeDefaultHeight: 100,
 		planeAmpHeight: 80,
