@@ -1658,12 +1658,14 @@ class UI {
 
 
 	handleTouchStart(event) {
-
-
+try{
 	if (game.status==='playing') {
 			airplane.shoot()
 		}
-		
+}catch(e){
+    console.log('cant shoot yet!');
+}
+	
 	}
 	
 	handleMouseDown(event) {
