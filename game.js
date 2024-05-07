@@ -1258,7 +1258,7 @@ class Enemy {
 
 	explode() {
 		audioManager.play('rock-shatter', {volume: 3});
-		navigator.vibrate(300);
+		navigator.vibrate([100, 30, 100, 30, 200])
 		spawnParticles(this.mesh.position.clone(), 15, Colors.red, 3)
 		sceneManager.remove(this)
 		game.statistics.enemiesKilled += 1
