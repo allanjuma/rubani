@@ -1668,11 +1668,6 @@ class UI {
 	
 	handleMouseDown(event) {
 		this.mouseButtons[event.button] = true
-if (game.status == "waitingReplay"){
-		// nothing to do
-		
-					ui.hideScoreScreen()
-	}
 
 		if (event.button===1 && game.status==='playing') {
 			airplane.shoot()
@@ -1681,12 +1676,7 @@ if (game.status == "waitingReplay"){
 
 	handleKeyDown(event) {
 		this.keysDown[event.code] = true
-		if (game.status == "waitingReplay"){
-		// nothing to do
-		
-					ui.hideScoreScreen()
-	}
-
+	
 		if (event.code === 'KeyP') {
 			game.paused = !game.paused
 		}
