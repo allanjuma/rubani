@@ -1953,8 +1953,10 @@ function onWebsiteLoaded(event) {
 	audioManager.load('bullet-impact', 'bullet-impact', '/audio/bullet-impact-rock.mp3')
 
 	audioManager.load('water-splash', 'water-splash', '/audio/water-splash.mp3')
-	audioManager.load('rock-shatter-1', 'rock-shatter', '/audio/rock-shatter-1.mp3')
-	audioManager.load('rock-shatter-2', 'rock-shatter', '/audio/rock-shatter-2.mp3')
+	//audioManager.load('rock-shatter-1', 'rock-shatter', '/audio/rock-shatter-1.mp3')
+	//audioManager.load('rock-shatter-2', 'rock-shatter', '/audio/rock-shatter-2.mp3')
+	audioManager.load('rock-shatter-1', 'rock-shatter', '/audio/woi-1.mp3')
+	audioManager.load('rock-shatter-2', 'rock-shatter', '/audio/woi-2.mp3')
 
 	// load models
 	modelManager.load('heart')
