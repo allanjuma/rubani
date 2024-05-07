@@ -1650,12 +1650,12 @@ class UI {
 	   try{
 	
 		event.preventDefault()
+}catch(e){
+    console.log(e);
+}
 		var tx = -1 + (event.touches[0].pageX / this.width)*2
 		var ty = 1 - (event.touches[0].pageY / this.height)*2
 		this.mousePos = {x: tx, y: ty}
-}catch(e){
-    console.log('cant shoot yet!');
-}
 
 	}
 
