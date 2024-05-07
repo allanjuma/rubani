@@ -1589,6 +1589,7 @@ class UI {
 		document.addEventListener('mousedown', this.handleMouseDown.bind(this), false)
 		document.addEventListener('mouseup', this.handleMouseUp.bind(this), false)
 		document.addEventListener('mousemove', this.handleMouseMove.bind(this), false)
+		document.addEventListener('touchmove', this.handleMouseMove.bind(this), false)
 		document.addEventListener('blur', this.handleBlur.bind(this), false)
 
 		document.oncontextmenu = document.body.oncontextmenu = function() {return false;}
