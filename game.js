@@ -1911,7 +1911,7 @@ let soundPlaying = false
 function startMap() {
 	if (!soundPlaying) {
 		audioManager.play('propeller', {loop: true, volume: 1})
-		audioManager.play('ocean', {loop: true, volume: 0.5})
+		audioManager.play('ocean', {loop: true, volume: 0.4})
 		soundPlaying = true
 	}
 
