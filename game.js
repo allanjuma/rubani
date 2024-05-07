@@ -1777,7 +1777,7 @@ if (game.status == "waitingReplay"){
 		const elem = document.getElementById('new-level')
 		elem.style.visibility = 'visible'
 		elem.style.animationDuration = Math.round(ANIMATION_DURATION * 1000)+'ms'
-		elem.children[1].innerText = level
+		elem.children[1].innerText = 'X'+level
 		elem.classList.add('animating')
 		setTimeout(() => {
 			document.getElementById('new-level').style.visibility = 'hidden'
