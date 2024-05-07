@@ -1802,8 +1802,8 @@ function createWorld() {
 		planeMoveSensivity: 0.005,
 		planeRotXSensivity: 0.0008,
 		planeRotZSensivity: 0.0004,
-		planeMinSpeed: 1,
-		planeMaxSpeed: 1.8,
+		planeMinSpeed: 1.2,
+		planeMaxSpeed: 1.6,
 
 		seaRadius: 600,
 		seaLength: 800,
@@ -1911,7 +1911,7 @@ let soundPlaying = false
 function startMap() {
 	if (!soundPlaying) {
 		audioManager.play('propeller', {loop: true, volume: 1})
-		audioManager.play('ocean', {loop: true, volume: 0.4})
+		audioManager.play('ocean', {loop: true, volume: 0.3})
 		soundPlaying = true
 	}
 
