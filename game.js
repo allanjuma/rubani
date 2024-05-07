@@ -1537,10 +1537,13 @@ function loop() {
 
 // COINS
 function addCoin() {
-	game.coins += (1*game.level)
+    // coins multiplied by level
+    var coinsE = (1*game.level)
+    
+	game.coins += coinsE
 	ui.updateCoinsCount(game.coins)
 
-	game.statistics.coinsCollected += 1
+	game.statistics.coinsCollected += coinsE
 }
 
 
