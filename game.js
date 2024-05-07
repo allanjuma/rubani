@@ -1841,8 +1841,8 @@ function createWorld() {
 		maxLifes: 3,
 		pauseLifeSpawn: 400,
 
-		levelCount: 6,
-		distanceForLevelUpdate: 500,
+		levelCount: 3,
+		distanceForLevelUpdate: 600,
 
 		planeDefaultHeight: 100,
 		planeAmpHeight: 80,
@@ -2027,9 +2027,11 @@ document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
     // Was the audio playing when the page changed to hidden?
     audioManager.listener.gain.gain.value = 0;
+    game.paused = true;
   } else {
     // Page became visible, resume if audio was playing when hidden
     audioManager.listener.gain.gain.value = 1;
+    game.paused = false;
   }
 });
 
