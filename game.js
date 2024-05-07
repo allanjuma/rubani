@@ -1601,6 +1601,7 @@ class UI {
 		window.addEventListener('resize', this.handleWindowResize.bind(this), false)
 
 		this.width = window.innerWidth
+		this.game = game
 		this.height = window.innerHeight
 		this.mousePos = {x: 0, y: 0}
 		this.canvas = document.getElementById('threejs-canvas')
@@ -1628,7 +1629,7 @@ class UI {
 
 
 	handleMouseMove(event) {
-	    if (game.status == "waitingReplay" || game.status==='playing'){
+	    if (this.game.status == "waitingReplay" || this.game.status==='playing'){
 		// nothing to do
 		
 					ui.hideScoreScreen()
@@ -1641,7 +1642,7 @@ class UI {
 	}
 
 	handleTouchMove(event) {
-	    if (game.status == "waitingReplay" || game.status==='playing'){
+	    if (this.game.status == "waitingReplay" || this.game.status==='playing'){
 		// nothing to do
 		
 					ui.hideScoreScreen()
