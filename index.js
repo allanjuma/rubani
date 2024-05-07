@@ -25,7 +25,7 @@
 });
 console.log('starting flow');
 
-var insPORT = 9099;
+var insPORT = 8123;
 
 
 var http = require('http');
