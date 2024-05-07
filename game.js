@@ -1647,12 +1647,9 @@ class UI {
 	}
 
 	handleTouchMove(event) {
-	   try{
 	
-		event.preventDefault()
-}catch(e){
-    console.log(e);
-}
+		//event.preventDefault()
+		
 		var tx = -1 + (event.touches[0].pageX / this.width)*2
 		var ty = 1 - (event.touches[0].pageY / this.height)*2
 		this.mousePos = {x: tx, y: ty}
