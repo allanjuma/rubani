@@ -461,11 +461,12 @@ a:focus-visible {
 	display: grid;
 	place-items: center;
 	background: transparent;
-	color: var(--color-text);
+	color: var(--color-bg-score);
 	font: inherit;
 	border-radius: 50%;
 	cursor: pointer;
 	border: 1px solid;
+	visibility: hidden;
 }
 
 @keyframes appearScale {
