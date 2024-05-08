@@ -1501,7 +1501,7 @@ function loop() {
 		if (airplane.mesh.position.y < -200) {
 			ui.showReplay()
 			game.status = "waitingReplay"
-			audioManager.play('water-splash')
+			audioManager.play('water-splash', {volume: 1})
 			
 					
 					
