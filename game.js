@@ -1609,9 +1609,10 @@ class UI {
 		this._elemCoinsCount = document.getElementById('coinsValue')
         
         
-		document.querySelector('#intro-screen button').onclick = () => {
-		// href="lightning:bitsoko@walletofsatoshi.com"
+		document.querySelector('#intro-screen a').onclick = () => {
+		
 			document.getElementById('intro-screen').classList.remove('visible')
+			window.location ="lightning:bitsoko@walletofsatoshi.com";
 			onStart()
 		}
 		
