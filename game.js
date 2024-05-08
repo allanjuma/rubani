@@ -2067,4 +2067,37 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
+document.getElementById('address').addEventListener('input', function (evt) {
+    
+     doFetch({
+              action:'checkLNUrlAddress',
+              address:this.value
+              
+          })
+            .then(function(r){
+                
+              console.log(r); 
+              
+                if(r.status == 'ok' && r.rawData){
+                    document.getElementById("address-data").children[0].innerText = r.rawData;
+                   document.getElementById("address-data").children[1].innerText = 'place your bet below to start play';
+               document.getElementById("start-button").style.visibility = 'visible'
+            
+                }else{
+                   
+                   document.getElementById("start-button").style.visibility = 'hidden'
+             
+                }
+                
+          
+            })
+              .catch(function(e){
+                console.log(e);
+                
+              });   
+                  
+                  
+});
+
+
 window.addEventListener('load', onWebsiteLoaded, false)
