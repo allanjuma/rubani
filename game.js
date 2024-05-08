@@ -1595,11 +1595,14 @@ class UI {
 		this._elemLevelCircle = document.getElementById("levelCircleStroke")
 		this._elemsLifes = document.querySelectorAll('#lifes img')
 		this._elemCoinsCount = document.getElementById('coinsValue')
-
+        
+        /*
 		document.querySelector('#intro-screen button').onclick = () => {
 			document.getElementById('intro-screen').classList.remove('visible')
 			onStart()
 		}
+		
+		*/
 
 		document.addEventListener('keydown', this.handleKeyDown.bind(this), false)
 		document.addEventListener('keyup', this.handleKeyUp.bind(this), false)
