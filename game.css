@@ -450,6 +450,7 @@ a:focus-visible {
     height: 50%;
     position: relative;
     margin-top: 50%;
+    color: var(--color-bg-score);
 }
 
 #intro-screen:not(.visible) {
