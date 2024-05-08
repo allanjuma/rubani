@@ -1364,6 +1364,18 @@ class Projectile {
 		sceneManager.add(this)
 
 		game.statistics.shotsFired += 1
+		
+		
+	if (game.statistics.shotsFired == 10){
+		    
+	    airplane.equipWeapon(null)
+	
+	    game.statistics.shotsLeft = 10 - game.statistics.shotsFired
+	
+	    game.statistics.shotsFired = 0
+		    
+	}
+	
 	}
 
 	tick(deltaTime) {
