@@ -2079,7 +2079,7 @@ document.getElementById('address').addEventListener('input', function (evt) {
               console.log(r); 
               
                 if(r.status == 'ok' && r.rawData){
-                    document.getElementById("address-data").children[0].innerText = r.rawData;
+                    document.getElementById("address-data").children[0].innerText = r.description;
                    document.getElementById("address-data").children[1].innerText = 'place your bet below to start play';
                document.getElementById("start-button").style.visibility = 'visible'
             
