@@ -455,7 +455,7 @@ a:focus-visible {
 	display: none;
 }
 
-#intro-screen button {
+#intro-screen a {
 	width: 100px;
 	height: 100px;
 	display: grid;
