@@ -1945,7 +1945,18 @@ function resetMap() {
 
 	setSideView()
 
-	airplane.equipWeapon(null)
+	
+	
+	if (game.statistics.shotsFired == 10){
+		    
+		    
+	    airplane.equipWeapon(null)
+	
+	    game.statistics.shotsLeft = 10-game.statistics.shotsFired
+	
+	    game.statistics.shotsFired = 0
+		    
+	}
 
 	// airplane.equipWeapon(new SimpleGun())
 	// airplane.equipWeapon(new DoubleGun())
@@ -1988,11 +1999,11 @@ function onWebsiteLoaded(event) {
 	audioManager.load('coin3', 'coin', '/audio/coin3.mp3')
 	audioManager.load('coin4', 'coin', '/audio/coin4.mp3')
 	audioManager.load('coin5', 'coin', '/audio/coin5.mp3')
-	//audioManager.load('coin-1', 'coin', '/audio/coin-1.mp3')
-	//audioManager.load('coin-2', 'coin', '/audio/coin-2.mp3')
-	//audioManager.load('coin-3', 'coin', '/audio/coin-3.mp3')
-	//audioManager.load('jar-1', 'coin', '/audio/jar-1.mp3')
-	//audioManager.load('jar-2', 'coin', '/audio/jar-2.mp3')
+	audioManager.load('coin-1', 'coin', '/audio/coin-1.mp3')
+	audioManager.load('coin-2', 'coin', '/audio/coin-2.mp3')
+	audioManager.load('coin-3', 'coin', '/audio/coin-3.mp3')
+	audioManager.load('jar-1', 'coin', '/audio/jar-1.mp3')
+	audioManager.load('jar-2', 'coin', '/audio/jar-2.mp3')
 	audioManager.load('jar-3', 'coin', '/audio/jar-3.mp3')
 	audioManager.load('jar-4', 'coin', '/audio/jar-4.mp3')
 	audioManager.load('jar-5', 'coin', '/audio/jar-5.mp3')
@@ -2012,10 +2023,10 @@ function onWebsiteLoaded(event) {
 	audioManager.load('bullet-impact', 'bullet-impact', '/audio/bullet-impact-rock.mp3')
 
 	audioManager.load('water-splash', 'water-splash', '/audio/water-splash.mp3')
-	//audioManager.load('rock-shatter-1', 'rock-shatter', '/audio/rock-shatter-1.mp3')
-	//audioManager.load('rock-shatter-2', 'rock-shatter', '/audio/rock-shatter-2.mp3')
-	audioManager.load('rock-shatter-1', 'rock-shatter', '/audio/woi-1.mp3')
-	audioManager.load('rock-shatter-2', 'rock-shatter', '/audio/woi-2.mp3')
+	audioManager.load('rock-shatter-1', 'rock-shatter', '/audio/rock-shatter-1.mp3')
+	audioManager.load('rock-shatter-2', 'rock-shatter', '/audio/rock-shatter-2.mp3')
+	//audioManager.load('rock-shatter-1', 'rock-shatter', '/audio/woi-1.mp3')
+	//audioManager.load('rock-shatter-2', 'rock-shatter', '/audio/woi-2.mp3')
 
 	// load models
 	modelManager.load('heart')
