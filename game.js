@@ -1942,7 +1942,7 @@ function resetMap() {
 
 		speed: 0,
 		paused: false,
-		baseSpeed: 0.00035,
+		baseSpeed: 0.00025,
 		targetBaseSpeed: 0.00035,
 		speedLastUpdate: 0,
 
