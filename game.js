@@ -1315,6 +1315,8 @@ class Coin {
 			spawnParticles(this.mesh.position.clone(), 5, COLOR_COINS, 0.8);
 			addCoin()
 			audioManager.play('coin', {volume: 0.5})
+			
+		    navigator.vibrate(100)
 			sceneManager.remove(this)
 		}
 		// passed-by?
@@ -1485,6 +1487,7 @@ function loop() {
 					game.status = 'finished'
 					setFollowView()
 					ui.showScoreScreen()
+					navigator.vibrate([100, 30, 100, 30, 200, 100, 30, 200, 100, 30, 500])
 				} else {
 					ui.informNextLevel(game.level)
 					sea.updateColor()
@@ -1540,6 +1543,8 @@ function loop() {
 			ui.showReplay()
 			game.status = "waitingReplay"
 			audioManager.play('water-splash', {volume: 1})
+			
+		navigator.vibrate(1000)
 			
 					
 					
