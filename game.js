@@ -1817,6 +1817,8 @@ try{
 		this._elemLevelCounter.innerText = game.level
 	    var btcRate = await fetchRates();
 	    game.btcRate = Math.floor(btcRate.baseEx);
+	    game.btcCurrency = btcRate.baseCd;
+	    
 	}
 
 	updateCoinsCount() {
