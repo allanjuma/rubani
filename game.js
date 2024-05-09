@@ -1892,7 +1892,7 @@ function createWorld() {
 		pauseLifeSpawn: 400,
 
 		levelCount: 11,
-		distanceForLevelUpdate: 1000,
+		distanceForLevelUpdate: randomInteger(600, 800),
 
 		planeDefaultHeight: 100,
 		planeAmpHeight: 80,
@@ -1914,7 +1914,7 @@ function createWorld() {
 
 		coinDistanceTolerance: 15,
 		coinsSpeed: 0.5,
-		distanceForCoinsSpawn: randomInteger(100, 200),
+		distanceForCoinsSpawn: randomInteger(80, 150),
 
 		collectibleDistanceTolerance: 15,
 		collectiblesSpeed: 0.6,
@@ -1942,7 +1942,7 @@ function resetMap() {
 
 		speed: 0,
 		paused: false,
-		baseSpeed: 0.00025,
+		baseSpeed: 0.00015,
 		targetBaseSpeed: 0.00025,
 		speedLastUpdate: 0,
 
