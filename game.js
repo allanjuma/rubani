@@ -1441,6 +1441,7 @@ function loop() {
 
 	if (game.status == 'playing') {
 		if (!game.paused) {
+		    audioManager.listener.gain.gain.value = 1;
 			// Add coins
 			if (Math.floor(game.distance)%world.distanceForCoinsSpawn == 0 && Math.floor(game.distance) > game.coinLastSpawn) {
 				game.coinLastSpawn = Math.floor(game.distance);
@@ -1504,6 +1505,7 @@ function loop() {
 		}
 	}
 	else if (game.status == "gameover") {
+	    audioManager.listener.gain.gain.value = 0;
 		game.speed *= .99
 		airplane.mesh.rotation.z += (-Math.PI/2 - airplane.mesh.rotation.z) * 0.0002 * deltaTime
 		airplane.mesh.rotation.x += 0.0003 * deltaTime
