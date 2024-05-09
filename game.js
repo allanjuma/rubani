@@ -1902,7 +1902,7 @@ function createWorld() {
 
 		coinDistanceTolerance: 15,
 		coinsSpeed: 0.5,
-		distanceForCoinsSpawn: 500,
+		distanceForCoinsSpawn: 50,
 
 		collectibleDistanceTolerance: 15,
 		collectiblesSpeed: 0.6,
