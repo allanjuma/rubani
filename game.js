@@ -1455,6 +1455,13 @@ function loop() {
 	if (game.status == 'playing') {
 		if (!game.paused) {
 		    audioManager.listener.gain.gain.value = 1;
+		    
+		    // Add free gun
+		    
+		    if(Math.floor(game.distance)%world.distanceForCoinsSpawn == 50 ){
+		        spawnSimpleGunCollectible()
+				game.spawnedSimpleGun = true
+		    }
 			// Add coins
 			if (Math.floor(game.distance)%world.distanceForCoinsSpawn == 0 && Math.floor(game.distance) > game.coinLastSpawn) {
 				game.coinLastSpawn = Math.floor(game.distance);
@@ -1933,7 +1940,7 @@ function resetMap() {
 		fpv: false,
 
 		// gun spawning
-		spawnedSimpleGun: true,
+		spawnedSimpleGun: false,
 		spawnedDoubleGun: false,
 		spawnedBetterGun: false,
 
