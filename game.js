@@ -1815,7 +1815,7 @@ try{
 	async updateLevelCount() {
 	    
 		this._elemLevelCounter.innerText = game.level
-	    var btcRate = await fetchRates;
+	    var btcRate = await fetchRates();
 	    game.btcRate = Math.floor(btcRate.baseEx);
 	}
 
@@ -2008,7 +2008,7 @@ async function resetMap() {
 		}
 	}
 
-	    var btcRate = await fetchRates;
+	    var btcRate = await fetchRates();
 	    game.btcRate = Math.floor(btcRate.baseEx);
 	    game.btcCurrency = btcRate.baseCd;
 	// update ui
