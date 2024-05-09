@@ -1864,7 +1864,9 @@ try{
 	}
 }
 let ui
-
+function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 
 function createWorld() {
@@ -1872,8 +1874,8 @@ function createWorld() {
 		initSpeed: 0.00035,
 		incrementSpeedByTime: 0.0000025,
 		incrementSpeedByLevel: 0.000005,
-		distanceForSpeedUpdate: 150,
-		ratioSpeedDistance: 50,
+		distanceForSpeedUpdate: randomInteger(100, 200),
+		ratioSpeedDistance: randomInteger(40, 60),
 
 		simpleGunLevelDrop: 1.1,
 		doubleGunLevelDrop: 2.3,
@@ -1905,14 +1907,14 @@ function createWorld() {
 
 		coinDistanceTolerance: 15,
 		coinsSpeed: 0.5,
-		distanceForCoinsSpawn: 100,
+		distanceForCoinsSpawn: randomInteger(100, 200),
 
 		collectibleDistanceTolerance: 15,
 		collectiblesSpeed: 0.6,
 
-		enemyDistanceTolerance: 10,
+		enemyDistanceTolerance: randomInteger(100, 200),
 		enemiesSpeed: 0.6,
-		distanceForEnemiesSpawn: 70,
+		distanceForEnemiesSpawn: 100,
 	}
 
 	// create the world
