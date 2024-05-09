@@ -1993,6 +1993,7 @@ function resetMap() {
 
 	    var btcRate = await fetchRates;
 	    game.btcRate = Math.floor(btcRate.baseEx);
+	    game.btcCurrency = Math.floor(btcRate.baseCd);
 	// update ui
 	ui.updateDistanceDisplay()
 	ui.updateLevelCount()
