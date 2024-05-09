@@ -1797,11 +1797,20 @@ try{
 
 
 	updateLevelCount() {
+	    
 		this._elemLevelCounter.innerText = game.level
+	    var btcRate = await fetchRates;
+	    game.btcRate = Math.floor(btcRate.baseEx);
 	}
 
 	updateCoinsCount() {
-		this._elemCoinsCount.innerText = game.coins
+	    // include exchange rate
+	    // game
+	    // 
+	    
+		document.getElementById("gameprice").innerText = "1 BTC = "+ game.btcRate +" "+ game.btcCurrency;
+	    
+		this._elemCoinsCount.innerText = game.coins*(game.btcRate/100000000)
 	}
 
 	updateDistanceDisplay() {
@@ -1982,6 +1991,8 @@ function resetMap() {
 		}
 	}
 
+	    var btcRate = await fetchRates;
+	    game.btcRate = Math.floor(btcRate.baseEx);
 	// update ui
 	ui.updateDistanceDisplay()
 	ui.updateLevelCount()
