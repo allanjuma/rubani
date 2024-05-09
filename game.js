@@ -2009,6 +2009,10 @@ async function resetMap() {
 			lifesLost: 0,
 		}
 	}
+	
+	    var btcRate = await fetchRates();
+	    game.btcRate = Math.floor(btcRate.baseEx);
+	    game.btcCurrency = btcRate.baseCd;
 	// update ui
 	ui.updateDistanceDisplay()
 	ui.updateLevelCount()
@@ -2063,9 +2067,6 @@ function startMap() {
 async function onWebsiteLoaded(event) {
     
 
-	    var btcRate = await fetchRates();
-	    game.btcRate = Math.floor(btcRate.baseEx);
-	    game.btcCurrency = btcRate.baseCd;
 	// load audio
 	audioManager.load('ocean', null, '/audio/trap.mp3')
 	audioManager.load('propeller', null, '/audio/propeller.mp3')
