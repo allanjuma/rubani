@@ -1862,7 +1862,7 @@ function createWorld() {
 		initSpeed: 0.00035,
 		incrementSpeedByTime: 0.0000025,
 		incrementSpeedByLevel: 0.000005,
-		distanceForSpeedUpdate: 200,
+		distanceForSpeedUpdate: 150,
 		ratioSpeedDistance: 50,
 
 		simpleGunLevelDrop: 1.1,
@@ -1895,14 +1895,14 @@ function createWorld() {
 
 		coinDistanceTolerance: 15,
 		coinsSpeed: 0.5,
-		distanceForCoinsSpawn: 50,
+		distanceForCoinsSpawn: 100,
 
 		collectibleDistanceTolerance: 15,
 		collectiblesSpeed: 0.6,
 
 		enemyDistanceTolerance: 10,
 		enemiesSpeed: 0.6,
-		distanceForEnemiesSpawn: 50,
+		distanceForEnemiesSpawn: 70,
 	}
 
 	// create the world
