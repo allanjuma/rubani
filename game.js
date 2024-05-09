@@ -810,11 +810,17 @@ class Airplane {
 		this.weapon.shoot(direction)
 
 		// recoil airplane
-		const recoilForce = this.weapon.damage()
+		try{
+		    const recoilForce = this.weapon.damage()
 		TweenMax.to(this.mesh.position, {
 			duration: 0.05,
 			x: this.mesh.position.x - recoilForce,
 		})
+		}catch(e){
+		    // no weapon
+		    // already removed
+		}
+		
 	}
 
 
