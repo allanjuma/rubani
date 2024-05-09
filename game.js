@@ -1912,9 +1912,9 @@ function createWorld() {
 		collectibleDistanceTolerance: 15,
 		collectiblesSpeed: 0.6,
 
-		enemyDistanceTolerance: randomInteger(100, 200),
+		enemyDistanceTolerance: 10,
 		enemiesSpeed: 0.6,
-		distanceForEnemiesSpawn: 100,
+		distanceForEnemiesSpawn: randomInteger(100, 200),
 	}
 
 	// create the world
