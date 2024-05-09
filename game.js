@@ -2017,7 +2017,7 @@ function onWebsiteLoaded(event) {
 	audioManager.load('coin2', 'coin', '/audio/coin2.mp3')
 	audioManager.load('coin3', 'coin', '/audio/coin3.mp3')
 	audioManager.load('coin4', 'coin', '/audio/coin4.mp3')
-	audioManager.load('coin5', 'coin', '/audio/coin5.mp3')
+	//audioManager.load('coin5', 'coin', '/audio/coin5.mp3')
 	audioManager.load('coin-1', 'coin', '/audio/coin-1.mp3')
 	audioManager.load('coin-2', 'coin', '/audio/coin-2.mp3')
 	audioManager.load('coin-3', 'coin', '/audio/coin-3.mp3')
