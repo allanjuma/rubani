@@ -1328,7 +1328,8 @@ class Coin {
 
 function spawnCoins() {
     
-    // max spawmed
+    // READ AS VALUE SPAWNED
+    // max spawned
     //
     if(game.statistics.coinsSpawned >= 1000){
         
@@ -1338,17 +1339,19 @@ function spawnCoins() {
     }else{
     
     
-	const nCoins = 1 + Math.floor(Math.random()*3)
+	const nCoins = 1 + Math.floor(Math.random()*2)
 	const d = world.seaRadius + world.planeDefaultHeight + utils.randomFromRange(-1,1) * (world.planeAmpHeight-20)
 	const amplitude = 10 + Math.round(Math.random()*10)
 	for (let i=0; i<nCoins; i++) {
 		const coin = new Coin()
-		coin.angle = - (i*0.04)
-		coin.distance = d + Math.cos(i*0.6)*amplitude
+		coin.angle = - (i*0.05)
+		coin.distance = d + Math.cos(i*0.7)*amplitude
 		coin.mesh.position.y = -world.seaRadius + Math.sin(coin.angle)*coin.distance
 		coin.mesh.position.x = Math.cos(coin.angle) * coin.distance
 	}
-	game.statistics.coinsSpawned += nCoins
+	
+	// Add value of coin based on the level multiplier
+	game.statistics.coinsSpawned += (nCoins*game.level)
 	
     }
 }
@@ -1880,7 +1883,7 @@ function createWorld() {
 		pauseLifeSpawn: 400,
 
 		levelCount: 10,
-		distanceForLevelUpdate: 500,
+		distanceForLevelUpdate: 1000,
 
 		planeDefaultHeight: 100,
 		planeAmpHeight: 80,
