@@ -2013,6 +2013,8 @@ async function resetMap() {
 	    var btcRate = await fetchRates();
 	    game.btcRate = Math.floor(btcRate.baseEx);
 	    game.btcCurrency = btcRate.baseCd;
+	    	document.getElementById("gameprice").innerText = "1 BTC = "+ game.btcRate +" "+ game.btcCurrency;
+	
 	// update ui
 	ui.updateDistanceDisplay()
 	ui.updateLevelCount()
