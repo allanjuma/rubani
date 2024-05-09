@@ -1882,7 +1882,7 @@ function createWorld() {
 		maxLifes: 3,
 		pauseLifeSpawn: 400,
 
-		levelCount: 10,
+		levelCount: 11,
 		distanceForLevelUpdate: 1000,
 
 		planeDefaultHeight: 100,
