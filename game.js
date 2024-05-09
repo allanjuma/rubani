@@ -1919,7 +1919,7 @@ function resetMap() {
 		fpv: false,
 
 		// gun spawning
-		spawnedSimpleGun: false,
+		spawnedSimpleGun: true,
 		spawnedDoubleGun: false,
 		spawnedBetterGun: false,
 
