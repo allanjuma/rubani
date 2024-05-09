@@ -1338,7 +1338,7 @@ function spawnCoins() {
     }else{
     
     
-	const nCoins = 1 + Math.floor(Math.random()*5)
+	const nCoins = 1 + Math.floor(Math.random()*3)
 	const d = world.seaRadius + world.planeDefaultHeight + utils.randomFromRange(-1,1) * (world.planeAmpHeight-20)
 	const amplitude = 10 + Math.round(Math.random()*10)
 	for (let i=0; i<nCoins; i++) {
