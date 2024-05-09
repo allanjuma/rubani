@@ -2071,6 +2071,10 @@ document.addEventListener("visibilitychange", () => {
 
 document.getElementById('address').addEventListener('input', function (evt) {
     
+                    document.getElementById("address-data").children[0].innerText = "";
+                   
+                   document.getElementById("start-button").style.visibility = 'hidden';
+                   
      doFetch({
               action:'checkLNUrlAddress',
               address:this.value
@@ -2081,13 +2085,15 @@ document.getElementById('address').addEventListener('input', function (evt) {
               console.log(r); 
               
                 if(r.status == 'ok' && r.rawData){
+                    
                     document.getElementById("address-data").children[0].innerText = r.description;
                    document.getElementById("address-data").children[1].innerText = 'place your bet below to start play';
                document.getElementById("start-button").style.visibility = 'visible'
             
                 }else{
                    
-                   document.getElementById("start-button").style.visibility = 'hidden'
+                   document.getElementById("address-data").children[1].innerText = 'invalid address';
+                   document.getElementById("start-button").style.visibility = 'hidden';
              
                 }
                 
