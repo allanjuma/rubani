@@ -1814,7 +1814,6 @@ try{
 	    // game
 	    // 
 	    
-		document.getElementById("gameprice").innerText = "1 BTC = "+ game.btcRate +" "+ game.btcCurrency;
 	    
 		this._elemCoinsCount.innerText = game.coins*(game.btcRate/100000000)
 	}
@@ -1853,6 +1852,8 @@ try{
 			document.getElementById('new-level').style.visibility = 'hidden'
 			elem.classList.remove('animating')
 		}, 1000)
+		
+		document.getElementById("gameprice").innerText = "1 BTC = "+ game.btcRate +" "+ game.btcCurrency;
 	}
 
 
