@@ -787,6 +787,16 @@ class Airplane {
 		this.weapon = weapon
 		if (this.weapon) {
 			this.mesh.add(this.weapon.mesh)
+			
+			// Add recoil when gun loaded
+			
+			 const recoilForce = this.weapon.damage()
+		TweenMax.to(this.mesh.position, {
+			duration: 0.05,
+			x: this.mesh.position.x - recoilForce,
+		})
+
+			
 		}
 	}
 
@@ -1894,8 +1904,8 @@ function randomInteger(min, max) {
 
 function createWorld() {
 	world = {
-		initSpeed: 0.00015,
-		incrementSpeedByTime: 0.0000025,
+		initSpeed: 0.0001,
+		incrementSpeedByTime: 0.0000015,
 		incrementSpeedByLevel: 0.000005,
 		distanceForSpeedUpdate: randomInteger(100, 200),
 		ratioSpeedDistance: randomInteger(40, 60),
@@ -1908,7 +1918,7 @@ function createWorld() {
 		pauseLifeSpawn: 400,
 
 		levelCount: 11,
-		distanceForLevelUpdate: randomInteger(600, 800),
+		distanceForLevelUpdate: randomInteger(400, 600),
 
 		planeDefaultHeight: 100,
 		planeAmpHeight: 80,
@@ -1919,8 +1929,8 @@ function createWorld() {
 		planeMinSpeed: 1.2,
 		planeMaxSpeed: 1.6,
 
-		seaRadius: 1200,
-		seaLength: 1600,
+		seaRadius: 1800,
+		seaLength: 2400,
 		wavesMinAmp: 5,
 		wavesMaxAmp: 20,
 		wavesMinSpeed: 0.001,
@@ -1930,7 +1940,7 @@ function createWorld() {
 
 		coinDistanceTolerance: 15,
 		coinsSpeed: 0.5,
-		distanceForCoinsSpawn: randomInteger(80, 150),
+		distanceForCoinsSpawn: randomInteger(60, 120),
 
 		collectibleDistanceTolerance: 15,
 		collectiblesSpeed: 0.6,
@@ -1958,8 +1968,8 @@ function resetMap() {
 
 		speed: 0,
 		paused: false,
-		baseSpeed: 0.00015,
-		targetBaseSpeed: 0.00025,
+		baseSpeed: 0.0001,
+		targetBaseSpeed: 0.0002,
 		speedLastUpdate: 0,
 
 		distance: 0,
@@ -2000,7 +2010,7 @@ function resetMap() {
 
 	    var btcRate = await fetchRates;
 	    game.btcRate = Math.floor(btcRate.baseEx);
-	    game.btcCurrency = Math.floor(btcRate.baseCd);
+	    game.btcCurrency = btcRate.baseCd;
 	// update ui
 	ui.updateDistanceDisplay()
 	ui.updateLevelCount()
