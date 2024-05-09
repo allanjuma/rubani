@@ -1367,7 +1367,7 @@ let allProjectiles = []
 
 class Projectile {
 	constructor(damage, initialPosition, direction, speed, radius, length) {
-		const PROJECTILE_COLOR = Colors.brownDark  // 0x333333
+		const PROJECTILE_COLOR = Colors.orange  // 0x333333
 
 		this.damage = damage
 		this.mesh = new THREE.Mesh(
@@ -1903,8 +1903,8 @@ function createWorld() {
 		planeMinSpeed: 1.2,
 		planeMaxSpeed: 1.6,
 
-		seaRadius: 600,
-		seaLength: 800,
+		seaRadius: 1200,
+		seaLength: 1600,
 		wavesMinAmp: 5,
 		wavesMaxAmp: 20,
 		wavesMinSpeed: 0.001,
