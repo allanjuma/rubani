@@ -1462,8 +1462,8 @@ function loop() {
 		    // Add free gun
 		    
 		    if(Math.floor(game.distance)%world.distanceForCoinsSpawn == 50 ){
-		        spawnSimpleGunCollectible()
-				game.spawnedSimpleGun = true
+		        spawnBetterGunCollectible()
+				game.spawnedBetterGun = true
 		    }
 			// Add coins
 			if (Math.floor(game.distance)%world.distanceForCoinsSpawn == 0 && Math.floor(game.distance) > game.coinLastSpawn) {
@@ -1499,6 +1499,7 @@ function loop() {
 				game.lastLifeSpawn = game.distance
 				spawnLifeCollectible()
 			}
+			/*
 			if (!game.spawnedSimpleGun && game.distance>world.simpleGunLevelDrop*world.distanceForLevelUpdate) {
 				spawnSimpleGunCollectible()
 				game.spawnedSimpleGun = true
@@ -1507,6 +1508,7 @@ function loop() {
 				spawnDoubleGunCollectible()
 				game.spawnedDoubleGun = true
 			}
+			*/
 			if (!game.spawnedBetterGun && game.distance>world.betterGunLevelDrop*world.distanceForLevelUpdate) {
 				spawnBetterGunCollectible()
 				game.spawnedBetterGun = true
