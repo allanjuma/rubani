@@ -2060,7 +2060,7 @@ function startMap() {
 
 
 
-function onWebsiteLoaded(event) {
+async function onWebsiteLoaded(event) {
     
 
 	    var btcRate = await fetchRates();
