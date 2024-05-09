@@ -1343,8 +1343,8 @@ function spawnCoins() {
 	const amplitude = 10 + Math.round(Math.random()*10)
 	for (let i=0; i<nCoins; i++) {
 		const coin = new Coin()
-		coin.angle = - (i*0.02)
-		coin.distance = d + Math.cos(i*0.5)*amplitude
+		coin.angle = - (i*0.04)
+		coin.distance = d + Math.cos(i*0.6)*amplitude
 		coin.mesh.position.y = -world.seaRadius + Math.sin(coin.angle)*coin.distance
 		coin.mesh.position.x = Math.cos(coin.angle) * coin.distance
 	}
@@ -1872,8 +1872,8 @@ function createWorld() {
 		maxLifes: 3,
 		pauseLifeSpawn: 400,
 
-		levelCount: 6,
-		distanceForLevelUpdate: 1000,
+		levelCount: 10,
+		distanceForLevelUpdate: 500,
 
 		planeDefaultHeight: 100,
 		planeAmpHeight: 80,
@@ -1895,7 +1895,7 @@ function createWorld() {
 
 		coinDistanceTolerance: 15,
 		coinsSpeed: 0.5,
-		distanceForCoinsSpawn: 100,
+		distanceForCoinsSpawn: 500,
 
 		collectibleDistanceTolerance: 15,
 		collectiblesSpeed: 0.6,
@@ -1978,12 +1978,12 @@ function resetMap() {
 
 	
 	
-	if (game.statistics.shotsFired == 10){
+	if (game.statistics.shotsFired == 15){
 		    
 		    
 	    airplane.equipWeapon(null)
 	
-	    game.statistics.shotsLeft = 10-game.statistics.shotsFired
+	    game.statistics.shotsLeft = 15-game.statistics.shotsFired
 	
 	    game.statistics.shotsFired = 0
 		    
