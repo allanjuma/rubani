@@ -1812,7 +1812,7 @@ try{
 	}
 
 
-	updateLevelCount() {
+	async updateLevelCount() {
 	    
 		this._elemLevelCounter.innerText = game.level
 	    var btcRate = await fetchRates;
@@ -1962,7 +1962,7 @@ function createWorld() {
 
 
 
-function resetMap() {
+async function resetMap() {
 	game = {
 		status: 'playing',
 
