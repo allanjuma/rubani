@@ -1327,7 +1327,18 @@ class Coin {
 
 
 function spawnCoins() {
-	const nCoins = 1 + Math.floor(Math.random()*10)
+    
+    // max spawmed
+    //
+    if(game.statistics.coinsSpawned => 1000){
+        
+        //cant spawn more coins!!
+        
+        
+    }else{
+    
+    
+	const nCoins = 1 + Math.floor(Math.random()*5)
 	const d = world.seaRadius + world.planeDefaultHeight + utils.randomFromRange(-1,1) * (world.planeAmpHeight-20)
 	const amplitude = 10 + Math.round(Math.random()*10)
 	for (let i=0; i<nCoins; i++) {
@@ -1338,6 +1349,8 @@ function spawnCoins() {
 		coin.mesh.position.x = Math.cos(coin.angle) * coin.distance
 	}
 	game.statistics.coinsSpawned += nCoins
+	
+    }
 }
 
 
@@ -1505,7 +1518,6 @@ function loop() {
 		}
 	}
 	else if (game.status == "gameover") {
-	    audioManager.listener.gain.gain.value = 0;
 		game.speed *= .99
 		airplane.mesh.rotation.z += (-Math.PI/2 - airplane.mesh.rotation.z) * 0.0002 * deltaTime
 		airplane.mesh.rotation.x += 0.0003 * deltaTime
