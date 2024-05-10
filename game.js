@@ -1828,7 +1828,7 @@ try{
 	    // 
 	    
 	    
-		this._elemCoinsCount.innerText = game.coins*(game.btcRate/100000000)
+		this._elemCoinsCount.innerText = Math.round((game.coins*(game.btcRate/100000000)) * 100) / 100
 	}
 
 	updateDistanceDisplay() {
