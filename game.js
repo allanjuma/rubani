@@ -1350,10 +1350,14 @@ function spawnCoins() {
     // READ AS VALUE SPAWNED
     // max spawned
     //
-    if(game.statistics.coinsSpawned >= 2000){
+    if(game.statistics.coinsSpawned >= game.maxCoins){
         
         //cant spawn more coins!!
         
+					game.status = 'finished'
+					setFollowView()
+					ui.showScoreScreen()
+					navigator.vibrate([100, 30, 100, 30, 200, 100, 30, 200, 100, 30, 500])
         
     }else{
     
@@ -1519,6 +1523,7 @@ function loop() {
 			if (game.lifes<world.maxLifes && (game.distance-game.lastLifeSpawn)>world.pauseLifeSpawn && Math.random()<0.01) {
 				game.lastLifeSpawn = game.distance
 				spawnLifeCollectible()
+				
 			}
 			/*
 			if (!game.spawnedSimpleGun && game.distance>world.simpleGunLevelDrop*world.distanceForLevelUpdate) {
@@ -1821,6 +1826,8 @@ try{
 	    game.btcRate = Math.floor(btcRate.baseEx);
 	    game.btcCurrency = btcRate.baseCd;
 	    
+	    
+	    
 	}
 
 	updateCoinsCount() {
@@ -1975,6 +1982,7 @@ async function resetMap() {
 		baseSpeed: 0.00005,
 		targetBaseSpeed: 0.0001,
 		speedLastUpdate: 0,
+		maxCoins: 2000,
 
 		distance: 0,
 
