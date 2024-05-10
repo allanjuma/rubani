@@ -1908,8 +1908,8 @@ function randomInteger(min, max) {
 
 function createWorld() {
 	world = {
-		initSpeed: 0.0001,
-		incrementSpeedByTime: 0.0000015,
+		initSpeed: 0.00005,
+		incrementSpeedByTime: 0.000001,
 		incrementSpeedByLevel: 0.000005,
 		distanceForSpeedUpdate: randomInteger(100, 200),
 		ratioSpeedDistance: randomInteger(40, 60),
@@ -1972,8 +1972,8 @@ async function resetMap() {
 
 		speed: 0,
 		paused: false,
-		baseSpeed: 0.0001,
-		targetBaseSpeed: 0.0002,
+		baseSpeed: 0.00005,
+		targetBaseSpeed: 0.0001,
 		speedLastUpdate: 0,
 
 		distance: 0,
