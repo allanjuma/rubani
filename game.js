@@ -1944,14 +1944,14 @@ function createWorld() {
 
 		coinDistanceTolerance: 15,
 		coinsSpeed: 0.5,
-		distanceForCoinsSpawn: randomInteger(60, 120),
+		distanceForCoinsSpawn: randomInteger(30, 60),
 
 		collectibleDistanceTolerance: 15,
 		collectiblesSpeed: 0.6,
 
 		enemyDistanceTolerance: 10,
 		enemiesSpeed: 0.6,
-		distanceForEnemiesSpawn: randomInteger(100, 200),
+		distanceForEnemiesSpawn: randomInteger(50, 100),
 	}
 
 	// create the world
