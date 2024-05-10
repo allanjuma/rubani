@@ -1933,8 +1933,8 @@ function createWorld() {
 		planeMinSpeed: 1.2,
 		planeMaxSpeed: 1.6,
 
-		seaRadius: 1800,
-		seaLength: 2400,
+		seaRadius: 3600,
+		seaLength: 4800,
 		wavesMinAmp: 5,
 		wavesMaxAmp: 20,
 		wavesMinSpeed: 0.001,
