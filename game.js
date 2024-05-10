@@ -1350,7 +1350,7 @@ function spawnCoins() {
     // READ AS VALUE SPAWNED
     // max spawned
     //
-    if(game.statistics.coinsSpawned >= 1000){
+    if(game.statistics.coinsSpawned >= 2000){
         
         //cant spawn more coins!!
         
