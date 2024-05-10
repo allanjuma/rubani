@@ -1015,7 +1015,8 @@ function spawnBetterGunCollectible() {
 
 	new Collectible(gun, () => {
 		airplane.equipWeapon(new BetterGun())
-		audioManager.play('guncock2') 
+		audioManager.play('guncock3') 
+		game.statistics.shotsFired = 0
 	})
 }
 
@@ -1037,7 +1038,7 @@ function spawnDoubleGunCollectible() {
 
 	new Collectible(guns, () => {
 		airplane.equipWeapon(new DoubleGun())
-		audioManager.play('guncock3') 
+		audioManager.play('guncock2') 
 	})
 }
 
@@ -1400,7 +1401,7 @@ class Projectile {
 		game.statistics.shotsFired += 1
 		
 		
-	if (game.statistics.shotsFired == 10){
+	if (game.statistics.shotsFired == 15){
 		    
 	    airplane.equipWeapon(null)
 	
