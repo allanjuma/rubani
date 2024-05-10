@@ -1472,6 +1472,7 @@ function loop() {
 	newTime = new Date().getTime()
 	const deltaTime = newTime - oldTime
 	oldTime = newTime
+	addExtraGun = false
 
 	if (game.status == 'playing') {
 		if (!game.paused) {
@@ -1479,7 +1480,7 @@ function loop() {
 		    
 		    // Add free gun
 		    
-		    if(Math.floor(game.distance)%world.distanceForCoinsSpawn == 50 ){
+		    if(	!addExtraGun && Math.floor(game.distance)%world.distanceForCoinsSpawn == 50 ){
 		        spawnBetterGunCollectible()
 				game.spawnedBetterGun = true
 		    }
