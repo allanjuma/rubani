@@ -1886,8 +1886,8 @@ try{
 		elemScreen.classList.add('visible')
 
 		// fill in statistics
-		document.getElementById('score-coins-collected').innerText = Math.round((game.statistics.coinsCollected*(game.btcRate/Math.pow(10,8))) * 100) / 100 + game.btcRate
-		document.getElementById('score-coins-total').innerText = Math.round((game.statistics.coinsSpawned*(game.btcRate/Math.pow(10,8))) * 100) / 100 + game.btcRate
+		document.getElementById('score-coins-collected').innerText = Math.round((game.statistics.coinsCollected*(game.btcRate/Math.pow(10,8))) * 100) / 100 +' '+ game.btcCurrency
+		document.getElementById('score-coins-total').innerText = Math.round((game.statistics.coinsSpawned*(game.btcRate/Math.pow(10,8))) * 100) / 100 +' '+ game.btcCurrency
 		document.getElementById('score-enemies-killed').innerText = game.statistics.enemiesKilled
 		document.getElementById('score-enemies-total').innerText = game.statistics.enemiesSpawned
 		document.getElementById('score-shots-fired').innerText = game.statistics.shotsFired
@@ -1944,14 +1944,14 @@ function createWorld() {
 
 		coinDistanceTolerance: 15,
 		coinsSpeed: 0.5,
-		distanceForCoinsSpawn: randomInteger(20, 50),
+		distanceForCoinsSpawn: randomInteger(10, 25),
 
 		collectibleDistanceTolerance: 15,
 		collectiblesSpeed: 0.6,
 
 		enemyDistanceTolerance: 10,
 		enemiesSpeed: 0.6,
-		distanceForEnemiesSpawn: randomInteger(40, 100),
+		distanceForEnemiesSpawn: randomInteger(20, 70),
 	}
 
 	// create the world
