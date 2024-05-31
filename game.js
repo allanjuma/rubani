@@ -1280,7 +1280,9 @@ class Enemy {
 
 	explode() {
 		audioManager.play('rock-shatter', {volume: 3});
+		if (“vibrate” in navigator) {
 		navigator.vibrate([100, 30, 100, 30, 200])
+		}
 		spawnParticles(this.mesh.position.clone(), 15, Colors.red, 3)
 		sceneManager.remove(this)
 		game.statistics.enemiesKilled += 1
@@ -1332,8 +1334,9 @@ class Coin {
 			spawnParticles(this.mesh.position.clone(), 5, COLOR_COINS, 0.8);
 			addCoin()
 			audioManager.play('coin', {volume: 0.5})
-			
+			if (“vibrate” in navigator) {
 		    navigator.vibrate(100)
+			}
 			sceneManager.remove(this)
 		}
 		// passed-by?
@@ -1357,7 +1360,9 @@ function spawnCoins() {
 					game.status = 'finished'
 					setFollowView()
 					ui.showScoreScreen()
+					if (“vibrate” in navigator) {
 					navigator.vibrate([100, 30, 100, 30, 200, 100, 30, 200, 100, 30, 500])
+					}
         
     }else{
     
@@ -1509,7 +1514,9 @@ function loop() {
 					game.status = 'finished'
 					setFollowView()
 					ui.showScoreScreen()
+					if (“vibrate” in navigator) {
 					navigator.vibrate([100, 30, 100, 30, 200, 100, 30, 200, 100, 30, 500])
+					}
 				} else {
 					ui.informNextLevel(game.level)
 					sea.updateColor()
@@ -1566,9 +1573,9 @@ function loop() {
 			ui.showReplay()
 			game.status = "waitingReplay"
 			audioManager.play('water-splash', {volume: 1})
-			
+			if (“vibrate” in navigator) {
 		navigator.vibrate(1000)
-			
+			}
 					
 					
 					setTimeout(ui.hideScoreScreen(), 3000)
@@ -1666,7 +1673,7 @@ class UI {
 		document.querySelector('#intro-screen a').onclick = () => {
 		
 			document.getElementById('intro-screen').classList.remove('visible')
-			window.location ="lightning:bitsoko@walletofsatoshi.com";
+			//window.location ="lightning:bitsoko@walletofsatoshi.com";
 			onStart()
 		}
 		
