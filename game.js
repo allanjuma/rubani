@@ -1,165 +1,104 @@
+/*
+
+
+
 function createAirplaneMesh() {
-	const mesh = new THREE.Object3D()
+ const mesh = new THREE.Object3D();
 
-	// Cabin
-	var matCabin = new THREE.MeshPhongMaterial({color: Colors.red, flatShading: true, side: THREE.DoubleSide})
+    // Colors
+    const Colors = {
+        gray: 0x777777,
+        blue: 0x0000ff,
+        red: 0xff0000,
+        green: 0x00ff00,
+        yellow: 0xffff00,
+        white: 0xffffff,
+        black: 0x000000,
+    };
 
-	const frontUR = [ 40,  25, -25]
-	const frontUL = [ 40,  25,  25]
-	const frontLR = [ 40, -25, -25]
-	const frontLL = [ 40, -25,  25]
-	const backUR  = [-40,  15,  -5]
-	const backUL  = [-40,  15,   5]
-	const backLR  = [-40,   5,  -5]
-	const backLL  = [-40,   5,   5]
+    // Body
+    var matBody = new THREE.MeshPhongMaterial({color: Colors.blue, flatShading: true, side: THREE.DoubleSide});
+    var geomBody = new THREE.CylinderGeometry(20, 30, 50, 16);
+    var body = new THREE.Mesh(geomBody, matBody);
+    body.rotation.z = Math.PI / 2;
+    body.castShadow = true;
+    body.receiveShadow = true;
+    mesh.add(body);
 
-	const vertices = new Float32Array(
-		utils.makeTetrahedron(frontUL, frontUR, frontLL, frontLR).concat(   // front
-		utils.makeTetrahedron(backUL, backUR, backLL, backLR)).concat(      // back
-		utils.makeTetrahedron(backUR, backLR, frontUR, frontLR)).concat(    // side
-		utils.makeTetrahedron(backUL, backLL, frontUL, frontLL)).concat(    // side
-		utils.makeTetrahedron(frontUL, backUL, frontUR, backUR)).concat(    // top
-		utils.makeTetrahedron(frontLL, backLL, frontLR, backLR))            // bottom
-	)
-	const geomCabin = new THREE.BufferGeometry()
-	geomCabin.setAttribute('position', new THREE.BufferAttribute(vertices, 3))
+    // Arms
+    var geomArm = new THREE.BoxGeometry(10, 10, 80);
+    var matArm = new THREE.MeshPhongMaterial({color: Colors.red, flatShading: true});
+    var armLeft = new THREE.Mesh(geomArm, matArm);
+    armLeft.position.set(0, 0, 50);
+    armLeft.castShadow = true;
+    armLeft.receiveShadow = true;
+    mesh.add(armLeft);
 
-	var cabin = new THREE.Mesh(geomCabin, matCabin)
-	cabin.castShadow = true
-	cabin.receiveShadow = true
-	mesh.add(cabin)
+    var armRight = armLeft.clone();
+    armRight.position.set(0, 0, -50);
+    mesh.add(armRight);
 
-	// Engine
+    // Propeller
+    var geomPropeller = new THREE.CylinderGeometry(5, 5, 5, 8);
+    var matPropeller = new THREE.MeshPhongMaterial({color: Colors.black, flatShading: true});
+    const propeller = new THREE.Mesh(geomPropeller, matPropeller);
+    propeller.rotation.x = Math.PI / 2;
+    propeller.castShadow = true;
+    propeller.receiveShadow = true;
 
-	var geomEngine = new THREE.BoxGeometry(20,50,50,1,1,1);
-	var matEngine = new THREE.MeshPhongMaterial({color:Colors.white, flatShading:true,});
-	var engine = new THREE.Mesh(geomEngine, matEngine);
-	//Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ
-	engine.position.x = 50;
-	engine.castShadow = true;
-	engine.receiveShadow = true;
-	mesh.add(engine);
+    var geomBlade = new THREE.BoxGeometry(2, 40, 5);
+    var matBlade = new THREE.MeshPhongMaterial({color: Colors.green, flatShading: true});
+    var blade1 = new THREE.Mesh(geomBlade, matBlade);
+    blade1.position.set(0, 20, 0);
+    blade1.castShadow = true;
+    blade1.receiveShadow = true;
 
-	// Tail Plane
-	var geomTailPlane = new THREE.BoxGeometry(15,20,5,1,1,1);
-	var matTailPlane = new THREE.MeshPhongMaterial({color:Colors.red, flatShading:true,});
-	var tailPlane = new THREE.Mesh(geomTailPlane, matTailPlane);
-	//Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ
-	tailPlane.position.set(-40,20,0);
-	tailPlane.castShadow = true;
-	tailPlane.receiveShadow = true;
-	mesh.add(tailPlane);
+    var blade2 = blade1.clone();
+    blade2.rotation.y = Math.PI / 2;
+    blade2.position.set(20, 0, 0);
+    blade2.castShadow = true;
+    blade2.receiveShadow = true;
 
-	// Wings
+    propeller.add(blade1);
+    propeller.add(blade2);
+    propeller.position.set(0, 50, 0);
+    mesh.add(propeller);
 
-	var geomSideWing = new THREE.BoxGeometry(30,5,120,1,1,1);
-	var matSideWing = new THREE.MeshPhongMaterial({color:Colors.red, flatShading:true,});
-	var sideWing = new THREE.Mesh(geomSideWing, matSideWing);
-	//Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ
-	sideWing.position.set(0,15,0);
-	sideWing.castShadow = true;
-	sideWing.receiveShadow = true;
-	mesh.add(sideWing);
+    // Landing Skids
+    var geomLeg = new THREE.BoxGeometry(4, 20, 4);
+    var matLeg = new THREE.MeshPhongMaterial({color: Colors.yellow, flatShading: true});
+    var legLeft = new THREE.Mesh(geomLeg, matLeg);
+    legLeft.position.set(15, -30, 20);
+    legLeft.castShadow = true;
+    legLeft.receiveShadow = true;
+    mesh.add(legLeft);
 
-	var geomWindshield = new THREE.BoxGeometry(3,15,20,1,1,1);
-	var matWindshield = new THREE.MeshPhongMaterial({color:Colors.white,transparent:true, opacity:.3, flatShading:true,});;
-	var windshield = new THREE.Mesh(geomWindshield, matWindshield);
-	windshield.position.set(20,27,0);
+    var legRight = legLeft.clone();
+    legRight.position.set(15, -30, -20);
+    mesh.add(legRight);
 
-	windshield.castShadow = true;
-	windshield.receiveShadow = true;
+    var geomFoot = new THREE.BoxGeometry(30, 4, 4);
+    var matFoot = new THREE.MeshPhongMaterial({color: Colors.white, flatShading: true});
+    var footLeft = new THREE.Mesh(geomFoot, matFoot);
+    footLeft.position.set(15, -40, 20);
+    footLeft.castShadow = true;
+    footLeft.receiveShadow = true;
+    mesh.add(footLeft);
 
-	mesh.add(windshield);
+    var footRight = footLeft.clone();
+    footRight.position.set(15, -40, -20);
+    mesh.add(footRight);
 
-	var geomPropeller = new THREE.BoxGeometry(20, 10, 10, 1, 1, 1);
-	geomPropeller.attributes.position.array[4*3+1] -= 5
-	geomPropeller.attributes.position.array[4*3+2] += 5
-	geomPropeller.attributes.position.array[5*3+1] -= 5
-	geomPropeller.attributes.position.array[5*3+2] -= 5
-	geomPropeller.attributes.position.array[6*3+1] += 5
-	geomPropeller.attributes.position.array[6*3+2] += 5
-	geomPropeller.attributes.position.array[7*3+1] += 5
-	geomPropeller.attributes.position.array[7*3+2] -= 5
-	var matPropeller = new THREE.MeshPhongMaterial({color:Colors.brown, flatShading:true,});
-	const propeller = new THREE.Mesh(geomPropeller, matPropeller);
+    const pilot = { mesh: new THREE.Object3D() }; // Placeholder for compatibility
 
-	propeller.castShadow = true;
-	propeller.receiveShadow = true;
+    mesh.castShadow = true;
+    mesh.receiveShadow = true;
 
-	var geomBlade = new THREE.BoxGeometry(1,80,10,1,1,1);
-	var matBlade = new THREE.MeshPhongMaterial({color:Colors.brownDark, flatShading:true,});
-	var blade1 = new THREE.Mesh(geomBlade, matBlade);
-	//Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ
-	blade1.position.set(8,0,0);
-
-	blade1.castShadow = true;
-	blade1.receiveShadow = true;
-
-	var blade2 = blade1.clone();
-	blade2.rotation.x = Math.PI/2;
-
-	blade2.castShadow = true;
-	blade2.receiveShadow = true;
-
-	propeller.add(blade1);
-	propeller.add(blade2);
-	propeller.position.set(60,0,0);
-	mesh.add(propeller);
-
-	var wheelProtecGeom = new THREE.BoxGeometry(30,15,10,1,1,1);
-	var wheelProtecMat = new THREE.MeshPhongMaterial({color:Colors.red, flatShading:true,});
-	var wheelProtecR = new THREE.Mesh(wheelProtecGeom,wheelProtecMat);
-	//Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ
-	wheelProtecR.position.set(25,-20,25);
-	mesh.add(wheelProtecR);
-
-	var wheelTireGeom = new THREE.BoxGeometry(24,24,4);
-	var wheelTireMat = new THREE.MeshPhongMaterial({color:Colors.brownDark, flatShading:true,});
-	var wheelTireR = new THREE.Mesh(wheelTireGeom,wheelTireMat);
-	//Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ
-	wheelTireR.position.set(25,-28,25);
-
-	var wheelAxisGeom = new THREE.BoxGeometry(10,10,6);
-	var wheelAxisMat = new THREE.MeshPhongMaterial({color:Colors.brown, flatShading:true,});
-	var wheelAxis = new THREE.Mesh(wheelAxisGeom,wheelAxisMat);
-	wheelTireR.add(wheelAxis);
-
-	mesh.add(wheelTireR);
-
-	var wheelProtecL = wheelProtecR.clone();
-	wheelProtecL.position.z = -wheelProtecR.position.z ;
-	mesh.add(wheelProtecL);
-
-	var wheelTireL = wheelTireR.clone();
-	wheelTireL.position.z = -wheelTireR.position.z;
-	mesh.add(wheelTireL);
-
-	var wheelTireB = wheelTireR.clone();
-	wheelTireB.scale.set(.5,.5,.5);
-	//Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ
-	wheelTireB.position.set(-35,-5,0);
-	mesh.add(wheelTireB);
-
-	var suspensionGeom = new THREE.BoxGeometry(4,20,4);
-	suspensionGeom.applyMatrix4(new THREE.Matrix4().makeTranslation(0,10,0))
-	var suspensionMat = new THREE.MeshPhongMaterial({color:Colors.red, flatShading:true,});
-	var suspension = new THREE.Mesh(suspensionGeom,suspensionMat);
-	suspension.position.set(-35,-5,0);
-	suspension.rotation.z = -.3;
-	mesh.add(suspension)
-
-	const pilot = new Pilot()
-	pilot.mesh.position.set(5,27,0)
-	mesh.add(pilot.mesh)
-
-	mesh.castShadow = true
-	mesh.receiveShadow = true
-
-	return [mesh, propeller, pilot]
+    return [mesh, propeller, pilot];
+	
 }
 
-
-
+*/
 
 
 const utils = {
@@ -771,7 +710,10 @@ class BetterGun {
 
 class Airplane {
 	constructor() {
-		const [mesh, propeller, pilot] = createAirplaneMesh()
+		//const [mesh, propeller, pilot] = createAirplaneMesh()
+		//const [mesh, propeller, pilot] = createAirplaneMesh()
+		const [mesh, propeller, pilot] = createOldDroneMesh()
+		
 		this.mesh = mesh
 		this.propeller = propeller
 		this.pilot = pilot
@@ -837,6 +779,10 @@ class Airplane {
 	tick(deltaTime) {
 		this.propeller.rotation.x += 0.2 + game.planeSpeed * deltaTime*.005
 
+		//Math.PI/2
+
+		
+
 		if (game.status === 'playing') {
 			game.planeSpeed = utils.normalize(ui.mousePos.x, -0.5, 0.5, world.planeMinSpeed, world.planeMaxSpeed)
 			let targetX = utils.normalize(ui.mousePos.x, -1, 1, -world.planeAmpWidth*0.7, -world.planeAmpWidth)
@@ -870,7 +816,12 @@ class Airplane {
 		game.planeCollisionSpeedY += (0-game.planeCollisionSpeedY)*deltaTime * 0.03;
 		game.planeCollisionDisplacementY += (0-game.planeCollisionDisplacementY)*deltaTime *0.01;
 
-		this.pilot.updateHairs(deltaTime)
+		try{
+			this.pilot.updateHairs(deltaTime)
+		}catch(err){
+			//console.log(err)
+		}
+		
 	}
 
 
@@ -1280,7 +1231,8 @@ class Enemy {
 
 	explode() {
 		audioManager.play('rock-shatter', {volume: 3});
-		if (“vibrate” in navigator) {
+		if ("vibrate" in navigator) {
+  //
 		navigator.vibrate([100, 30, 100, 30, 200])
 		}
 		spawnParticles(this.mesh.position.clone(), 15, Colors.red, 3)
@@ -1334,7 +1286,8 @@ class Coin {
 			spawnParticles(this.mesh.position.clone(), 5, COLOR_COINS, 0.8);
 			addCoin()
 			audioManager.play('coin', {volume: 0.5})
-			if (“vibrate” in navigator) {
+			if ("vibrate" in navigator) {
+  //
 		    navigator.vibrate(100)
 			}
 			sceneManager.remove(this)
@@ -1360,10 +1313,10 @@ function spawnCoins() {
 					game.status = 'finished'
 					setFollowView()
 					ui.showScoreScreen()
-					if (“vibrate” in navigator) {
+		if ("vibrate" in navigator) {
+  //
 					navigator.vibrate([100, 30, 100, 30, 200, 100, 30, 200, 100, 30, 500])
-					}
-        
+		}
     }else{
     
     
@@ -1482,7 +1435,7 @@ function loop() {
 	newTime = new Date().getTime()
 	const deltaTime = newTime - oldTime
 	oldTime = newTime
-	addExtraGun = false
+	addExtraGun = true
 
 	if (game.status == 'playing') {
 		if (!game.paused) {
@@ -1514,7 +1467,8 @@ function loop() {
 					game.status = 'finished'
 					setFollowView()
 					ui.showScoreScreen()
-					if (“vibrate” in navigator) {
+					if ("vibrate" in navigator) {
+  //
 					navigator.vibrate([100, 30, 100, 30, 200, 100, 30, 200, 100, 30, 500])
 					}
 				} else {
@@ -1542,7 +1496,9 @@ function loop() {
 				game.spawnedDoubleGun = true
 			}
 			*/
-			if (!game.spawnedBetterGun && game.distance>world.betterGunLevelDrop*world.distanceForLevelUpdate) {
+			if (Math.floor(game.distance)%world.distanceForBetterGunSpawn == 0 && Math.floor(game.distance) > game.betterGunSpawn) {
+			//if (!game.spawnedBetterGun && game.distance>world.betterGunLevelDrop*world.distanceForLevelUpdate) {
+				game.betterGunSpawn = Math.floor(game.distance);
 				spawnBetterGunCollectible()
 				game.spawnedBetterGun = true
 			}
@@ -1573,7 +1529,8 @@ function loop() {
 			ui.showReplay()
 			game.status = "waitingReplay"
 			audioManager.play('water-splash', {volume: 1})
-			if (“vibrate” in navigator) {
+			if ("vibrate" in navigator) {
+  //
 		navigator.vibrate(1000)
 			}
 					
@@ -1723,7 +1680,7 @@ class UI {
 	handleMouseMove(event) {
 	   
 
-	    console.log(event);
+	    //console.log(event);
 		var tx = -1 + (event.clientX / this.width)*2
 		var ty = 1 - (event.clientY / this.height)*2
 		this.mousePos = {x:tx, y:ty}
@@ -1959,6 +1916,7 @@ function createWorld() {
 		coinDistanceTolerance: 15,
 		coinsSpeed: 0.5,
 		distanceForCoinsSpawn: randomInteger(20, 40),
+		distanceForBetterGunSpawn: randomInteger(90, 120),
 
 		collectibleDistanceTolerance: 15,
 		collectiblesSpeed: 0.6,
@@ -1999,7 +1957,7 @@ async function resetMap() {
 		// gun spawning
 		spawnedSimpleGun: false,
 		spawnedDoubleGun: false,
-		spawnedBetterGun: false,
+		spawnedBetterGun: true,
 
 		lastLifeSpawn: 0,
 		lifes: world.maxLifes,
@@ -2014,6 +1972,7 @@ async function resetMap() {
 		planeCollisionDisplacementY: 0,
 		planeCollisionSpeedY: 0,
 
+		betterGunSpawn: 0,
 		coinLastSpawn: 0,
 		enemyLastSpawn: 0,
 
@@ -2153,7 +2112,7 @@ document.addEventListener("visibilitychange", () => {
     game.paused = false;
   }
 });
-
+/*
 document.getElementById('address').addEventListener('input', function (evt) {
     
                     document.getElementById("address-data").children[0].innerText = "";
@@ -2191,6 +2150,6 @@ document.getElementById('address').addEventListener('input', function (evt) {
                   
                   
 });
-
+*/
 
 window.addEventListener('load', onWebsiteLoaded, false)
