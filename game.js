@@ -568,7 +568,7 @@ class SimpleGun {
 
 		const position = new THREE.Vector3()
 		this.mesh.getWorldPosition(position)
-		position.add(new THREE.Vector3(5, 0, 0))
+		position.add(new THREE.Vector3(15, 0, 0))
 		spawnProjectile(this.damage(), position, direction, BULLET_SPEED, 0.3, 3)
 
 		// Little explosion at exhaust
@@ -691,8 +691,10 @@ class BetterGun {
 		audioManager.play('shot-hard')
 
 		// Recoil of gun
+		if (game.fpv) {
+			
 		const initialX = this.mesh.position.x
-		TweenMax.to(this.mesh.position, {
+			var opt = {
 			duration: RECOIL_DURATION,
 			x: initialX - RECOIL_DISTANCE,
 			onComplete: () => {
@@ -701,7 +703,24 @@ class BetterGun {
 					x: initialX,
 				})
 			},
-		})
+		}
+			
+		}else{
+		
+		const initialZ = this.mesh.position.z	
+			var opt = {
+			duration: RECOIL_DURATION,
+			z: initialZ - RECOIL_DISTANCE,
+			onComplete: () => {
+				TweenMax.to(this.mesh.position, {
+					duration: RECOIL_DURATION,
+					x: initialZ,
+				})
+			},
+		}
+		}
+		
+		TweenMax.to(this.mesh.position, opt)
 	}
 }
 
@@ -711,8 +730,8 @@ class BetterGun {
 class Airplane {
 	constructor() {
 		//const [mesh, propeller, pilot] = createAirplaneMesh()
-		//const [mesh, propeller, pilot] = createAirplaneMesh()
-		const [mesh, propeller, pilot] = createOldDroneMesh()
+		const [mesh, propeller, pilot] = createAirplaneMesh()
+		//const [mesh, propeller, pilot] = createOldDroneMesh()
 		
 		this.mesh = mesh
 		this.propeller = propeller
@@ -785,7 +804,7 @@ class Airplane {
 
 		if (game.status === 'playing') {
 			game.planeSpeed = utils.normalize(ui.mousePos.x, -0.5, 0.5, world.planeMinSpeed, world.planeMaxSpeed)
-			let targetX = utils.normalize(ui.mousePos.x, -1, 1, -world.planeAmpWidth*0.7, -world.planeAmpWidth)
+			let targetX = utils.normalize(ui.mousePos.x, -0.75, 0.75, -world.planeAmpWidth*0.7, -world.planeAmpWidth)
 			let targetY = utils.normalize(ui.mousePos.y, -0.75, 0.75, world.planeDefaultHeight-world.planeAmpHeight, world.planeDefaultHeight+world.planeAmpHeight)
 
 			game.planeCollisionDisplacementX += game.planeCollisionSpeedX
@@ -794,6 +813,7 @@ class Airplane {
 			game.planeCollisionDisplacementY += game.planeCollisionSpeedY
 			targetY += game.planeCollisionDisplacementY
 
+			this.mesh.position.z += (targetX - this.mesh.position.z) * deltaTime * world.planeMoveSensivity
 			this.mesh.position.x += (targetX - this.mesh.position.x) * deltaTime * world.planeMoveSensivity
 			this.mesh.position.y += (targetY - this.mesh.position.y) * deltaTime * world.planeMoveSensivity
 
@@ -881,7 +901,10 @@ class Collectible {
 		this.distance = world.seaRadius + world.planeDefaultHeight + (-1 + 2*Math.random()) * (world.planeAmpHeight-20)
 		this.mesh.position.y = -world.seaRadius + Math.sin(this.angle) * this.distance
 		this.mesh.position.x = Math.cos(this.angle) * this.distance
-
+		if(game.fpv){
+			this.mesh.position.z = randomInteger(-65, -85)
+		}
+		
 		sceneManager.add(this)
 	}
 
@@ -1027,7 +1050,12 @@ class Cloud {
 			const m = new THREE.Mesh(geom.clone(), mat)
 			m.position.x = i*15
 			m.position.y = Math.random()*10
+			if(game.fpv){
+			m.position.z = randomInteger(-45, -105)
+		}else{
 			m.position.z = Math.random()*10
+		}
+			
 			m.rotation.y = Math.random()*Math.PI*2
 			m.rotation.z = Math.random()*Math.PI*2
 			const s = 0.1 + Math.random()*0.9
@@ -1065,6 +1093,7 @@ class Sky {
 			var h = world.seaRadius + 150 + Math.random()*200
 			c.mesh.position.y = Math.sin(a)*h
 			c.mesh.position.x = Math.cos(a)*h
+			
 			c.mesh.position.z = -300 - Math.random()*500
 			c.mesh.rotation.z = a + Math.PI/2
 			const scale = 1+Math.random()*2
@@ -1247,8 +1276,14 @@ function spawnEnemies(count) {
 		const enemy = new Enemy()
 		enemy.angle = - (i*0.1)
 		enemy.distance = world.seaRadius + world.planeDefaultHeight + (-1 + Math.random() * 2) * (world.planeAmpHeight-20)
+		//
 		enemy.mesh.position.x = Math.cos(enemy.angle) * enemy.distance
 		enemy.mesh.position.y = -world.seaRadius + Math.sin(enemy.angle)*enemy.distance
+		if(game.fpv){
+		enemy.mesh.position.z = randomInteger(-65, -85)
+		}else{
+			enemy.mesh.position.z = Math.cos(enemy.angle) * enemy.distance
+		}
 	}
 	game.statistics.enemiesSpawned += count
 }
@@ -1329,6 +1364,7 @@ function spawnCoins() {
 		coin.distance = d + Math.cos(i*0.7)*amplitude
 		coin.mesh.position.y = -world.seaRadius + Math.sin(coin.angle)*coin.distance
 		coin.mesh.position.x = Math.cos(coin.angle) * coin.distance
+		coin.mesh.position.z = randomInteger(-65, -85)
 	}
 	
 	// Add value of coin based on the level multiplier
@@ -1607,7 +1643,7 @@ function setSideView() {
 
 function setFollowView() {
 	game.fpv = true
-	camera.position.set(-89, airplane.mesh.position.y+20, 0)
+	camera.position.set(-130, airplane.mesh.position.y+40, -75)
 	camera.setRotationFromEuler(new THREE.Euler(-1.490248, -1.4124514, -1.48923231))
 	camera.updateProjectionMatrix ()
 }
@@ -1630,7 +1666,7 @@ class UI {
 		document.querySelector('#intro-screen a').onclick = () => {
 		
 			document.getElementById('intro-screen').classList.remove('visible')
-			//window.location ="lightning:bitsoko@walletofsatoshi.com";
+			//window.location = "lightning:bitsoko@walletofsatoshi.com";
 			onStart()
 		}
 		
@@ -1800,7 +1836,8 @@ try{
 	    // 
 	    
 	    
-		this._elemCoinsCount.innerText = Math.round((game.coins*(game.btcRate/Math.pow(10,8))) * 100) / 100
+		//this._elemCoinsCount.innerText = Math.round((game.coins*(game.btcRate/Math.pow(10,8))) * 100) / 100
+		this._elemCoinsCount.innerText = Math.round((game.coins) * 100) / 100
 	}
 
 	updateDistanceDisplay() {
@@ -1916,7 +1953,7 @@ function createWorld() {
 		coinDistanceTolerance: 15,
 		coinsSpeed: 0.5,
 		distanceForCoinsSpawn: randomInteger(20, 40),
-		distanceForBetterGunSpawn: randomInteger(90, 120),
+		distanceForBetterGunSpawn: randomInteger(80, 40),
 
 		collectibleDistanceTolerance: 15,
 		collectiblesSpeed: 0.6,
@@ -1926,19 +1963,8 @@ function createWorld() {
 		distanceForEnemiesSpawn: randomInteger(50, 100),
 	}
 
-	// create the world
-	createScene()
-	createSea()
-	createSky()
-	createLights()
-	createPlane()
+	//game parameters
 
-	resetMap()
-}
-
-
-
-async function resetMap() {
 	game = {
 		status: 'playing',
 
@@ -1986,6 +2012,21 @@ async function resetMap() {
 		}
 	}
 	
+
+	// create the world
+	createScene()
+	createSea()
+	createSky()
+	createLights()
+	createPlane()
+
+	resetMap()
+}
+
+
+
+async function resetMap() {
+	
 	    var btcRate = await fetchRates();
 	    game.btcRate = Math.floor(btcRate.baseEx);
 	    game.btcCurrency = btcRate.baseCd;
@@ -2002,7 +2043,8 @@ async function resetMap() {
 	sea.updateColor()
 	sea2.updateColor()
 
-	setSideView()
+	//setSideView()
+	setFollowView()
 
 	
 	
