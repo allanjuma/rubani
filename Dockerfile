@@ -30,6 +30,6 @@ HEALTHCHECK --retries=10 --interval=1m --timeout=30s CMD curl --fail http://127.
 
 
 
-ENTRYPOINT cd / && rm -fr game && git clone https://bitsoko:12Gitlabsrus34@git.bitsoko.org/games/crypto-aviator.git game && cd /game && node index.js
+ENTRYPOINT cd / && rm -fr game && git clone https://bitsoko:12Gitlabsrus34@git.bitsoko.org/games/rubani.git game && cd /game && node index.js
 
 
