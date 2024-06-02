@@ -2156,16 +2156,19 @@ async function onWebsiteLoaded(event) {
 	modelManager.load('heart')
 try{
 tapp = window.Telegram.WebApp;
+tapp.setHeaderColor('#101232');
+tapp.setBackgroundColor('#101560');
 tapp.ready();
-tapp.isClosingConfirmationEnabled = true;
+tapp.enableClosingConfirmation();
+//tapp.isClosingConfirmationEnabled = true;
 tapp.onEvent('viewportChanged', function(e){
     
-    tapp.showAlert(e)
+    //tapp.showAlert(e)
     
 });
 tapp.onEvent('invoiceClosed', function(e){
     
-    tapp.showAlert(e)
+    tapp.showAlert(JSON.stringify(e));
     
 });
 
