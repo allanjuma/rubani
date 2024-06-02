@@ -813,7 +813,7 @@ class Airplane {
 			game.planeCollisionDisplacementY += game.planeCollisionSpeedY
 			targetY += game.planeCollisionDisplacementY
 
-			this.mesh.position.z += (targetX - this.mesh.position.z) * deltaTime * world.planeMoveSensivity
+			//this.mesh.position.z += (targetX - this.mesh.position.z) * deltaTime * world.planeMoveSensivity
 			this.mesh.position.x += (targetX - this.mesh.position.x) * deltaTime * world.planeMoveSensivity
 			this.mesh.position.y += (targetY - this.mesh.position.y) * deltaTime * world.planeMoveSensivity
 
