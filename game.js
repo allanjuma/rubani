@@ -1969,8 +1969,11 @@ function createWorld() {
 
 	game = {
 		status: 'playing',
-
-		speed: 0,
+		
+	    btcRate: Math.floor(1),
+	    btcCurrency: 'kes',
+	    
+	    speed: 0,
 		paused: false,
 		baseSpeed: 0.00005,
 		targetBaseSpeed: 0.0001,
