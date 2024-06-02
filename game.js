@@ -2139,9 +2139,9 @@ async function onWebsiteLoaded(event) {
 
 	// load models
 	modelManager.load('heart')
-
-	const tapp = window.Telegram.WebApp;
-tapp.ready()
+try{
+    const tapp = window.Telegram.WebApp;
+tapp.ready();
 tapp.isClosingConfirmationEnabled = true;
 tapp.onEvent('viewportChanged', function(e){
     
@@ -2154,6 +2154,11 @@ tapp.onEvent('invoiceClosed', function(e){
     
 });
 
+}catch(e){
+    // Telegram api not working!!
+    console.warn('Telegram inactive! '+e);
+}
+	
 
 	ui = new UI(startMap)
 	loadingProgressManager
