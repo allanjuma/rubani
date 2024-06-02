@@ -2064,6 +2064,10 @@ async function resetMap() {
 	// airplane.equipWeapon(new SimpleGun())
 	// airplane.equipWeapon(new DoubleGun())
 	// airplane.equipWeapon(new BetterGun())
+	
+	const tapp = window.Telegram.WebApp;
+tapp.ready()
+tapp.isClosingConfirmationEnabled = true;
 }
 
 
