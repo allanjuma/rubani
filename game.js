@@ -2068,9 +2068,6 @@ async function resetMap() {
 	// airplane.equipWeapon(new DoubleGun())
 	// airplane.equipWeapon(new BetterGun())
 	
-	const tapp = window.Telegram.WebApp;
-tapp.ready()
-tapp.isClosingConfirmationEnabled = true;
 }
 
 
@@ -2142,6 +2139,21 @@ async function onWebsiteLoaded(event) {
 
 	// load models
 	modelManager.load('heart')
+
+	const tapp = window.Telegram.WebApp;
+tapp.ready()
+tapp.isClosingConfirmationEnabled = true;
+tapp.onEvent('viewportChanged', function(e){
+    
+    tapp.showAlert(e)
+    
+});
+tapp.onEvent('invoiceClosed', function(e){
+    
+    tapp.showAlert(e)
+    
+});
+
 
 	ui = new UI(startMap)
 	loadingProgressManager
