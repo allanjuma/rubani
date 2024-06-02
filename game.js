@@ -1564,19 +1564,29 @@ function loop() {
 		airplane.mesh.position.y -= game.planeFallSpeed * deltaTime
 
 		if (airplane.mesh.position.y < -200) {
-			ui.showReplay()
-			game.status = "waitingReplay"
-			audioManager.play('water-splash', {volume: 1})
+			ui.showReplay();
+			game.status = "waitingReplay";
+			audioManager.play('water-splash', {volume: 1});
 			if ("vibrate" in navigator) {
   //
-		navigator.vibrate(1000)
+		navigator.vibrate(3000);
+		
 			}
 					
+					setTimeout(function(){
+					    
+					    	try{
+			    tapp.close();
+			}catch(e){
+			    console.warn(e);
+			}
+			
+					}, 3000);
 					
-					setTimeout(ui.hideScoreScreen(), 3000)
+				
 					
-		document.getElementById('score-coins-lost').innerText = game.statistics.coinsCollected
-		document.getElementById('score-coins-potential').innerText = game.statistics.coinsSpawned
+		document.getElementById('score-coins-lost').innerText = game.statistics.coinsCollected;
+		document.getElementById('score-coins-potential').innerText = game.statistics.coinsSpawned;
 
 		}
 	}
@@ -1669,7 +1679,12 @@ class UI {
 		
 			document.getElementById('intro-screen').classList.remove('visible')
 			//window.location = "lightning:bitsoko@walletofsatoshi.com";
-			onStart()
+			try{
+			    tapp.expand();
+			}catch(e){
+			    console.warn(e);
+			}
+			onStart();
 		}
 		
 		
@@ -2140,7 +2155,7 @@ async function onWebsiteLoaded(event) {
 	// load models
 	modelManager.load('heart')
 try{
-    const tapp = window.Telegram.WebApp;
+tapp = window.Telegram.WebApp;
 tapp.ready();
 tapp.isClosingConfirmationEnabled = true;
 tapp.onEvent('viewportChanged', function(e){
