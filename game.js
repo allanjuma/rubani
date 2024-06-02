@@ -1364,7 +1364,9 @@ function spawnCoins() {
 		coin.distance = d + Math.cos(i*0.7)*amplitude
 		coin.mesh.position.y = -world.seaRadius + Math.sin(coin.angle)*coin.distance
 		coin.mesh.position.x = Math.cos(coin.angle) * coin.distance
+		if(game.fpv){
 		coin.mesh.position.z = randomInteger(-65, -85)
+		}
 	}
 	
 	// Add value of coin based on the level multiplier
@@ -2043,8 +2045,8 @@ async function resetMap() {
 	sea.updateColor()
 	sea2.updateColor()
 
-	//setSideView()
-	setFollowView()
+	setSideView()
+	//setFollowView()
 
 	
 	
