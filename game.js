@@ -691,10 +691,8 @@ class BetterGun {
 		audioManager.play('shot-hard')
 
 		// Recoil of gun
-		if (game.fpv) {
-			
 		const initialX = this.mesh.position.x
-			var opt = {
+		TweenMax.to(this.mesh.position, {
 			duration: RECOIL_DURATION,
 			x: initialX - RECOIL_DISTANCE,
 			onComplete: () => {
@@ -703,24 +701,7 @@ class BetterGun {
 					x: initialX,
 				})
 			},
-		}
-			
-		}else{
-		
-		const initialZ = this.mesh.position.z	
-			var opt = {
-			duration: RECOIL_DURATION,
-			z: initialZ - RECOIL_DISTANCE,
-			onComplete: () => {
-				TweenMax.to(this.mesh.position, {
-					duration: RECOIL_DURATION,
-					x: initialZ,
-				})
-			},
-		}
-		}
-		
-		TweenMax.to(this.mesh.position, opt)
+		})
 	}
 }
 
@@ -804,7 +785,7 @@ class Airplane {
 
 		if (game.status === 'playing') {
 			game.planeSpeed = utils.normalize(ui.mousePos.x, -0.5, 0.5, world.planeMinSpeed, world.planeMaxSpeed)
-			let targetX = utils.normalize(ui.mousePos.x, -0.75, 0.75, -world.planeAmpWidth*0.7, -world.planeAmpWidth)
+			let targetX = utils.normalize(ui.mousePos.x, -1, 1, -world.planeAmpWidth*0.7, -world.planeAmpWidth)
 			let targetY = utils.normalize(ui.mousePos.y, -0.75, 0.75, world.planeDefaultHeight-world.planeAmpHeight, world.planeDefaultHeight+world.planeAmpHeight)
 
 			game.planeCollisionDisplacementX += game.planeCollisionSpeedX
