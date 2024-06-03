@@ -1262,11 +1262,11 @@ function spawnEnemies(count) {
 		enemy.mesh.position.y = -world.seaRadius + Math.sin(enemy.angle)*enemy.distance
 		if(game.fpv){
 		enemy.mesh.position.z = randomInteger(-65, -85)
-		}else{
-			enemy.mesh.position.z = Math.cos(enemy.angle) * enemy.distance
 		}
 	}
 	game.statistics.enemiesSpawned += count
+	
+	
 }
 
 
