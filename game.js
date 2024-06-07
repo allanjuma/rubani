@@ -2032,6 +2032,9 @@ async function resetMap() {
 	    game.btcRate = Math.floor(btcRate.baseEx);
 	    game.btcCurrency = btcRate.baseCd;
 	    	document.getElementById("gameprice").innerText = "1 BTC = "+ game.btcRate +" "+ game.btcCurrency;
+	    	
+	    	document.getElementsByClassName("header").style.visibility = 'hidden';
+	    	document.getElementsByClassName("score").style.visibility = 'visible';
 	
 	// update ui
 	ui.updateDistanceDisplay()
