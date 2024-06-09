@@ -1567,7 +1567,7 @@ document.querySelector('#shoot-gun').addEventListener("touchstart", () => {
 
 });
 		
-document.querySelector('#look-foward').addEventListener("touchstart", () => {
+document.querySelector('#look-foward').addEventListener("touchstart mousedown keydown", () => {
   try{
 	if (game.status==='playing') {
 			setTimeout(function(){
@@ -1585,7 +1585,7 @@ document.querySelector('#look-foward').addEventListener("touchstart", () => {
 });
 
 		
-document.querySelector('#look-foward').addEventListener("touchend", () => {
+document.querySelector('#look-foward').addEventListener("touchend mouseup keyup", () => {
   try{
 	if (game.status==='playing') {
 			
@@ -1684,11 +1684,9 @@ document.querySelector('#look-foward').addEventListener("touchend", () => {
 	handleMouseDown(event) {
 		this.mouseButtons[event.button] = true
 
-		if (event.button===1 && game.status==='playing') {
-			airplane.shoot()
-		}
 	}
 
+/*
 	handleKeyDown(event) {
 		this.keysDown[event.code] = true
 	
@@ -1706,7 +1704,7 @@ document.querySelector('#look-foward').addEventListener("touchend", () => {
 			}
 		}
 	}
-
+*/
 	handleKeyUp(event) {
 		this.keysDown[event.code] = false
 	}
