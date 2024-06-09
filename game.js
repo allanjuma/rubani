@@ -1571,8 +1571,8 @@ class UI {
 		
 		
 
-		document.addEventListener('keydown', this.handleKeyDown.bind(this), false)
-		document.addEventListener('keyup', this.handleKeyUp.bind(this), false)
+		//document.addEventListener('keydown', this.handleKeyDown.bind(this), false)
+		//document.addEventListener('keyup', this.handleKeyUp.bind(this), false)
 		document.addEventListener('mousedown', this.handleMouseDown.bind(this), false)
 		document.addEventListener('mouseup', this.handleMouseUp.bind(this), false)
 		document.addEventListener('mousemove', this.handleMouseMove.bind(this), false)
@@ -1663,11 +1663,11 @@ class UI {
 			}
 		}
 	}
-*/
+
 	handleKeyUp(event) {
 		this.keysDown[event.code] = false
 	}
-
+*/
 	handleMouseUp(event) {
 		this.mouseButtons[event.button] = false
 		event.preventDefault()
