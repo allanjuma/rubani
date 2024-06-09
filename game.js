@@ -2093,7 +2093,14 @@ document.querySelector('#shoot-gun').addEventListener("touchstart", () => {
 document.querySelector('#look-foward').addEventListener("touchstart", () => {
   try{
 	if (game.status==='playing') {
-			setTimeout(function(){
+	    try{
+	        
+	    clearTimeout(sideTimer);
+	    
+	    }catch(e){
+	        console.log('timer not set', e);
+	    }
+		var sideTimer =	setTimeout(function(){
 					    
 					setSideView()
 			
