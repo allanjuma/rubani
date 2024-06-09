@@ -784,9 +784,6 @@ class Collectible {
 		this.distance = world.seaRadius + world.planeDefaultHeight + (-1 + 2*Math.random()) * (world.planeAmpHeight-20)
 		this.mesh.position.y = -world.seaRadius + Math.sin(this.angle) * this.distance
 		this.mesh.position.x = Math.cos(this.angle) * this.distance
-		if(game.fpv){
-			this.mesh.position.z = randomInteger(-65, -85)
-		}
 		
 		sceneManager.add(this)
 	}
@@ -1162,9 +1159,7 @@ function spawnEnemies(count) {
 		//
 		enemy.mesh.position.x = Math.cos(enemy.angle) * enemy.distance
 		enemy.mesh.position.y = -world.seaRadius + Math.sin(enemy.angle)*enemy.distance
-		if(game.fpv){
-		enemy.mesh.position.z = randomInteger(-65, -85)
-		}
+
 	}
 	game.statistics.enemiesSpawned += count
 	
