@@ -1825,7 +1825,7 @@ function createWorld() {
 		distanceForLevelUpdate: randomInteger(200, 300),
 
 		planeDefaultHeight: 100,
-		planeAmpHeight: 150,
+		planeAmpHeight: 90,
 		planeAmpWidth: 75,
 		planeMoveSensivity: 0.005,
 		planeRotXSensivity: 0.0008,
