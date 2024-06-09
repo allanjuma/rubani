@@ -1811,7 +1811,7 @@ function createWorld() {
 		initSpeed: 0.00005,
 		incrementSpeedByTime: 0.000001,
 		incrementSpeedByLevel: 0.000005,
-		distanceForSpeedUpdate: randomInteger(100, 200),
+		distanceForSpeedUpdate: randomInteger(70, 100),
 		ratioSpeedDistance: randomInteger(40, 60),
 
 		simpleGunLevelDrop: 1.1,
@@ -1822,10 +1822,10 @@ function createWorld() {
 		pauseLifeSpawn: 400,
 
 		levelCount: 11,
-		distanceForLevelUpdate: randomInteger(400, 600),
+		distanceForLevelUpdate: randomInteger(200, 300),
 
 		planeDefaultHeight: 100,
-		planeAmpHeight: 80,
+		planeAmpHeight: 150,
 		planeAmpWidth: 75,
 		planeMoveSensivity: 0.005,
 		planeRotXSensivity: 0.0008,
