@@ -2090,7 +2090,7 @@ document.querySelector('#shoot-gun').addEventListener("touchstart", () => {
 
 });
 		
-document.querySelector('#look-foward').addEventListener("touchstart mousedown keydown", () => {
+document.querySelector('#look-foward').addEventListener("touchstart", () => {
   try{
 	if (game.status==='playing') {
 			setTimeout(function(){
@@ -2108,7 +2108,7 @@ document.querySelector('#look-foward').addEventListener("touchstart mousedown ke
 });
 
 		
-document.querySelector('#look-foward').addEventListener("touchend mouseup keyup", () => {
+document.querySelector('#look-foward').addEventListener("touchend", () => {
   try{
 	if (game.status==='playing') {
 			
