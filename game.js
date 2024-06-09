@@ -2086,8 +2086,11 @@ document.querySelector('#shoot-gun').addEventListener("touchstart", () => {
 });
 		
 document.querySelector('#look-foward').addEventListener("touchstart", () => {
+  
+  /*
   try{
 	if (game.status==='playing') {
+	    
 	    try{
 	        
 	    clearTimeout(sideTimer);
@@ -2100,26 +2103,22 @@ document.querySelector('#look-foward').addEventListener("touchstart", () => {
 					setSideView()
 			
 					}, 3000);
-					
-	setFollowView()
+				
 		}
 }catch(e){
     console.log('cant shoot yet!');
 }
+*/
+	
+	setFollowView()
 
 });
 
 		
 document.querySelector('#look-foward').addEventListener("touchend", () => {
-  try{
-	if (game.status==='playing') {
-			
-	setSideView()
-		}
-}catch(e){
-    console.log('cant shoot yet!');
-}
-
+ 
+ 	setSideView()
+ 	
 });
 	
 /*
