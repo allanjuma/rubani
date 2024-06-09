@@ -1780,8 +1780,10 @@ class UI {
 		elemScreen.classList.add('visible')
 
 		// fill in statistics
-		document.getElementById('score-coins-collected').innerText = Math.round((game.statistics.coinsCollected*(game.btcRate/Math.pow(10,8))) * 100) / 100 +' '+ game.btcCurrency
-		document.getElementById('score-coins-total').innerText = Math.round((game.statistics.coinsSpawned*(game.btcRate/Math.pow(10,8))) * 100) / 100 +' '+ game.btcCurrency
+		//document.getElementById('score-coins-collected').innerText = Math.round((game.statistics.coinsCollected*(game.btcRate/Math.pow(10,8))) * 100) / 100 +' '+ game.btcCurrency
+		//document.getElementById('score-coins-total').innerText = Math.round((game.statistics.coinsSpawned*(game.btcRate/Math.pow(10,8))) * 100) / 100 +' '+ game.btcCurrency
+		document.getElementById('score-coins-collected').innerText = game.statistics.coinsCollected +' RUBS'
+		document.getElementById('score-coins-total').innerText = game.statistics.coinsSpawned +' RUBS'
 		document.getElementById('score-enemies-killed').innerText = game.statistics.enemiesKilled
 		document.getElementById('score-enemies-total').innerText = game.statistics.enemiesSpawned
 		document.getElementById('score-shots-fired').innerText = game.statistics.shotsFired
