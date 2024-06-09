@@ -1,3 +1,6 @@
+
+let ui
+
 const utils = {
 	normalize: function (v, vmin, vmax, tmin, tmax) {
 		var nv = Math.max(Math.min(v,vmax), vmin)
@@ -1840,7 +1843,8 @@ document.querySelector('#look-foward').addEventListener("touchend mouseup keyup"
 		document.getElementById('error-message').innerText = message
 	}
 }
-let ui
+
+
 function randomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
