@@ -1,4 +1,3 @@
-
 let ui
 
 const utils = {
@@ -1556,50 +1555,7 @@ class UI {
 		this._elemsLifes = document.querySelectorAll('#lifes img')
 		this._elemCoinsCount = document.getElementById('coinsValue')
         
-        
-		
-		
-document.querySelector('#shoot-gun').addEventListener("touchstart", () => {
-  try{
-	if (game.status==='playing') {
-			airplane.shoot()
-		}
-}catch(e){
-    console.log('cant shoot yet!');
-}
-
-});
-		
-document.querySelector('#look-foward').addEventListener("touchstart mousedown keydown", () => {
-  try{
-	if (game.status==='playing') {
-			setTimeout(function(){
-					    
-					setSideView()
-			
-					}, 3000);
-					
-	setFollowView()
-		}
-}catch(e){
-    console.log('cant shoot yet!');
-}
-
-});
-
-		
-document.querySelector('#look-foward').addEventListener("touchend mouseup keyup", () => {
-  try{
-	if (game.status==='playing') {
-			
-	setSideView()
-		}
-}catch(e){
-    console.log('cant shoot yet!');
-}
-
-});
-		    
+        	    
 		    
 		document.querySelector('#intro-screen a').onclick = () => {
 		
@@ -2120,6 +2076,50 @@ document.addEventListener("visibilitychange", () => {
     game.paused = false;
   }
 });
+
+		
+		
+document.querySelector('#shoot-gun').addEventListener("touchstart", () => {
+  try{
+	if (game.status==='playing') {
+			airplane.shoot()
+		}
+}catch(e){
+    console.log('cant shoot yet!');
+}
+
+});
+		
+document.querySelector('#look-foward').addEventListener("touchstart mousedown keydown", () => {
+  try{
+	if (game.status==='playing') {
+			setTimeout(function(){
+					    
+					setSideView()
+			
+					}, 3000);
+					
+	setFollowView()
+		}
+}catch(e){
+    console.log('cant shoot yet!');
+}
+
+});
+
+		
+document.querySelector('#look-foward').addEventListener("touchend mouseup keyup", () => {
+  try{
+	if (game.status==='playing') {
+			
+	setSideView()
+		}
+}catch(e){
+    console.log('cant shoot yet!');
+}
+
+});
+	
 /*
 document.getElementById('address').addEventListener('input', function (evt) {
     
