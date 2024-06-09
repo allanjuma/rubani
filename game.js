@@ -1577,7 +1577,7 @@ class UI {
 		document.addEventListener('mouseup', this.handleMouseUp.bind(this), false)
 		document.addEventListener('mousemove', this.handleMouseMove.bind(this), false)
 		document.addEventListener('touchmove', this.handleTouchMove.bind(this), false)
-		document.addEventListener('touchstart', this.handleTouchStart.bind(this), false)
+		//document.addEventListener('touchstart', this.handleTouchStart.bind(this), false)
 		document.addEventListener('blur', this.handleBlur.bind(this), false)
 
 		document.oncontextmenu = document.body.oncontextmenu = function() {return false;}
@@ -1634,12 +1634,12 @@ class UI {
 	}
 
 
-
+/*
 	handleTouchStart(event) {
 
 	
 	}
-	
+*/	
 	handleMouseDown(event) {
 		this.mouseButtons[event.button] = true
 
