@@ -1847,7 +1847,7 @@ function createWorld() {
 
 		enemyDistanceTolerance: 10,
 		enemiesSpeed: 0.6,
-		distanceForEnemiesSpawn: randomInteger(50, 100),
+		distanceForEnemiesSpawn: randomInteger(40, 80),
 	}
 
 	//game parameters
