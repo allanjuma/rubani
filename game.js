@@ -1918,17 +1918,10 @@ function createWorld() {
 
 
 async function resetMap() {
-    
-    
-  const walletsList = await tonConnectUI.getWallets();
-  console.log(walletsList);
-  
-  const currentWallet = tonConnectUI.wallet;
-const currentWalletInfo = tonConnectUI.walletInfo;
-const currentAccount = tonConnectUI.account;
-const currentIsConnectedStatus = tonConnectUI.connected;
 
-console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnectedStatus);
+
+
+
 	
 	    var btcRate = await fetchRates();
 	    game.btcRate = Math.floor(btcRate.baseEx);
@@ -2062,7 +2055,63 @@ tapp.onEvent('invoiceClosed', function(e){
     // Telegram api not working!!
     console.warn('Telegram inactive! '+e);
 }
+
+
+
+
+
+
+
+
+    
+    
+  const walletsList = await tonConnectUI.getWallets();
+  console.log(walletsList);
+  
+  const currentWallet = tonConnectUI.wallet;
+const currentWalletInfo = tonConnectUI.walletInfo;
+const currentAccount = tonConnectUI.account;
+const currentIsConnectedStatus = tonConnectUI.connected;
+
+console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnectedStatus);
+
+
+
+
+
+
+
+
+
+
 	
+	const transaction = {
+    validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+    messages: [
+        {
+            address: "EQBBJBB3HagsujBqVfqeDUPJ0kXjgTPLWPFFffuNXNiJL0aA",
+            amount: "20000000",
+         // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
+        },
+        {
+            address: "EQDmnxDMhId6v1Ofg_h5KR5coWlFG6e86Ro3pc7Tq4CA0-Jn",
+            amount: "60000000",
+         // payload: "base64bocblahblahblah==" // just for instance. Replace with your transaction payload or remove
+        }
+    ]
+}
+
+try {
+    const result = await tonConnectUI.sendTransaction(transaction);
+
+    // you can use signed boc to find the transaction 
+    //const someTxData = await myAppExplorerService.getTransaction(result.boc);
+    
+    
+    alert('Transaction was sent successfully');
+} catch (e) {
+    console.error(e);
+}
 
 	ui = new UI(startMap)
 	loadingProgressManager
