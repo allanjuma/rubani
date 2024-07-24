@@ -1918,6 +1918,17 @@ function createWorld() {
 
 
 async function resetMap() {
+    
+    
+  const walletsList = await tonConnectUI.getWallets();
+  console.log(walletsList);
+  
+  const currentWallet = tonConnectUI.wallet;
+const currentWalletInfo = tonConnectUI.walletInfo;
+const currentAccount = tonConnectUI.account;
+const currentIsConnectedStatus = tonConnectUI.connected;
+
+console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnectedStatus);
 	
 	    var btcRate = await fetchRates();
 	    game.btcRate = Math.floor(btcRate.baseEx);
