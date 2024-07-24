@@ -21,6 +21,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/three@0.139.2/examples/js/controls/OrbitControls.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js"></script>
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	<script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
 </head>
 <body>
 	<div class="game-holder" id="gameHolder">
@@ -157,6 +158,7 @@
 		
 			<a id="start-button-single" type="button" style="visibility:visible;">Single player</a>
 			<a id="start-button-multi" type="button" style="visibility:visible;">Multi player</a>
+			<div id="ton-connect"></div>
 
 <span id="start-message" style="visibility:visible;color: #0088CC;text-align: center;font-weight: bold;">COMING TO TON<svg width="32" height="32" viewBox="0 0 460 460" fill="none" xmlns="http://www.w3.org/2000/svg" style="
     display: block;
@@ -226,6 +228,11 @@
 	<script src="https://gateway.bitsoko.org/bitsAssets/js/globalServices.js" async=""></script>
 	<script src="https://gateway.bitsoko.org/bitsAssets/js/raphQR.js" async=""></script>
 	<script src="https://gateway.bitsoko.org/bitsAssets/js/qrcodesvg.js" async=""></script>
-	
+	<script>
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+        manifestUrl: 'https://rubani.bitsoko.org/tonconnect-manifest.json',
+        buttonRootId: 'ton-connect'
+    });
+</script>
 </body>
 </html>
