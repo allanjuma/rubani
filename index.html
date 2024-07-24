@@ -229,10 +229,17 @@
 	<script src="https://gateway.bitsoko.org/bitsAssets/js/raphQR.js" async=""></script>
 	<script src="https://gateway.bitsoko.org/bitsAssets/js/qrcodesvg.js" async=""></script>
 	<script>
-    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+    tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
         manifestUrl: 'https://rubani.bitsoko.org/tonconnect-manifest.json',
         buttonRootId: 'ton-connect'
     });
+    tonConnectUI.uiOptions = {
+      twaReturnUrl: 'https://t.me/rubani_bot'
+  };
+  
+  
+  
+  
 </script>
 </body>
 </html>
