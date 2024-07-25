@@ -7,6 +7,7 @@
       "identicon": "latest",
       "@tonconnect/sdk": "latest",
       "@tonconnect/ui": "latest",
-      "@ton-community/assets-sdk": "beta"
+      "@ton-community/assets-sdk": "beta",
+      "boxen": "5.1.2"
   }
 }
