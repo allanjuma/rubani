@@ -130,7 +130,7 @@ const keyPair = await importKey(process.env.MNEMONIC);
 const sender = await createSender('highload-v2', keyPair, api);
 
 // define the storage parameters (in this case, Pinata)
-const storage: PinataStorageParams = {
+const storage = {
     pinataApiKey: process.env.PINATA_API_KEY!,
     pinataSecretKey: process.env.PINATA_SECRET!,
 }
