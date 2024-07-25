@@ -22,9 +22,8 @@ RUN apt-get update && apt-get install -y nodejs
 
 
 WORKDIR /
-RUN git clone https://github.com/http-party/http-server.git
 
-RUN npm install
+RUN git clone https://github.com/http-party/http-server.git && cd http-server && npm install
 
 RUN cd / && git clone https://bitsoko:12Gitlabsrus34@git.bitsoko.org/games/rubani.git game
 
