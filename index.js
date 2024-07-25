@@ -28,7 +28,7 @@
 console.log('starting rubani');
 
 var insPORT = 8123;
-
+/*
 
 
  import { GameFi } from '@ton/phaser-sdk'
@@ -97,7 +97,7 @@ const unsubscribe = gameFi.onWalletChange(onWalletChange)
 
 
 
-
+*/
 
 
 
