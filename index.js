@@ -31,7 +31,7 @@ var insPORT = 8123;
 
 
 
- import { GameFi } from '@ton/phaser-sdk'
+ import { GameFi } from '@ton/phaser-sdk@beta'
 // creation options described in the related section
 const gameFi = await GameFi.create()
 
