@@ -245,6 +245,14 @@ const unsubscribe = connector.onStatusChange(
         console.log(walletInfo);
     } 
 );
+
+const walletConnectionSource = {
+    jsBridgeKey: 'telegram-wallet'
+}
+
+connector.connect(walletConnectionSource);
+
+
 	</script>
 </body>
 </html>
