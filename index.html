@@ -245,11 +245,13 @@ const unsubscribe = connector.onStatusChange(
     } 
 );
 
+// Should correspond to the wallet that user selects
 const walletConnectionSource = {
-    jsBridgeKey: 'telegram-wallet'
+    universalLink: 'https://app.tonkeeper.com/ton-connect',
+    bridgeUrl: 'https://bridge.tonapi.io/bridge'
 }
 
-connector.connect(walletConnectionSource);
+const universalLink = connector.connect(walletConnectionSource);
 
 
 	</script>
