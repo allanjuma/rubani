@@ -5,7 +5,8 @@
   "type": "module",
   "dependencies": {
       "identicon": "latest",
-      "@ton/phaser-sdk": "beta",
+      "@tonconnect/sdk": "latest",
+      "@tonconnect/ui": "latest",
       "@ton-community/assets-sdk": "beta"
   }
 }
