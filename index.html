@@ -236,7 +236,6 @@
 	<script>
 	       const connector = new TonConnectSDK.TonConnect();
 
-connector.restoreConnection();
 const unsubscribe = connector.onStatusChange(
     walletInfo => {
         // update state/reactive variables to show updates in the ui
@@ -253,6 +252,7 @@ const walletConnectionSource = {
 
 const universalLink = connector.connect(walletConnectionSource);
 
+connector.restoreConnection();
 
 	</script>
 </body>
