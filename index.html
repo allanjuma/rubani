@@ -236,7 +236,8 @@
 	<script src="https://gateway.bitsoko.org/bitsAssets/js/globalServices.js" async=""></script>
 	<script src="https://gateway.bitsoko.org/bitsAssets/js/raphQR.js" async=""></script>
 	<script src="https://gateway.bitsoko.org/bitsAssets/js/qrcodesvg.js" async=""></script>
-	<script>
+	<script  async="">
+	async function initTon(){
 	       const connector = new TonConnectSDK.TonConnect();
 
 const unsubscribe = connector.onStatusChange(
@@ -291,6 +292,8 @@ const sdk = await AssetsSDK.create({
     // provide the sender to the SDK  
     sender,
 });
+}
+initTon();
 	</script>
 </body>
 </html>
