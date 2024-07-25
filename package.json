@@ -5,6 +5,7 @@
   "type": "module",
   "dependencies": {
       "identicon": "latest",
-      "@ton/phaser-sdk": "latest"
+      "@ton/phaser-sdk": "latest",
+      "@ton-community/assets-sdk": "latest"
   }
 }
