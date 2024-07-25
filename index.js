@@ -39,7 +39,7 @@ const gameFi = await GameFi.create()
 
 
 
-function onWalletChange(wallet) => {
+function onWalletChange(wallet) {
     if (wallet) {
         // wallet is ready to use
     } else {
