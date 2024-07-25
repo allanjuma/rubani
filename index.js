@@ -28,11 +28,30 @@
 console.log('starting rubani');
 
 var insPORT = 8123;
-/*
+
 
 
  import { GameFi } from '@ton/phaser-sdk'
+// creation options described in the related section
+const gameFi = await GameFi.create()
 
+
+
+
+
+function onWalletChange(wallet: Wallet | null) {
+    if (wallet) {
+        // wallet is ready to use
+    } else {
+        // wallet is disconnected
+    }
+}
+const unsubscribe = gameFi.onWalletChange(onWalletChange)
+
+
+
+
+/*
 const gameFi = await GameFi.create({
     network: 'testnet'
     connector: {
