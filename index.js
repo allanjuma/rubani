@@ -131,8 +131,8 @@ const sender = await createSender('highload-v2', keyPair, api);
 
 // define the storage parameters (in this case, Pinata)
 const storage = {
-    pinataApiKey: process.env.PINATA_API_KEY!,
-    pinataSecretKey: process.env.PINATA_SECRET!,
+    pinataApiKey: process.env.PINATA_API_KEY,
+    pinataSecretKey: process.env.PINATA_SECRET,
 }
 
 // create the SDK instance
