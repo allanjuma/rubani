@@ -119,7 +119,28 @@ const unsubscribe = gameFi.onWalletChange(onWalletChange)
 */
 
 
+import {AssetsSDK, PinataStorageParams, createApi, createSender, createWalletV4, importKey} from "@ton-community/assets-sdk";
 
+// create an instance of the TonClient4
+const NETWORK = 'testnet';
+const api = await createApi(NETWORK);
+
+// create a sender from the wallet (in this case, Highload Wallet V2)
+const keyPair = await importKey(process.env.MNEMONIC);
+const sender = await createSender('highload-v2', keyPair, api);
+
+// define the storage parameters (in this case, Pinata)
+const storage: PinataStorageParams = {
+    pinataApiKey: process.env.PINATA_API_KEY!,
+    pinataSecretKey: process.env.PINATA_SECRET!,
+}
+
+// create the SDK instance
+const sdk = AssetsSDK.create({
+    api: api,          // required, the TonClient4 instance
+    storage: storage,  // optional, the storage instance (Pinata, S3 or your own)
+    sender: sender,    // optional, the sender instance (WalletV4, TonConnect or your own)
+});
 
 
 
