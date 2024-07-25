@@ -119,7 +119,12 @@ const unsubscribe = gameFi.onWalletChange(onWalletChange)
 */
 
 
-import AssetsSDK, PinataStorageParams, createApi, createSender, createWalletV4, importKey from "@ton-community/assets-sdk";
+import AssetsSDK from "@ton-community/assets-sdk";
+import PinataStorageParams from "@ton-community/assets-sdk";
+import createApi from "@ton-community/assets-sdk";
+import createSender from "@ton-community/assets-sdk";
+import createWalletV4 from "@ton-community/assets-sdk";
+import importKey from "@ton-community/assets-sdk";
 
 // create an instance of the TonClient4
 const NETWORK = 'testnet';
