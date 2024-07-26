@@ -8,6 +8,7 @@
       "@tonconnect/sdk": "latest",
       "@tonconnect/ui": "latest",
       "@ton-community/assets-sdk": "beta",
+      "@ton-community/gamefi-sdk": "latest",
       "boxen": "5.1.2"
   }
 }
