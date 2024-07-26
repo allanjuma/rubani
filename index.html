@@ -248,6 +248,8 @@ const unsubscribe = connector.onStatusChange(
     } 
 );
 
+
+
 // Should correspond to the wallet that user selects
 const walletConnectionSource = {
     universalLink: 'https://app.tonkeeper.com/ton-connect',
@@ -269,7 +271,14 @@ console.log(TonConnectSDK.isTelegramUrl());
       twaReturnUrl: 'https://t.me/rubani_bot'
   };
   
-  
+  const unsubscribeModal = tonConnectUI.onModalStateChange(
+    (state) => {
+        // update state/reactive variables to show updates in the ui
+        // state.status will be 'opened' or 'closed'
+        // if state.status is 'closed', you can check state.closeReason to find out the reason
+        console.log(state);
+    }
+);
     
     
   const walletsList = await tonConnectUI.getWallets();
