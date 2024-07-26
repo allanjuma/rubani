@@ -151,7 +151,7 @@ const sdk = AssetsSDK.create({
 
 
 import {GameFiSDK, createWalletV4} from "@ton-community/gamefi-sdk";
-import {Address} from "@ton/core";
+import {Address, toNano} from "@ton/core";
 console.log(process.env.MNEMONIC);
 const wallet = await createWalletV4('duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent');
 
@@ -165,7 +165,7 @@ const sdk = await GameFiSDK.create({
 });
 const jetton = sdk.openJetton(Address.parse('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-'));
 console.log(jetton);
-jetton.sendMint();
+jetton.sendMint({value: toNano('1')});
 const collection = sdk.openNftCollection(Address.parse('kQC_rOamfRYkFYnHsH5Cw5wS-38Kht-_5fT1GuaPYv4HDB44'));
 console.log(collection);
 collection.sendMint();
