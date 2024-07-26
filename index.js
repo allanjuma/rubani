@@ -152,12 +152,12 @@ const sdk = AssetsSDK.create({
 
 import {GameFiSDK, createWalletV4} from "@ton-community/gamefi-sdk";
 console.log(process.env.MNEMONIC);
-const wallet = await createWalletV4(process.env.MNEMONIC);
+const wallet = await createWalletV4('duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent');
 
 const sdk = await GameFiSDK.create({
     storage: {
-        pinataApiKey: process.env.PINATA_API,
-        pinataSecretKey: process.env.PINATA_SECRET,
+        pinataApiKey: "90cdf115e5e86ba8ab81",
+        pinataSecretKey: "7e94dda9d9998778b2a7168142ab40ad9bed09e43e4e28b366d9bf7cd4dd0ab3",
     },
     api: 'testnet',
     wallet: wallet
