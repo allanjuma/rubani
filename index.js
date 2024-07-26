@@ -151,6 +151,7 @@ const sdk = AssetsSDK.create({
 
 
 import {GameFiSDK, createWalletV4} from "@ton-community/gamefi-sdk";
+console.log(process.env.MNEMONIC);
 const wallet = await createWalletV4(process.env.MNEMONIC);
 
 const sdk = await GameFiSDK.create({
