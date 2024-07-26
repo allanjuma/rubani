@@ -151,6 +151,7 @@ const sdk = AssetsSDK.create({
 
 
 import {GameFiSDK, createWalletV4} from "@ton-community/gamefi-sdk";
+import {Address} from "@ton/core";
 console.log(process.env.MNEMONIC);
 const wallet = await createWalletV4('duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent');
 
@@ -162,7 +163,7 @@ const sdk = await GameFiSDK.create({
     api: 'testnet',
     wallet: wallet
 });
-const jetton = sdk.openJetton('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-');
+const jetton = sdk.openJetton(Address.parse('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-'));
 console.log(jetton);
 
 
