@@ -162,7 +162,7 @@ const sdk = await GameFiSDK.create({
     api: 'testnet',
     wallet: wallet
 });
-const jetton = sdk.openJetton(Address.parse('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-'));
+const jetton = sdk.openJetton('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-');
 console.log(jetton);
 
 
