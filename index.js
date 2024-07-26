@@ -159,7 +159,7 @@ const sdk = await GameFiSDK.create({
         pinataSecretKey: process.env.PINATA_SECRET,
     },
     api: 'testnet',
-    wallet: wallet
+    //wallet: wallet
 });
 const jetton = sdk.openJetton(Address.parse('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-'));
 console.log(jetton);
