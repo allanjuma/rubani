@@ -151,6 +151,7 @@ const sdk = AssetsSDK.create({
 
 
 import GameFiSDK from "@ton-community/gamefi-sdk";
+import createWalletV4 from "@ton-community/gamefi-sdk";
 const sdk = await GameFiSDK.create({
     storage: {
         pinataApiKey: process.env.PINATA_API,
