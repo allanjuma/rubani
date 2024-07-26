@@ -118,7 +118,7 @@ const unsubscribe = gameFi.onWalletChange(onWalletChange)
 
 */
 
-import createWalletV4 from "@ton-community/assets-sdk";
+//import createWalletV4 from "@ton-community/assets-sdk";
 /*
 import AssetsSDK from "@ton-community/assets-sdk";
 import PinataStorageParams from "@ton-community/assets-sdk";
@@ -150,8 +150,8 @@ const sdk = AssetsSDK.create({
 */
 
 
-import GameFiSDK from "@ton-community/gamefi-sdk";
-//const wallet = await createWalletV4(process.env.MNEMONIC);
+import {GameFiSDK, createWalletV4} from "@ton-community/gamefi-sdk";
+const wallet = await createWalletV4(process.env.MNEMONIC);
 
 const sdk = await GameFiSDK.create({
     storage: {
@@ -159,7 +159,7 @@ const sdk = await GameFiSDK.create({
         pinataSecretKey: process.env.PINATA_SECRET,
     },
     api: 'testnet',
-    //wallet: wallet
+    wallet: wallet
 });
 const jetton = sdk.openJetton(Address.parse('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-'));
 console.log(jetton);
