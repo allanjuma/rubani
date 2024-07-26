@@ -150,7 +150,16 @@ const sdk = AssetsSDK.create({
 */
 
 
-
+import GameFiSDK from "@ton-community/gamefi-sdk";
+const sdk = await GameFiSDK.create({
+    storage: {
+        pinataApiKey: process.env.PINATA_API,
+        pinataSecretKey: process.env.PINATA_SECRET,
+    },
+    api: 'testnet',
+    wallet: await createWalletV4(process.env.MNEMONIC),
+});
+const jetton = sdk.openJetton(Address.parse('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-'));
 
 
 
