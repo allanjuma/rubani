@@ -165,8 +165,10 @@ const sdk = await GameFiSDK.create({
 });
 const jetton = sdk.openJetton(Address.parse('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-'));
 console.log(jetton);
-
-
+jetton.sendMint();
+const collection = sdk.openNftCollection(Address.parse('kQC_rOamfRYkFYnHsH5Cw5wS-38Kht-_5fT1GuaPYv4HDB44'));
+console.log(collection);
+collection.sendMint();
 
 import * as http from 'http';
 /*
