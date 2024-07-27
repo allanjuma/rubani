@@ -27,7 +27,8 @@
 
 console.log('starting rubani');
 
-
+import {mnemonicToWalletKey} from "@ton/crypto";
+import {TonConnect} from '@tonconnect/sdk'
 import {TonConnectUI} from '@tonconnect/ui'
 import {GameFiSDK, createWalletV4} from "@ton-community/gamefi-sdk";
 import {beginCell, toNano, Address} from "@ton/core";
@@ -38,133 +39,8 @@ var insPORT = 8123;
 
 
 /*
- import { GameFi } from '@ton/phaser-sdk@beta'
-// creation options described in the related section
-const gameFi = await GameFi.create()
 
 
-
-
-
-function onWalletChange(wallet) {
-    if (wallet) {
-        // wallet is ready to use
-    } else {
-        // wallet is disconnected
-    }
-}
-const unsubscribe = gameFi.onWalletChange(onWalletChange)
-
-
-
-
-const gameFi = await GameFi.create({
-    network: 'testnet'
-    connector: {
-        // if tonconnect-manifest.json is placed in the root you can skip this option
-        manifestUrl: 'tonconnect-manifest.json',
-        actionsConfiguration: {
-            // address of your Telegram Mini App to return to after the wallet is connected
-            // url you provided to BothFather during the app creation process
-            // to read more please read https://github.com/ton-community/flappy-bird#telegram-bot--telegram-web-app
-            twaReturnUrl: "https://t.me/rubani_bot"
-        },
-        contentResolver: {
-            // some NFT marketplaces don't support CORS, so we need to use a proxy
-            // you are able to use any format of the URL, %URL% will be replaced with the actual URL
-            //urlProxy: `${YOUR_BACKEND_URL}/${PROXY_URL}?url=%URL%`
-        },
-        // where in-game purchases come to
-        merchant: {
-            // in-game jetton purchases (FLAP)
-            // use address you got running `assets-cli deploy-jetton`
-            jettonAddress: "kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-",
-            // in-game TON purchases
-            // use master wallet address you got running `assets-cli setup-env`
-            tonAddress: "kQAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lo1vv"
-        }
-    },
-
-});
-*/
-
-/*
-
-class UiScene extends Phaser.Scene {
-    // receive gameFi instance via constructor
-    private gameFi: GameFi;
-
-    create() {
-        this.button = this.gameFi.createConnectButton({
-            scene: this,
-            // you can calculate the position for the button in your UI scene
-            x: 0,
-            y: 0,
-            button: {
-                onError: (error) => {
-                    console.error(error)
-                }
-                // other options, read the docs
-            }
-        })
-    }
-}
-
-
-
-function onWalletChange(wallet: Wallet | null) {
-    if (wallet) {
-        // wallet is ready to use
-    } else {
-        // wallet is disconnected
-    }
-}
-const unsubscribe = gameFi.onWalletChange(onWalletChange)
-
-
-
-*/
-
-//import createWalletV4 from "@ton-community/assets-sdk";
-/*
-import AssetsSDK from "@ton-community/assets-sdk";
-import PinataStorageParams from "@ton-community/assets-sdk";
-import createApi from "@ton-community/assets-sdk";
-import createSender from "@ton-community/assets-sdk";
-import importKey from "@ton-community/assets-sdk";
-
-// create an instance of the TonClient4
-const NETWORK = 'testnet';
-const api = await createApi(NETWORK);
-
-// create a sender from the wallet (in this case, Highload Wallet V2)
-const keyPair = await importKey(process.env.MNEMONIC);
-const sender = await createSender('highload-v2', keyPair, api);
-
-// define the storage parameters (in this case, Pinata)
-const storage = {
-    pinataApiKey: process.env.PINATA_API_KEY,
-    pinataSecretKey: process.env.PINATA_SECRET,
-}
-
-// create the SDK instance
-const sdk = AssetsSDK.create({
-    api: api,          // required, the TonClient4 instance
-    storage: storage,  // optional, the storage instance (Pinata, S3 or your own)
-    sender: sender,    // optional, the sender instance (WalletV4, TonConnect or your own)
-});
-
-
-     
-    tonConnectUI = new TonConnectUI({
-        manifestUrl: 'https://rubani.bitsoko.org/tonconnect-manifest.json',
-        buttonRootId: 'ton-connect'
-    });
-    tonConnectUI.uiOptions = {
-      twaReturnUrl: 'https://t.me/rubani_bot'
-  };
-  
-  */
 console.log(process.env.MNEMONIC);
 const wallet = await createWalletV4('duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent');
 
@@ -180,8 +56,8 @@ const jetton = sdk.openJetton(Address.parse('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri4
 console.log(jetton);
 //jetton.sendMint(1);
 
-console.log(await jetton.getWalletAddress());
-console.log(await jetton.getData());
+//console.log(await jetton.getWalletAddress());
+//console.log(await jetton.getData());
 const collection = sdk.openNftCollection(Address.parse('kQC_rOamfRYkFYnHsH5Cw5wS-38Kht-_5fT1GuaPYv4HDB44'));
 console.log(collection);
 //collection.sendMint();
@@ -212,10 +88,8 @@ console.log(collection);
     ]
 }
 
-//const result = await tonConnectUI.sendTransaction(transaction)
-
-
-
+//const result = connector.sendTransaction(transaction)
+  */
 
 
 import * as http from 'http';
