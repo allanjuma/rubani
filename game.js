@@ -1554,43 +1554,53 @@ class UI {
 		    
 		document.querySelector('#start-button-single').onclick = () => {
 		    
-		    
+		   //TonWeb.utils.toNano(
+		        
+		      const WalletClass = tonweb.wallet.all['highload v3'];
+const wallet = new WalletClass(tonweb.provider, {
+    publicKey: keyPair.publicKey,
+    wc: 0,
+    walletId: '1',
+});
+
+
+
+const comment = new Uint8Array([... new Uint8Array(4), ... new TextEncoder().encode('text comment')]);
+
+await wallet.methods.transfer({
+  secretKey: keyPair.secretKey,
+  toAddress: tonweb.utils.Address("kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-"), // address of Jetton wallet of Jetton sender
+  amount: tonweb.utils.toNano('0.05'), // total amount of TONs attached to the transfer message
+  seqno: seqno,
+  payload: await jettonWallet.createTransferBody({
+    jettonAmount: tonweb.utils.toNano('500'), // Jetton amount (in basic indivisible units)
+    toAddress: tonweb.utils.Address('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq'), // recepient user's wallet address (not Jetton wallet)
+    forwardAmount: tonweb.utils.toNano('0.01'), // some amount of TONs to invoke Transfer notification message
+    forwardPayload: comment, // text comment for Transfer notification message
+    responseAddress: walletAddress // return the TONs after deducting commissions back to the sender's wallet address
+  }),
+  sendMode: 3,
+}).send();
+
+
 	/*	    
 
+const comment = new Uint8Array([... new Uint8Array(4), ... new TextEncoder().encode('text comment')]);
 
-import { beginCell, toNano, Address } from '@ton/ton'
-    // transfer#0f8a7ea5 query_id:uint64 amount:(VarUInteger 16) destination:MsgAddress
-    // response_destination:MsgAddress custom_payload:(Maybe ^Cell)
-    // forward_ton_amount:(VarUInteger 16) forward_payload:(Either Cell ^Cell)
-    // = InternalMsgBody;
-
-    const body = beginCell()
-        .storeUint(0xf8a7ea5, 32)                 // jetton transfer op code
-        .storeUint(0, 64)                         // query_id:uint64
-        .storeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
-        .storeAddress(Address.parse(Wallet_DST))  // destination:MsgAddress
-        .storeAddress(Address.parse(Wallet_SRC))  // response_destination:MsgAddress
-        .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
-        .storeCoins(toNano(0.05))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
-        .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
-        .endCell();
-
-
-const transaction = {
-    validUntil: Math.floor(Date.now() / 1000) + 360,
-    messages: [
-        {
-            address: jettonWalletContract,  // sender jetton wallet
-            amount: toNano(0.05).toString(),         // for commission fees, excess will be returned
-            payload: body.toBoc().toString("base64") // payload with jetton transfer body
-        }
-    ]
-}
-
-const result = await tonConnectUI.sendTransaction(transaction);
-  
-  
-console.log(result);
+await wallet.methods.transfer({
+  secretKey: keyPair.secretKey,
+  toAddress: JETTON_WALLET_ADDRESS, // address of Jetton wallet of Jetton sender
+  amount: TonWeb.utils.toNano('0.05'), // total amount of TONs attached to the transfer message
+  seqno: seqno,
+  payload: await jettonWallet.createTransferBody({
+    jettonAmount: TonWeb.utils.toNano('500'), // Jetton amount (in basic indivisible units)
+    toAddress: new TonWeb.utils.Address(WALLET2_ADDRESS), // recepient user's wallet address (not Jetton wallet)
+    forwardAmount: TonWeb.utils.toNano('0.01'), // some amount of TONs to invoke Transfer notification message
+    forwardPayload: comment, // text comment for Transfer notification message
+    responseAddress: walletAddress // return the TONs after deducting commissions back to the sender's wallet address
+  }),
+  sendMode: 3,
+}).send()
 */
 document.getElementById('intro-screen').classList.remove('visible')
 			//window.location = "lightning:bitsoko@walletofsatoshi.com";
