@@ -1552,9 +1552,47 @@ class UI {
         
         	    
 		    
-		document.querySelector('#intro-screen a').onclick = () => {
-		
-			document.getElementById('intro-screen').classList.remove('visible')
+		document.querySelector('#start-button-single').onclick = () => {
+		    
+		    
+	/*	    
+
+
+import { beginCell, toNano, Address } from '@ton/ton'
+    // transfer#0f8a7ea5 query_id:uint64 amount:(VarUInteger 16) destination:MsgAddress
+    // response_destination:MsgAddress custom_payload:(Maybe ^Cell)
+    // forward_ton_amount:(VarUInteger 16) forward_payload:(Either Cell ^Cell)
+    // = InternalMsgBody;
+
+    const body = beginCell()
+        .storeUint(0xf8a7ea5, 32)                 // jetton transfer op code
+        .storeUint(0, 64)                         // query_id:uint64
+        .storeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
+        .storeAddress(Address.parse(Wallet_DST))  // destination:MsgAddress
+        .storeAddress(Address.parse(Wallet_SRC))  // response_destination:MsgAddress
+        .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
+        .storeCoins(toNano(0.05))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
+        .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
+        .endCell();
+
+
+const transaction = {
+    validUntil: Math.floor(Date.now() / 1000) + 360,
+    messages: [
+        {
+            address: jettonWalletContract,  // sender jetton wallet
+            amount: toNano(0.05).toString(),         // for commission fees, excess will be returned
+            payload: body.toBoc().toString("base64") // payload with jetton transfer body
+        }
+    ]
+}
+
+const result = await tonConnectUI.sendTransaction(transaction);
+  
+  
+console.log(result);
+*/
+document.getElementById('intro-screen').classList.remove('visible')
 			//window.location = "lightning:bitsoko@walletofsatoshi.com";
 			try{
 			    tapp.expand();
