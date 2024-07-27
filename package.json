@@ -5,7 +5,9 @@
   "type": "module",
   "dependencies": {
       "identicon": "latest",
+      "tonweb": "0.0.3",
       "@ton/core": "latest",
+      "@ton/crypto": "latest",
       "@tonconnect/sdk": "latest",
       "@tonconnect/ui": "latest",
       "@ton-community/assets-sdk": "beta",
