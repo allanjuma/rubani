@@ -1565,19 +1565,32 @@ class UI {
 			
 const comment = new Uint8Array([... new Uint8Array(4), ... new TextEncoder().encode('text comment')]);
 
+const destinationAddress = new TonWeb.Address('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq');
+
+    const forwardPayload = new TonWeb.boc.Cell();
+    forwardPayload.bits.writeUint(0, 32); // 0 opcode means we have a comment
+    forwardPayload.bits.writeString('Test RUBS');
+
+
+    const jettonTransferBody = new TonWeb.boc.Cell();
+    jettonTransferBody.bits.writeUint(0xf8a7ea5, 32); // opcode for jetton transfer
+    jettonTransferBody.bits.writeUint(0, 64); // query id
+    jettonTransferBody.bits.writeCoins(new TonWeb.utils.BN('5')); // jetton amount, amount * 10^9
+    jettonTransferBody.bits.writeAddress(destinationAddress);
+    jettonTransferBody.bits.writeAddress(destinationAddress); // response destination
+    jettonTransferBody.bits.writeBit(false); // no custom payload
+    jettonTransferBody.bits.writeCoins(TonWeb.utils.toNano('0.02')); // forward amount
+    jettonTransferBody.bits.writeBit(true); // we store forwardPayload as a reference
+    jettonTransferBody.refs.push(forwardPayload);
+
+
 const walletAddress = await wallet.getAddress();
  wallet.methods.transfer({
   secretKey: keyPair.secretKey,
-  toAddress: new tonweb.utils.Address("kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-"), // address of Jetton wallet of Jetton sender
-  amount: parseInt(tonweb.utils.toNano('0.05')), // total amount of TONs attached to the transfer message
+  toAddress: jettonWallet.address, // address of Jetton wallet of Jetton sender
+  amount: tonweb.utils.toNano('0.05'), // total amount of TONs attached to the transfer message
   seqno: seqno,
-  payload: await jettonWallet.createTransferBody({
-    jettonAmount: tonweb.utils.toNano('500'), // Jetton amount (in basic indivisible units)
-    toAddress: new tonweb.utils.Address('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq'), // recepient user's wallet address (not Jetton wallet)
-    forwardAmount: parstonweb.utils.toNano('0.01')), // some amount of TONs to invoke Transfer notification message
-    forwardPayload: comment, // text comment for Transfer notification message
-    responseAddress: walletAddress // return the TONs after deducting commissions back to the sender's wallet address
-  }),
+  payload: jettonTransferBody,
   sendMode: 3,
 }).send();
 
