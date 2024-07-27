@@ -157,7 +157,7 @@ const sdk = AssetsSDK.create({
 */
      
     tonConnectUI = TonConnectUI({
-        manifestUrl: 'https://soko.bitsoko.org/tonconnect-manifest.json',
+        manifestUrl: 'https://rubani.bitsoko.org/tonconnect-manifest.json',
         buttonRootId: 'ton-connect'
     });
     tonConnectUI.uiOptions = {
