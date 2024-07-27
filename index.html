@@ -281,6 +281,20 @@ console.log(TonConnectSDK.isTelegramUrl());
         // state.status will be 'opened' or 'closed'
         // if state.status is 'closed', you can check state.closeReason to find out the reason
         console.log(state);
+        if(state.closeReason == "action-cancelled"){
+            
+	    	document.querySelector('#ton-connect').style.visibility = 'visible';
+	    	document.querySelector('start-button-single').style.visibility = 'hidden';
+	    	document.querySelector('start-button-multi').style.visibility = 'hidden';
+
+            
+        }else if(state.closeReason == "wallet-selected"){
+            
+	    	document.querySelector('#ton-connect').style.visibility = 'hidden';
+	    	document.querySelector('start-button-single').style.visibility = 'visible';
+	    	document.querySelector('start-button-multi').style.visibility = 'visible';
+            
+        }
     }
 );
     
