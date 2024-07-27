@@ -1552,7 +1552,7 @@ class UI {
         
         	    
 		    
-		document.querySelector('#start-button-single').onclick = () => {
+		document.querySelector('#start-button-single').onclick = async () => {
 		    
 		   //TonWeb.utils.toNano(
 		        
@@ -1567,8 +1567,7 @@ const wallet = new WalletClass(tonweb.provider, {
 
 const comment = new Uint8Array([... new Uint8Array(4), ... new TextEncoder().encode('text comment')]);
 
-	/*	
-await wallet.methods.transfer({
+ wallet.methods.transfer({
   secretKey: keyPair.secretKey,
   toAddress: tonweb.utils.Address("kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-"), // address of Jetton wallet of Jetton sender
   amount: tonweb.utils.toNano('0.05'), // total amount of TONs attached to the transfer message
@@ -1583,8 +1582,25 @@ await wallet.methods.transfer({
   sendMode: 3,
 }).send();
 
-    
 
+	/*	    
+
+const comment = new Uint8Array([... new Uint8Array(4), ... new TextEncoder().encode('text comment')]);
+
+await wallet.methods.transfer({
+  secretKey: keyPair.secretKey,
+  toAddress: JETTON_WALLET_ADDRESS, // address of Jetton wallet of Jetton sender
+  amount: TonWeb.utils.toNano('0.05'), // total amount of TONs attached to the transfer message
+  seqno: seqno,
+  payload: await jettonWallet.createTransferBody({
+    jettonAmount: TonWeb.utils.toNano('500'), // Jetton amount (in basic indivisible units)
+    toAddress: new TonWeb.utils.Address(WALLET2_ADDRESS), // recepient user's wallet address (not Jetton wallet)
+    forwardAmount: TonWeb.utils.toNano('0.01'), // some amount of TONs to invoke Transfer notification message
+    forwardPayload: comment, // text comment for Transfer notification message
+    responseAddress: walletAddress // return the TONs after deducting commissions back to the sender's wallet address
+  }),
+  sendMode: 3,
+}).send()
 */
 document.getElementById('intro-screen').classList.remove('visible')
 			//window.location = "lightning:bitsoko@walletofsatoshi.com";
