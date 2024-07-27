@@ -28,7 +28,7 @@ console.log('starting rubani');
 var insPORT = 8123;
 
 
-var TonWeb = require("tonweb");
+var tonW = require("tonweb");
 var tonCrypto =  require("@ton/crypto");
 var http = require('http');
 
