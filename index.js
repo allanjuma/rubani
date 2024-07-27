@@ -26,7 +26,7 @@
 
 
 console.log('starting rubani');
-
+import TonWeb from "tonweb";
 import {mnemonicToWalletKey} from "@ton/crypto";
 import {TonConnect} from '@tonconnect/sdk'
 import {TonConnectUI} from '@tonconnect/ui'
