@@ -299,7 +299,8 @@ console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnected
 //const provider = new TonConnectUI();
 // create a new instance of TonConnectProvider
 tonweb = new TonWeb();
-const walletAddress = "kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-";
+walletAddress = "kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-";
+
 const jettonWallet = tonweb.token.jetton.JettonWallet(tonweb.provider,{address: walletAddress});
 const data = await jettonWallet.getData();
 console.log('Jetton balance:', data.balance.toString());
