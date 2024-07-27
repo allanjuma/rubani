@@ -29,7 +29,7 @@ var insPORT = 8123;
 
 
 var TonWeb = require("tonweb");
-import {mnemonicToWalletKey} from "@ton/crypto";
+var tonCrypto =  require("@ton/crypto");
 var http = require('http');
 
 var url = require('url');
@@ -43,7 +43,7 @@ const mnemonic = "duty mistake ready edge wool toss know reject extend state jud
   
   tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', {apiKey: 'YOUR_TESTNET_TONCENTER_API_KEY'}));
 
-  const keyPair = await mnemonicToWalletKey(mnemonic.split(" "));
+  const keyPair = await tonCrypto.mnemonicToWalletKey(mnemonic.split(" "));
 
   const WalletClass = tonweb.wallet.all.v4R2;
 
