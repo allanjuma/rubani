@@ -1585,7 +1585,11 @@ const destinationAddress = new TonWeb.Address('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9AR
 
 
 const walletAddress = await wallet.getAddress();
- wallet.methods.transfer({
+
+try{
+    
+    
+ await wallet.methods.transfer({
   secretKey: keyPair.secretKey,
   toAddress: jettonWallet.address, // address of Jetton wallet of Jetton sender
   amount: tonweb.utils.toNano('0.05'), // total amount of TONs attached to the transfer message
@@ -1594,6 +1598,17 @@ const walletAddress = await wallet.getAddress();
   sendMode: 3,
 }).send();
 
+document.getElementById('intro-screen').classList.remove('visible')
+			//window.location = "lightning:bitsoko@walletofsatoshi.com";
+			try{
+			    tapp.expand();
+			}catch(e){
+			    console.warn(e);
+			}
+			onStart();
+}catch(err){
+    console.error(err);
+}
 
 	/*	    
 
@@ -1614,14 +1629,6 @@ await wallet.methods.transfer({
   sendMode: 3,
 }).send()
 */
-document.getElementById('intro-screen').classList.remove('visible')
-			//window.location = "lightning:bitsoko@walletofsatoshi.com";
-			try{
-			    tapp.expand();
-			}catch(e){
-			    console.warn(e);
-			}
-			onStart();
 		}
 		
 		
