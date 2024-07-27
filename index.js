@@ -154,7 +154,7 @@ const sdk = AssetsSDK.create({
     sender: sender,    // optional, the sender instance (WalletV4, TonConnect or your own)
 });
 
-*/
+
      
     tonConnectUI = new TonConnectUI({
         manifestUrl: 'https://rubani.bitsoko.org/tonconnect-manifest.json',
@@ -164,7 +164,7 @@ const sdk = AssetsSDK.create({
       twaReturnUrl: 'https://t.me/rubani_bot'
   };
   
-  
+  */
 console.log(process.env.MNEMONIC);
 const wallet = await createWalletV4('duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent');
 
