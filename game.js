@@ -1565,15 +1565,16 @@ class UI {
 			
 const comment = new Uint8Array([... new Uint8Array(4), ... new TextEncoder().encode('text comment')]);
 
+const walletAddress = await wallet.getAddress();
  wallet.methods.transfer({
   secretKey: keyPair.secretKey,
   toAddress: new tonweb.utils.Address("kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-"), // address of Jetton wallet of Jetton sender
   amount: parseInt(tonweb.utils.toNano('0.05')), // total amount of TONs attached to the transfer message
   seqno: seqno,
   payload: await jettonWallet.createTransferBody({
-    jettonAmount: parseInt(tonweb.utils.toNano('500')), // Jetton amount (in basic indivisible units)
+    jettonAmount: tonweb.utils.toNano('500'), // Jetton amount (in basic indivisible units)
     toAddress: new tonweb.utils.Address('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq'), // recepient user's wallet address (not Jetton wallet)
-    forwardAmount: parseInt(tonweb.utils.toNano('0.01')), // some amount of TONs to invoke Transfer notification message
+    forwardAmount: parstonweb.utils.toNano('0.01')), // some amount of TONs to invoke Transfer notification message
     forwardPayload: comment, // text comment for Transfer notification message
     responseAddress: walletAddress // return the TONs after deducting commissions back to the sender's wallet address
   }),
