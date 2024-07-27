@@ -1598,6 +1598,9 @@ try{
   sendMode: 3,
 }).send();
 
+// TO-DO: get players wallet instead of main wallet
+const lastTx = (await tonweb.getTransactions(destinationAddress, 1))[0];
+console.log(lastTx.transaction_id);
 document.getElementById('intro-screen').classList.remove('visible')
 			//window.location = "lightning:bitsoko@walletofsatoshi.com";
 			try{
