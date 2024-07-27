@@ -313,7 +313,7 @@ const keyPair = await window.TonWeb.mnemonic.mnemonicToKeyPair(mnemonic.split(" 
     publicKey: keyPair.publicKey
   });
 
-const jettonWallet = tonweb.token.jetton.JettonWallet(tonweb.provider,{address: walletAddress});
+jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider,{address: walletAddress});
 const data = await jettonWallet.getData();
 console.log('Jetton balance:', data.balance.toString());
 console.log('Jetton owner address:', data.ownerAddress.toString(true, true, true));
@@ -325,6 +325,7 @@ if (expectedJettonWalletAddress.toString(false) !== tonweb.utils.Address(walletA
 }
 
 console.log('Jetton master address:', data.jettonMinterAddress.toString(true, true, true));
+
 }
 initTon();
 	</script>
