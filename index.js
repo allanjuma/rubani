@@ -27,6 +27,13 @@
 
 console.log('starting rubani');
 
+
+import TonConnectUI from '@tonconnect/ui'
+import {GameFiSDK, createWalletV4} from "@ton-community/gamefi-sdk";
+import {beginCell, toNano, Address} from "@ton/core";
+
+
+
 var insPORT = 8123;
 
 
@@ -148,10 +155,6 @@ const sdk = AssetsSDK.create({
 });
 
 */
-
-
-import {GameFiSDK, createWalletV4} from "@ton-community/gamefi-sdk";
-import {Address, toNano} from "@ton/core";
 console.log(process.env.MNEMONIC);
 const wallet = await createWalletV4('duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent');
 
@@ -166,11 +169,44 @@ const sdk = await GameFiSDK.create({
 const jetton = sdk.openJetton(Address.parse('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-'));
 console.log(jetton);
 //jetton.sendMint(1);
+
 console.log(await jetton.getWalletAddress());
 console.log(await jetton.getData());
 const collection = sdk.openNftCollection(Address.parse('kQC_rOamfRYkFYnHsH5Cw5wS-38Kht-_5fT1GuaPYv4HDB44'));
 console.log(collection);
 //collection.sendMint();
+
+
+
+
+    const body = beginCell()
+        .storeUint(0xf8a7ea5, 32)                 // jetton transfer op code
+        .storeUint(0, 64)                         // query_id:uint64
+        .storeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
+        .storeAddress(Address.parse(Wallet_DST))  // destination:MsgAddress
+        .storeAddress(Address.parse(Wallet_SRC))  // response_destination:MsgAddress
+        .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
+        .storeCoins(toNano(0.05))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
+        .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
+        .endCell();
+        
+        
+        const transaction = {
+    validUntil: Math.floor(Date.now() / 1000) + 360,
+    messages: [
+        {
+            address: jettonWalletContract,  // sender jetton wallet
+            amount: toNano(0.05).toString(),         // for commission fees, excess will be returned
+            payload: body.toBoc().toString("base64") // payload with jetton transfer body
+        }
+    ]
+}
+
+const result = await tonConnectUI.sendTransaction(transaction)
+
+
+
+
 
 import * as http from 'http';
 /*
