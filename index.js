@@ -26,7 +26,7 @@
 
 
 console.log('starting rubani');
-import {TonWeb} from "tonweb";
+//import {TonWeb} from "tonweb";
 import {mnemonicToWalletKey} from "@ton/crypto";
 import {TonConnect} from '@tonconnect/sdk'
 import {TonConnectUI} from '@tonconnect/ui'
@@ -91,6 +91,8 @@ console.log(collection);
 //const result = connector.sendTransaction(transaction)
   */
   
+  
+  /*
 console.log(process.env.MNEMONIC);
 const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
   
@@ -124,7 +126,7 @@ const keyPair = await mnemonicToWalletKey(mnemonic.split(" "));
   const jettonWalletAddress = await jettonMinter.getJettonWalletAddress(address);
 
   console.log("jetton wallet address", jettonWalletAddress.toString())
-
+*/
 
 
 
