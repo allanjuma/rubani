@@ -1556,13 +1556,11 @@ class UI {
 		    
 		   //TonWeb.utils.toNano(
 		        
-		      const WalletClass = tonweb.wallet.all['highload v3'];
-const wallet = new WalletClass(tonweb.provider, {
-    publicKey: keyPair.publicKey,
-    wc: 0,
-    walletId: '1',
-});
+		    const WalletClass = tonweb.wallet.all.v4R2;
 
+  const wallet = new WalletClass(tonweb.provider, {
+    publicKey: keyPair.publicKey
+  });
 
 
 const comment = new Uint8Array([... new Uint8Array(4), ... new TextEncoder().encode('text comment')]);
