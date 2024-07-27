@@ -240,7 +240,8 @@
 	<script src="https://gateway.bitsoko.org/bitsAssets/js/qrcodesvg.js" async=""></script>
 	<script  async="">
 	async function initTon(){
-	       const connector = new TonConnectSDK.TonConnect();
+
+connector = new TonConnectSDK.TonConnect();
 
 const unsubscribe = connector.onStatusChange(
     walletInfo => {
