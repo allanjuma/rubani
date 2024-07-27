@@ -212,7 +212,7 @@ console.log(collection);
     ]
 }
 
-const result = await tonConnectUI.sendTransaction(transaction)
+//const result = await tonConnectUI.sendTransaction(transaction)
 
 
 
