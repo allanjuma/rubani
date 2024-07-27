@@ -90,6 +90,42 @@ console.log(collection);
 
 //const result = connector.sendTransaction(transaction)
   */
+  
+console.log(process.env.MNEMONIC);
+  mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
+  
+  tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', {apiKey: 'YOUR_TESTNET_TONCENTER_API_KEY'}));
+
+
+const keyPair = await mnemonicToWalletKey(mnemonic.split(" "));
+
+  const WalletClass = tonweb.wallet.all.v4R2;
+
+  const wallet = new WalletClass(tonweb.provider, {
+    publicKey: keyPair.publicKey
+  });
+
+  const address = await wallet.getAddress();
+
+  console.log("my address", address.toString());
+
+  const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {
+    adminAddress: address,
+    jettonContentUri: "",
+    jettonWalletCodeHex: "RUBS",
+    address: Address.parse('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq')});
+
+  const data = await jettonMinter.getJettonData();
+
+  console.log('Total supply:', data.totalSupply.toString());
+  console.log('URI to off-chain metadata:', data.jettonContentUri);
+  //console.log('Owner address:', data.adminAddress(true, true, true));
+
+  const jettonWalletAddress = await jettonMinter.getJettonWalletAddress(address);
+
+  console.log("jetton wallet address", jettonWalletAddress.toString())
+
+
 
 
 import * as http from 'http';
