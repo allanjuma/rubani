@@ -23,81 +23,27 @@
     originalMethod.apply(console, [...args, '\n', `  at ${initiator}`]);
   };
 });
-
-
 console.log('starting rubani');
-import {TonWeb} from "tonweb";
-import {mnemonicToWalletKey} from "@ton/crypto";
-import {TonConnect} from '@tonconnect/sdk'
-import {TonConnectUI} from '@tonconnect/ui'
-import {GameFiSDK, createWalletV4} from "@ton-community/gamefi-sdk";
-import {beginCell, toNano, Address} from "@ton/core";
-
-
 
 var insPORT = 8123;
 
 
-/*
+var TonWeb = require("tonweb");
+import {mnemonicToWalletKey} from "@ton/crypto";
+var http = require('http');
 
+var url = require('url');
+var fs = require('fs');
 
-console.log(process.env.MNEMONIC);
-const wallet = await createWalletV4('duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent');
+var path = require('path');
 
-const sdk = await GameFiSDK.create({
-    storage: {
-        pinataApiKey: "90cdf115e5e86ba8ab81",
-        pinataSecretKey: "7e94dda9d9998778b2a7168142ab40ad9bed09e43e4e28b366d9bf7cd4dd0ab3",
-    },
-    api: 'testnet',
-    wallet: wallet
-});
-const jetton = sdk.openJetton(Address.parse('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-'));
-console.log(jetton);
-//jetton.sendMint(1);
+var baseDirectory = __dirname;
 
-//console.log(await jetton.getWalletAddress());
-//console.log(await jetton.getData());
-const collection = sdk.openNftCollection(Address.parse('kQC_rOamfRYkFYnHsH5Cw5wS-38Kht-_5fT1GuaPYv4HDB44'));
-console.log(collection);
-//collection.sendMint();
-
-
-
-
-    const body = beginCell()
-        .storeUint(0xf8a7ea5, 32)                 // jetton transfer op code
-        .storeUint(0, 64)                         // query_id:uint64
-        .storeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
-        .storeAddress(Address.parse('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq'))  // destination:MsgAddress
-        .storeAddress(Address.parse('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq'))  // response_destination:MsgAddress
-        .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
-        .storeCoins(toNano(0.05))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
-        .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
-        .endCell();
-        
-        
-        const transaction = {
-    validUntil: Math.floor(Date.now() / 1000) + 360,
-    messages: [
-        {
-            address: Address.parse('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-'),  // sender jetton wallet
-            amount: toNano(0.05).toString(),         // for commission fees, excess will be returned
-            payload: body.toBoc().toString("base64") // payload with jetton transfer body
-        }
-    ]
-}
-
-//const result = connector.sendTransaction(transaction)
-  */
-  
-console.log(process.env.MNEMONIC);
 const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
   
   tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', {apiKey: 'YOUR_TESTNET_TONCENTER_API_KEY'}));
 
-
-const keyPair = await mnemonicToWalletKey(mnemonic.split(" "));
+  const keyPair = await mnemonicToWalletKey(mnemonic.split(" "));
 
   const WalletClass = tonweb.wallet.all.v4R2;
 
@@ -112,34 +58,14 @@ const keyPair = await mnemonicToWalletKey(mnemonic.split(" "));
   const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {
     adminAddress: address,
     jettonContentUri: "",
-    jettonWalletCodeHex: "RUBS",
-    address: Address.parse('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq')});
+    jettonWalletCodeHex: "GEM",
+    address: "0:e609c3e241e054e3f078a974e7cd46ea49bcb3e3d8ac4d48c658d27970edb072"});
 
   const data = await jettonMinter.getJettonData();
 
   console.log('Total supply:', data.totalSupply.toString());
   console.log('URI to off-chain metadata:', data.jettonContentUri);
   //console.log('Owner address:', data.adminAddress(true, true, true));
-
-  const jettonWalletAddress = await jettonMinter.getJettonWalletAddress(address);
-
-  console.log("jetton wallet address", jettonWalletAddress.toString())
-
-
-
-
-import * as http from 'http';
-/*
-
-var http = require('http');
-
-var url = require('url');
-var fs = require('fs');
-
-var path = require('path');
-
-var baseDirectory = __dirname;
-
 
 
 
@@ -185,54 +111,3 @@ console.log("listening on port "+insPORT);
 
 });
 
-
-*/
-
-import url from 'url';
-import fs from 'fs';
-import path from 'path';
-
-import { fileURLToPath } from 'url';
-
-// Get the current directory name
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-
-const baseDirectory = __dirname;
-
-http.createServer(async (request, response) => {
-    try {
-        console.log(request.url);
-        
-        if (request.url === '/') {
-            request.url = '/index.html';
-        }
-
-        const requestUrl = url.parse(request.url);
-
-        // Use path.normalize to prevent directory traversal
-        const fsPath = path.join(baseDirectory, path.normalize(requestUrl.pathname));
-
-        const fileStream = fs.createReadStream(fsPath);
-        
-        fileStream.pipe(response);
-        
-        fileStream.on('open', () => {
-            response.writeHead(200);
-        });
-        
-        fileStream.on('error', () => {
-            response.writeHead(404); // Assume the file doesn't exist
-            response.end();
-        });
-    } catch (e) {
-        response.writeHead(500);
-        response.end(); // End the response so browsers don't hang
-        console.error(e.stack);
-    }
-}).listen(insPORT, async (err) => {
-    if (err) throw err;
-
-    console.log(`Listening on port ${insPORT}`);
-});
