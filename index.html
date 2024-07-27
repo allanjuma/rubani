@@ -298,12 +298,20 @@ console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnected
 // create a new instance of TonConnectUI
 //const provider = new TonConnectUI();
 // create a new instance of TonConnectProvider
-const sender = new TON_CONNECT_UI.TonConnectProvider(tonConnectUI);
+const tonweb = new TonWeb();
+const walletAddress = "kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-";
+const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider,{address: walletAddress});
+const data = await jettonWallet.getData();
+console.log('Jetton balance:', data.balance.toString());
+console.log('Jetton owner address:', data.ownerAddress.toString(true, true, true));
+// It is important to always check that Jetton Master indeed recognize wallet
+const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {address: data.jettonMinterAddress.toString(false)});
+const expectedJettonWalletAddress = await jettonMinter.getJettonWalletAddress(data.ownerAddress.toString(false));
+if (expectedJettonWalletAddress.toString(false) !== new TonWeb.utils.Address(walletAddress).toString(false)) {
+  console.error('jetton minter does not recognize the wallet');
+}
 
-const sdk = await AssetsSDK.create({
-    // provide the sender to the SDK  
-    sender,
-});
+console.log('Jetton master address:', data.jettonMinterAddress.toString(true, true, true));
 }
 initTon();
 	</script>
