@@ -155,6 +155,16 @@ const sdk = AssetsSDK.create({
 });
 
 */
+     
+    tonConnectUI = TonConnectUI({
+        manifestUrl: 'https://soko.bitsoko.org/tonconnect-manifest.json',
+        buttonRootId: 'ton-connect'
+    });
+    tonConnectUI.uiOptions = {
+      twaReturnUrl: 'https://t.me/rubani_bot'
+  };
+  
+  
 console.log(process.env.MNEMONIC);
 const wallet = await createWalletV4('duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent');
 
