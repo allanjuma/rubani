@@ -39,6 +39,13 @@ var path = require('path');
 
 var baseDirectory = __dirname;
 
+
+
+
+(async () => {
+ 
+
+
 const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
   
   tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', {apiKey: 'YOUR_TESTNET_TONCENTER_API_KEY'}));
@@ -69,6 +76,8 @@ const mnemonic = "duty mistake ready edge wool toss know reject extend state jud
 
 
 
+
+})();
 
 http.createServer(async function (request, response) {
     try {
