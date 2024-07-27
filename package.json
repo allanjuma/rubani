@@ -2,7 +2,7 @@
   "name": "rubani",
   "version": "0.1.0",
   "private": true,
-  "_type": "module",
+  "type": "module",
   "dependencies": {
       "identicon": "latest",
       "tonweb": "0.0.3",
