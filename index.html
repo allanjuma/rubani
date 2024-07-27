@@ -311,8 +311,9 @@ const keyPair = await window.TonWeb.mnemonic.mnemonicToKeyPair(mnemonic.split(" 
   const wallet = new WalletClass(tonweb.provider, {
     publicKey: keyPair.publicKey
   });
-
-jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider,{address: walletAddress});
+tTok = TonWeb.token.jetton;
+		
+jettonWallet = new tTok.JettonWallet(tonweb.provider,{address: walletAddress});
 const data = await jettonWallet.getData();
 console.log('Jetton balance:', data.balance.toString());
 console.log('Jetton owner address:', data.ownerAddress.toString(true, true, true));
