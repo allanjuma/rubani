@@ -195,7 +195,7 @@ console.log(collection);
     validUntil: Math.floor(Date.now() / 1000) + 360,
     messages: [
         {
-            address: jettonWalletContract,  // sender jetton wallet
+            address: Address.parse('kQC2dIk7SZR7CXT_xFISznRyUEK4-uHPri43KGmZTPICCd5-'),  // sender jetton wallet
             amount: toNano(0.05).toString(),         // for commission fees, excess will be returned
             payload: body.toBoc().toString("base64") // payload with jetton transfer body
         }
