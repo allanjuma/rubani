@@ -28,7 +28,7 @@
 console.log('starting rubani');
 
 
-import TonConnectUI from '@tonconnect/ui'
+import {TonConnectUI} from '@tonconnect/ui'
 import {GameFiSDK, createWalletV4} from "@ton-community/gamefi-sdk";
 import {beginCell, toNano, Address} from "@ton/core";
 
