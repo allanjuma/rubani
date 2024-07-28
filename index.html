@@ -299,6 +299,24 @@ console.log(TonConnectSDK.isTelegramUrl());
 	    	document.querySelector('#ton-connect').style.visibility = 'hidden';
 	    	document.querySelector('#start-button-single').style.visibility = 'visible';
 	    	document.querySelector('#start-button-multi').style.visibility = 'visible';
+	    	
+	    	
+	    	
+	    	
+	    	// TO-DO 
+	    	// mint after game has ended
+	    	//
+	    	//
+	    	
+	    	
+        await mint()
+        const getMinterInfo = async () => {
+            const data = await minter.getJettonData();
+            data.totalSupply = data.totalSupply.toString();
+            data.adminAddress = data.adminTonWeb.token.jetton.JettonWallet.codeHexAddress.toString(true, true, true);
+            console.log("MinterInfo.totalSupply:", data.totalSupply);
+        };
+        await getMinterInfo();
             
         }
     }
@@ -357,6 +375,35 @@ const mint = async () => {
 const minterAddress = await minter.getAddress();
    
   const seqno = (await wallet.methods.seqno().call()) || 0;
+  
+  
+  
+  
+  console.log(await tonConnectUI.sendTransaction({
+          validUntil: Date.now() + 1000000,
+          messages: [
+
+{
+                toAddress: minterAddress.toString(true, true, true),
+                amount: TonWeb.utils.toNano('0.5'),
+                seqno: seqno,
+                payload: await minter.createMintBody({
+                    jettonAmount: TonWeb.utils.toNano('721'),
+                    destination: address,
+                    amount: TonWeb.utils.toNano('0.04')
+                }),
+                sendMode: 3,
+  
+}]
+  
+  });  
+  );
+  
+  
+  
+  
+  
+  /*
             console.log(await wallet.methods.transfer({
                 secretKey: keyPair.secretKey,
                 toAddress: minterAddress.toString(true, true, true),
@@ -369,15 +416,9 @@ const minterAddress = await minter.getAddress();
                 }),
                 sendMode: 3,
             }).send());
+            
+            */
         };
-        await mint()
-        const getMinterInfo = async () => {
-            const data = await minter.getJettonData();
-            data.totalSupply = data.totalSupply.toString();
-            data.adminAddress = data.adminTonWeb.token.jetton.JettonWallet.codeHexAddress.toString(true, true, true);
-            console.log("MinterInfo.totalSupply:", data.totalSupply);
-        };
-        await getMinterInfo();
 
 }
 initTon();
