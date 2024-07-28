@@ -1582,10 +1582,10 @@ const destinationAddress = new TonWeb.Address('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9AR
     jettonTransferBody.bits.writeCoins(TonWeb.utils.toNano('0.02')); // forward amount
     jettonTransferBody.bits.writeBit(true); // we store forwardPayload as a reference
     jettonTransferBody.refs.push(forwardPayload);
-
+var bod = await jettonTransferBody.toBoc();
 
 const walletAddress = await wallet.getAddress();
-//console.log(walletAddress,jettonWallet.address,destinationAddress);
+console.log(bod.toString("base64"));
 try{
     
    // console.log("preparing to send jettons: "+expectedJettonWalletAddress.toString(true, true, true)+"...."+jettonWallet.address);
@@ -1599,11 +1599,11 @@ try{
           messages: [
 
 {
-    toAddress: new tonweb.utils.Address(rubsContractAddress).toString(true, true, true), // address of Jetton wallet of Jetton sender
-  amount: tonweb.utils.toNano('0.05'), // total amount of TONs attached to the transfer message
-  seqno: seqno,
-  payload: jettonTransferBody,
-  sendMode: 3,
+    address: new tonweb.utils.Address(rubsContractAddress), // address of Jetton wallet of Jetton sender
+  amount: tonweb.utils.toNano('0.05').toString(), // total amount of TONs attached to the transfer message
+  //seqno: seqno,
+  payload: bod.toString("base64"),
+  //sendMode: 3,
     
     
      
