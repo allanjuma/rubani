@@ -291,17 +291,7 @@ console.log(TonConnectSDK.isTelegramUrl());
 
             
         }else if(state.closeReason == "wallet-selected"){
-            	try{
-			    tapp.expand();
-			}catch(e){
-			    console.warn(e);
-			}
-	    	document.querySelector('#ton-connect').style.visibility = 'hidden';
-	    	document.querySelector('#start-button-single').style.visibility = 'visible';
-	    	document.querySelector('#start-button-multi').style.visibility = 'visible';
-	    	
-	    	
-	    	
+            
 	    	
 	    	// TO-DO 
 	    	// mint after game has ended
@@ -329,6 +319,22 @@ console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnected
             console.log("MinterInfo.totalSupply:", data.totalSupply);
         };
         await getMinterInfo();
+        
+        
+        //
+        //
+        //
+        	try{
+			    tapp.expand();
+			}catch(e){
+			    console.warn(e);
+			}
+	    	document.querySelector('#ton-connect').style.visibility = 'hidden';
+	    	document.querySelector('#start-button-single').style.visibility = 'visible';
+	    	document.querySelector('#start-button-multi').style.visibility = 'visible';
+	    	
+	    	
+	    	
             
         }
     }
