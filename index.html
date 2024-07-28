@@ -373,33 +373,28 @@ new tonweb.utils.Address(rubsContractAddress).toString(true, true, true)
 const mint = async () => {
     
 const minterAddress = await minter.getAddress();
-   
-  const seqno = (await wallet.methods.seqno().call()) || 0;
-  
-  
-  
-  
-  console.log(await tonConnectUI.sendTransaction({
-          validUntil: Date.now() + 1000000,
-          messages: [
 
-{
-                toAddress: minterAddress.toString(true, true, true),
-                amount: TonWeb.utils.toNano('0.5'),
-                seqno: seqno,
-                payload: await minter.createMintBody({
-                    jettonAmount: TonWeb.utils.toNano('721'),
-                    destination: address,
-                    amount: TonWeb.utils.toNano('0.04')
-                }),
-                sendMode: 3,
-  
-}]
-  
-  })  
-  );
-  
-  
+            const seqno = (await wallet.methods.seqno().call()) || 0;
+			const bod = await minter.createMintBody({
+                        jettonAmount: TonWeb.utils.toNano('721').toString(),
+                        destination: address,
+                        amount: TonWeb.utils.toNano('0.04').toString()
+                    });
+            var bodd = await bod.toBoc();
+    
+            console.log(await tonConnectUI.sendTransaction({
+                validUntil: Date.now() + 1000000,
+                messages: [
+                {
+                    address: minterAddress.toString(true, true, true),
+                    amount: TonWeb.utils.toNano('0.5').toString(),
+                    //seqno: seqno,
+                    payload: bodd.toString("base64"),
+                    //sendMode: 3,
+
+                }]
+
+            }));
   
   
   
