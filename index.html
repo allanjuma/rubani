@@ -308,6 +308,18 @@ console.log(TonConnectSDK.isTelegramUrl());
 	    	//
 	    	//
 	    	
+	    	    
+  const walletsList = await tonConnectUI.getWallets();
+  console.log(walletsList);
+  
+  const currentWallet = tonConnectUI.wallet;
+const currentWalletInfo = tonConnectUI.walletInfo;
+const currentAccount = tonConnectUI.account;
+const currentIsConnectedStatus = tonConnectUI.connected;
+
+console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnectedStatus);
+
+
 	    	
         await mint()
         const getMinterInfo = async () => {
@@ -322,17 +334,6 @@ console.log(TonConnectSDK.isTelegramUrl());
     }
 );
     
-    
-  const walletsList = await tonConnectUI.getWallets();
-  console.log(walletsList);
-  
-  const currentWallet = tonConnectUI.wallet;
-const currentWalletInfo = tonConnectUI.walletInfo;
-const currentAccount = tonConnectUI.account;
-const currentIsConnectedStatus = tonConnectUI.connected;
-
-console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnectedStatus);
-
 
 // create a new instance of TonConnectUI
 //const provider = new TonConnectUI();
