@@ -457,7 +457,7 @@ a:focus-visible {
 	display: none;
 }
 
-#intro-screen a {
+#start-button-single, #start-button-multi {
 	height: 50px;
     display: grid;
     place-items: center;
