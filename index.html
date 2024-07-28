@@ -322,19 +322,19 @@ keyPair = await window.TonWeb.mnemonic.mnemonicToKeyPair(mnemonic.split(" "));
             console.log(suffix + " address", address.toString(true, true, true));
             console.log(suffix + " balance", balance);
         };
-        return { keyPair, wallet, address, logBalance };
-    }
+		console.log(logBalance);
+    
 new tonweb.utils.Address(rubsContractAddress).toString(true, true, true)
     const minter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {
-        adminAddress: rubsMasterWallet,
+        adminAddress: address,
         jettonContentUri: "https://rubani.bitsoko.org/jettonContentURI.json",
         jettonWalletCodeHex: TonWeb.token.jetton.JettonWallet.codeHex
     });
-const minterAddress = await minter.getAddress();
-   
 
 const mint = async () => {
     
+const minterAddress = await minter.getAddress();
+   
   const seqno = (await wallet.methods.seqno().call()) || 0;
             console.log(await wallet.methods.transfer({
                 secretKey: keyPair.secretKey,
@@ -343,7 +343,7 @@ const mint = async () => {
                 seqno: seqno,
                 payload: await minter.createMintBody({
                     jettonAmount: TonWeb.utils.toNano('721'),
-                    destination: admin.address,
+                    destination: address,
                     amount: TonWeb.utils.toNano('0.04')
                 }),
                 sendMode: 3,
