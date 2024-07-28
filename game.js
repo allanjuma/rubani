@@ -1588,6 +1588,7 @@ const walletAddress = await wallet.getAddress();
 console.log(walletAddress,jettonWallet.address,destinationAddress);
 try{
     
+    console.log("preparing to send jettons: "+expectedJettonWalletAddress.toString(true, true, true)+"...."+jettonWallet.address);
     
  await wallet.methods.transfer({
   secretKey: keyPair.secretKey,
