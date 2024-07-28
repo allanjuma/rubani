@@ -211,6 +211,14 @@ http.createServer(async (request, response) => {
             request.url = '/index.html';
         }
 
+
+	
+	if(request.url.includes('/tonconnect-manifest.json')){
+	    
+	    response.setHeader('content-type', 'application/json'); 
+	    
+	    
+	}
         const requestUrl = url.parse(request.url);
 
         // Use path.normalize to prevent directory traversal
