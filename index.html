@@ -278,7 +278,7 @@ console.log(TonConnectSDK.isTelegramUrl());
   };
   
   const unsubscribeModal = tonConnectUI.onModalStateChange(
-    (state) => {
+    async (state) => {
         // update state/reactive variables to show updates in the ui
         // state.status will be 'opened' or 'closed'
         // if state.status is 'closed', you can check state.closeReason to find out the reason
@@ -396,7 +396,7 @@ const minterAddress = await minter.getAddress();
   
 }]
   
-  });  
+  })  
   );
   
   
