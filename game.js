@@ -1585,7 +1585,7 @@ const destinationAddress = new TonWeb.Address('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9AR
 
 
 const walletAddress = await wallet.getAddress();
-
+console.log(walletAddress,jettonWallet.address,destinationAddress);
 try{
     
     
