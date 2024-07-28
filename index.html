@@ -310,7 +310,16 @@ const currentIsConnectedStatus = tonConnectUI.connected;
 console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnectedStatus);
 
 
-	    	
+	    
+        	try{
+			    tapp.expand();
+			}catch(e){
+			    console.warn(e);
+			}
+	    	document.querySelector('#ton-connect').style.visibility = 'hidden';
+	    	document.querySelector('#start-button-single').style.visibility = 'visible';
+	    	document.querySelector('#start-button-multi').style.visibility = 'visible';
+	    		
         await mint()
         const getMinterInfo = async () => {
             const data = await minter.getJettonData();
@@ -324,15 +333,6 @@ console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnected
         //
         //
         //
-        	try{
-			    tapp.expand();
-			}catch(e){
-			    console.warn(e);
-			}
-	    	document.querySelector('#ton-connect').style.visibility = 'hidden';
-	    	document.querySelector('#start-button-single').style.visibility = 'visible';
-	    	document.querySelector('#start-button-multi').style.visibility = 'visible';
-	    	
 	    	
 	    	
             
