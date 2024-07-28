@@ -1589,7 +1589,33 @@ const walletAddress = await wallet.getAddress();
 try{
     
    // console.log("preparing to send jettons: "+expectedJettonWalletAddress.toString(true, true, true)+"...."+jettonWallet.address);
+   
+   
+   
+   
     
+  console.log(await tonConnectUI.sendTransaction({
+          validUntil: Date.now() + 1000000,
+          messages: [
+
+{
+    toAddress: new tonweb.utils.Address(rubsContractAddress).toString(true, true, true), // address of Jetton wallet of Jetton sender
+  amount: tonweb.utils.toNano('0.05'), // total amount of TONs attached to the transfer message
+  seqno: seqno,
+  payload: jettonTransferBody,
+  sendMode: 3,
+    
+    
+     
+}]
+  
+  });  
+  );
+  
+   
+    
+    
+   /* 
  await wallet.methods.transfer({
   secretKey: keyPair.secretKey,
   toAddress: new tonweb.utils.Address(rubsContractAddress).toString(true, true, true), // address of Jetton wallet of Jetton sender
@@ -1598,7 +1624,7 @@ try{
   payload: jettonTransferBody,
   sendMode: 3,
 }).send();
-
+*/
 // TO-DO: get players wallet instead of main wallet
 const lastTx = (await tonweb.getTransactions(destinationAddress, 1))[0];
 console.log(lastTx.transaction_id);
