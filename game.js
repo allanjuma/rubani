@@ -1602,7 +1602,7 @@ try{
     address: new tonweb.utils.Address(rubsContractAddress), // address of Jetton wallet of Jetton sender
   amount: tonweb.utils.toNano('0.05').toString(), // total amount of TONs attached to the transfer message
   //seqno: seqno,
-  payload: bod.toString("base64"),
+  //payload: bod.toString("base64"),
   //sendMode: 3,
     
     
