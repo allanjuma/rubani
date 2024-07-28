@@ -315,21 +315,48 @@ keyPair = await window.TonWeb.mnemonic.mnemonicToKeyPair(mnemonic.split(" "));
   const wallet = new WalletClass(tonweb.provider, {
     publicKey: keyPair.publicKey
   });
-tTok = TonWeb.token.jetton;
-		
-jettonWallet = new tTok.JettonWallet(tonweb.provider,{address: rubsContractAddress});
-const data = await jettonWallet.getData();
-console.log('Jetton balance:', data.balance.toString());
-console.log('Jetton owner address:', data.ownerAddress.toString(true, true, true));
-// It is important to always check that Jetton Master indeed recognize wallet
-const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, { address: rubsContractAddress });
-expectedJettonWalletAddress = await jettonMinter.getJettonWalletAddress(new TonWeb.utils.Address(rubsMasterWallet));
-if (expectedJettonWalletAddress.toString(true, true, true) !== tonweb.utils.Address(rubsContractAddress).toString(true, true, true)) {
-  console.error('jetton minter does not recognize the wallet');
-}
 
-console.log('Jetton master address:', rubsContractAddress);
-console.log('Jetton sender address:', expectedJettonWalletAddress.toString(true, true, true));
+        const address = await wallet.getAddress();
+        const logBalance = async (suffix = "") => {
+            const balance = await tonweb.getBalance(address);
+            console.log(suffix + " address", address.toString(true, true, true));
+            console.log(suffix + " balance", balance);
+        };
+        return { keyPair, wallet, address, logBalance };
+    }
+new tonweb.utils.Address(rubsContractAddress).toString(true, true, true)
+    const minter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {
+        adminAddress: rubsMasterWallet,
+        jettonContentUri: "https://rubani.bitsoko.org/jettonContentURI.json",
+        jettonWalletCodeHex: TonWeb.token.jetton.JettonWallet.codeHex
+    });
+const minterAddress = await minter.getAddress();
+   
+
+const mint = async () => {
+    
+  const seqno = (await wallet.methods.seqno().call()) || 0;
+            console.log(await wallet.methods.transfer({
+                secretKey: keyPair.secretKey,
+                toAddress: minterAddress.toString(true, true, true),
+                amount: TonWeb.utils.toNano('0.5'),
+                seqno: seqno,
+                payload: await minter.createMintBody({
+                    jettonAmount: TonWeb.utils.toNano('721'),
+                    destination: admin.address,
+                    amount: TonWeb.utils.toNano('0.04')
+                }),
+                sendMode: 3,
+            }).send());
+        };
+        await mint()
+        const getMinterInfo = async () => {
+            const data = await minter.getJettonData();
+            data.totalSupply = data.totalSupply.toString();
+            data.adminAddress = data.adminTonWeb.token.jetton.JettonWallet.codeHexAddress.toString(true, true, true);
+            console.log("MinterInfo.totalSupply:", data.totalSupply);
+        };
+        await getMinterInfo();
 
 }
 initTon();
