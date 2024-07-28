@@ -324,7 +324,7 @@ console.log('Jetton owner address:', data.ownerAddress.toString(true, true, true
 // It is important to always check that Jetton Master indeed recognize wallet
 const jettonMinter = tonweb.token.jetton.JettonMinter(tonweb.provider, {address: data.jettonMinterAddress.toString(false)});
 const expectedJettonWalletAddress = await jettonMinter.getJettonWalletAddress(data.ownerAddress.toString(false));
-if (expectedJettonWalletAddress.toString(false) !== tonweb.utils.Address(walletAddress).toString(false)) {
+if (expectedJettonWalletAddress.toString(false) !== tonweb.utils.Address(rubsContractAddress).toString(false)) {
   console.error('jetton minter does not recognize the wallet');
 }
 
