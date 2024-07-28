@@ -384,11 +384,12 @@ new tonweb.utils.Address(rubsContractAddress).toString(true, true, true)
 
             const seqno = (await wallet.methods.seqno().call()) || 0;
 			const bod = await minter.createMintBody({
-                        jettonAmount: TonWeb.utils.toNano('721'),
-                        destination: address,
-                        amount: TonWeb.utils.toNano('0.04')
-                    });
-bodd = await bod.toBoc();
+                //jettonAmount: TonWeb.utils.toNano('721'),
+                toAddress: new tonweb.utils.Address(rubsMasterWallet),
+                jettonAmount: TonWeb.utils.toNano('0.04'),
+                //response_destination: address,
+            });
+            bodd = await bod.toBoc();
     
             console.log(await tonConnectUI.sendTransaction({
                 validUntil: Date.now() + 1000000,
