@@ -6,6 +6,7 @@
   "dependencies": {
       "identicon": "latest",
       "tonweb": "0.0.3",
+      "@ston-fi/sdk": "latest",
       "@ton/core": "latest",
       "@ton/crypto": "latest",
       "@tonconnect/sdk": "latest",
