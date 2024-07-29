@@ -1553,7 +1553,7 @@ class UI {
         	    
 		    
 		document.querySelector('#start-button-single').onclick = async () => {
-		    
+/*		    
 		   //TonWeb.utils.toNano(
 		 const WalletClass = tonweb.wallet.all.v4R2;
 
@@ -1564,8 +1564,8 @@ class UI {
   const seqno = (await wallet.methods.seqno().call()) || 0;
 			
 const comment = new Uint8Array([... new Uint8Array(4), ... new TextEncoder().encode('text comment')]);
-
-const destinationAddress = new TonWeb.Address('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq');
+*/
+const destinationAddress = new TonWeb.Address(playerAddress);
 
     const forwardPayload = new TonWeb.boc.Cell();
     forwardPayload.bits.writeUint(0, 32); // 0 opcode means we have a comment
@@ -1584,7 +1584,7 @@ const destinationAddress = new TonWeb.Address('0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9AR
     jettonTransferBody.refs.push(forwardPayload);
 var bod = await jettonTransferBody.toBoc();
 
-const walletAddress = await wallet.getAddress();
+//const walletAddress = await wallet.getAddress();
 console.log(bod.toString("base64"));
 try{
     
