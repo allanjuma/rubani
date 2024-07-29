@@ -75,7 +75,7 @@ const tonSwap = async () => {
         */
       };
 
-tonswap();
+tonSwap();
 
 /*
 
