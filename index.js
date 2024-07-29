@@ -48,7 +48,7 @@ const client = new TonClient({
 const dex = client.open(new DEX.v1.Router());
 
 
-async () => {
+const tonSwap = async () => {
         const txParams = await dex.getSwapTonToJettonTxParams({
           offerAmount: toNano("1"), // swap 1 TON
           askJettonAddress: "EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO", // for a STON
@@ -73,9 +73,9 @@ async () => {
         
         console.log(tran);
         */
-      }();
+      };
 
-
+tonswap();
 
 /*
 
