@@ -45,7 +45,29 @@ const client = new TonClient({
 });
 
 
-const dex = client.open(new DEX.v1.Router());
+const router = client.open(
+  DEX.v2.Router.create(
+    "kQCas2p939ESyXM_BzFJzcIe3GD5S0tbjJDj6EBVn-SPsEkN" // CPI Router v2.0.0
+  )
+);
+
+const proxyTon = pTON.v2.create(
+  "kQDwpyxrmYQlGDViPk-oqP4XK6J11I-bx7fJAlQCWmJB4m74" // pTON v2.0.0
+);
+
+// swap 1 TON to TestRED but not less than 1 nano TestRED
+const txParams = await router.getSwapTonToJettonTxParams({
+  userWalletAddress: "", // ! replace with your address
+  proxyTon: proxyTon,
+  offerAmount: toNano("1"),
+  askJettonAddress: "kQDLvsZol3juZyOAVG8tWsJntOxeEZWEaWCbbSjYakQpuYN5", // TestRED
+  minAskAmount: "1",
+  queryId: 12345,
+});
+
+
+
+
 
 
 const tonSwap = async () => {
@@ -75,7 +97,7 @@ const tonSwap = async () => {
         */
       };
 
-tonSwap();
+//tonSwap();
 
 /*
 
