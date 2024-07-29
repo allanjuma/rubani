@@ -73,7 +73,7 @@ async () => {
         
         console.log(tran);
         */
-      };
+      }();
 
 
 
