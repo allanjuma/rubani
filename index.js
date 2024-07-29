@@ -39,8 +39,11 @@ import { DEX, pTON } from "@ston-fi/sdk";
 
 
 const client = new TonClient({
-  endpoint: "https://testnet.toncenter.com/api/v2/jsonRPC", {apiKey: '22137c0e80f8524bedc10e31fcf4a73a0d4515d37fd96f6972053b54c76ab834'}
+  endpoint: "https://testnet.toncenter.com/api/v2/jsonRPC",
+  apiKey: "22137c0e80f8524bedc10e31fcf4a73a0d4515d37fd96f6972053b54c76ab834"
+  
 });
+
 
 const dex = client.open(new DEX.v1.Router());
 
