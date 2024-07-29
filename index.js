@@ -44,29 +44,17 @@ const client = new TonClient({
   
 });
 
+const router = client.open(new DEX.v1.Router());
 
-const router = client.open(
-  DEX.v2.Router.create(
-    "kQCas2p939ESyXM_BzFJzcIe3GD5S0tbjJDj6EBVn-SPsEkN" // CPI Router v2.0.0
-  )
-);
-
-const proxyTon = pTON.v2.create(
-  "kQDwpyxrmYQlGDViPk-oqP4XK6J11I-bx7fJAlQCWmJB4m74" // pTON v2.0.0
-);
-
-// swap 1 TON to TestRED but not less than 1 nano TestRED
+// swap 1 TON to STON but not less than 1 nano STON
 const txParams = await router.getSwapTonToJettonTxParams({
   userWalletAddress: "", // ! replace with your address
-  proxyTon: proxyTon,
+  proxyTon: new pTON.v1(),
   offerAmount: toNano("1"),
-  askJettonAddress: "kQDLvsZol3juZyOAVG8tWsJntOxeEZWEaWCbbSjYakQpuYN5", // TestRED
+  askJettonAddress: "EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO", // STON
   minAskAmount: "1",
   queryId: 12345,
 });
-
-
-
 
 
 
