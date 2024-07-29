@@ -26,16 +26,52 @@
 
 
 console.log('starting rubani');
+
+var insPORT = 8123;
 //import {TonWeb} from "tonweb";
 //import {mnemonicToWalletKey} from "@ton/crypto";
 import {TonConnect} from '@tonconnect/sdk'
 import {TonConnectUI} from '@tonconnect/ui'
 import {GameFiSDK, createWalletV4} from "@ton-community/gamefi-sdk";
-import {beginCell, toNano, Address} from "@ton/core";
+import {beginCell, toNano, Address, TonClient } from "@ton/ton";
+import { DEX, pTON } from "@ston-fi/sdk";
 
 
 
-var insPORT = 8123;
+const client = new TonClient({
+  endpoint: "https://testnet.toncenter.com/api/v2/jsonRPC", {apiKey: '22137c0e80f8524bedc10e31fcf4a73a0d4515d37fd96f6972053b54c76ab834'}
+});
+
+const dex = client.open(new DEX.v1.Router());
+
+
+async () => {
+        const txParams = await dex.getSwapTonToJettonTxParams({
+          offerAmount: toNano("1"), // swap 1 TON
+          askJettonAddress: "EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO", // for a STON
+          minAskAmount: toNano("0.1"), // but not less than 0.1 STON
+          proxyTon: new pTON.v1(),
+          //userWalletAddress: wallet,
+        });
+        
+        console.log(txParams);
+
+        /*
+        var tran = await tonConnectUI.sendTransaction({
+          validUntil: Date.now() + 1000000,
+          messages: [
+            {
+              address: txParams.to.toString(),
+              amount: txParams.value.toString(),
+              payload: txParams.body?.toBoc().toString("base64"),
+            },
+          ],
+        });
+        
+        console.log(tran);
+        */
+      };
+
 
 
 /*
