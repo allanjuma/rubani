@@ -45,7 +45,7 @@ const client = new TonClient({
 });
 
 const router = client.open(new DEX.v1.Router());
-
+/*
 // swap 1 TON to STON but not less than 1 nano STON
 const txParams = await router.getSwapTonToJettonTxParams({
   userWalletAddress: "", // ! replace with your address
@@ -57,7 +57,7 @@ const txParams = await router.getSwapTonToJettonTxParams({
 });
 
 
-
+*/
 const tonSwap = async () => {
         const txParams = await dex.getSwapTonToJettonTxParams({
           offerAmount: toNano("1"), // swap 1 TON
