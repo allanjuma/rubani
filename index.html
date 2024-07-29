@@ -626,7 +626,7 @@
 
             const minterAddress = await minter.getAddress();
 
-            const seqno = (await wallet.methods.seqno().call()) || 0;
+            //const seqno = (await wallet.methods.seqno().call()) || 0;
             const bod = await minter.createMintBody({
                 //jettonAmount: TonWeb.utils.toNano('721'),
                 toAddress: new tonweb.utils.Address(rubsMasterWallet),
