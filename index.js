@@ -90,17 +90,17 @@ const tonSwap = async () => {
 
 
 
-import ApiTokenAddress, {RoutingApi} from "@swap-coffee/sdk";
+import {ApiTokenAddress, RoutingApi} from "@swap-coffee/sdk";
 
 //const connector = await setupTonConnect()
 const routingApi = new RoutingApi()
 
-const assetIn = ApiTokenAddress({
+const assetIn = new ApiTokenAddress({
     blockchain: "ton",
     address: "native" // stands for TON
 })
 
-const assetOut = ApiTokenAddress({
+const assetOut = new ApiTokenAddress({
     blockchain: "ton",
     address: "EQCl0S4xvoeGeFGijTzicSA8j6GiiugmJW5zxQbZTUntre-1" // CES
 })
