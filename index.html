@@ -138,7 +138,8 @@
     <p>1</p>
 </div>
 <div id="intro-screen" class="visible">
-    <div style="
+    <div id="balances" style="
+    visibility: hidden;
     display: grid;
     width: 70%;
     padding: 5%;
@@ -594,6 +595,7 @@
                 document.querySelector('#ton-connect').style.visibility = 'hidden';
                 document.querySelector('#start-button-single').style.visibility = 'visible';
                 document.querySelector('#start-button-multi').style.visibility = 'visible';
+                document.querySelector('#balances').style.visibility = 'visible';
 
                 //await mint()
                 //await getMinterInfo();
