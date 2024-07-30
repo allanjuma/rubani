@@ -39,13 +39,9 @@ var ApiTokenAddress = require('@swap-coffee/sdk');
 var baseDirectory = __dirname;
 
 
-
-
-const input_amount = 5; // 5 TON
 const routingApi = new RoutingApi()
 
 //const connector = await setupTonConnect()
-const routingApi = new RoutingApi()
 
 const assetIn = new ApiTokenAddress({
     blockchain: "ton",
@@ -57,7 +53,7 @@ const assetOut = new ApiTokenAddress({
     address: "EQCl0S4xvoeGeFGijTzicSA8j6GiiugmJW5zxQbZTUntre-1" // CES
 })
 
-const input_amount = 5 // 5 TON
+const input_amount = 5; // 5 TON
 
 // let's build an optimal route
 const route = await routingApi.buildRoute({
