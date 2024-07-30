@@ -39,7 +39,7 @@ var ApiTokenAddress = require('@swap-coffee/sdk');
 var baseDirectory = __dirname;
 
 
-const routingApi = new RoutingApi()
+const routingApi = RoutingApi()
 
 //const connector = await setupTonConnect()
 
