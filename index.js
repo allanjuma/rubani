@@ -59,7 +59,7 @@ async function doSton(){
           askJettonAddress: "EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO", // for a STON
           minAskAmount: ton.toNano("0.1"), // but not less than 0.1 STON
           proxyTon: new ston.pTON.v1(),
-          //userWalletAddress: wallet,
+          userWalletAddress: "EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO",
         });
 
        console.log({
