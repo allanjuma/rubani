@@ -44,7 +44,7 @@ const routingApi = new swap.RoutingApi();
 
 //const connector = await setupTonConnect()
 
-const assetIn = swap.ApiTokenAddress({
+const assetIn = new swap.ApiTokenAddress({
     blockchain: "ton",
     address: "native" // stands for TON
 })
