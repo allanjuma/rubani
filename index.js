@@ -295,6 +295,14 @@ http.createServer(async function (request, response) {
            request.url = '/index.html';
         }
      
+	
+	if(request.url.includes('/tonconnect-manifest.json')){
+	    
+	    response.setHeader('content-type', 'application/json'); 
+	    
+	    
+	}
+
         var requestUrl = url.parse(request.url);
 
         // need to use path.normalize so people can't access directories underneath baseDirectory
