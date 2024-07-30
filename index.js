@@ -39,7 +39,7 @@ var path = require('path');
 var swap = require('@swap-coffee/sdk');
 var ston = require('@ston-fi/sdk');
 
-import { TonClient, toNano  = require('@ton/ton');
+var ton = require('@ton/ton');
 
 var baseDirectory = __dirname;
 
