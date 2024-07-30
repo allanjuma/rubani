@@ -39,9 +39,43 @@ var path = require('path');
 var swap = require('@swap-coffee/sdk');
 var ston = require('@ston-fi/sdk');
 
+import { TonClient, toNano  = require('@ton/ton');
 
 var baseDirectory = __dirname;
 
+
+const client = new ton.TonClient({
+  endpoint: "https://toncenter.com/api/v2/jsonRPC",
+});
+
+const dex = client.open(new DEX.v1.Router());
+
+
+
+
+async () => {
+        const txParams = await dex.getSwapTonToJettonTxParams({
+          offerAmount: ton.toNano("1"), // swap 1 TON
+          askJettonAddress: "EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO", // for a STON
+          minAskAmount: ton.toNano("0.1"), // but not less than 0.1 STON
+          proxyTon: new pTON.v1(),
+          //userWalletAddress: wallet,
+        });
+
+       console.log({
+          validUntil: Date.now() + 1000000,
+          messages: [
+            {
+              address: txParams.to.toString(),
+              amount: txParams.value.toString(),
+              payload: txParams.body?.toBoc().toString("base64"),
+            },
+          ],
+        });
+      }
+      
+
+/*
 console.log(ston.DEX, ston.pTON);
 console.log(new swap.ApiTokenAddress);
 
@@ -91,7 +125,7 @@ console.log(route);
 
 
 
-
+*/
 
 
 
