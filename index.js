@@ -10,8 +10,11 @@
         for (const line of e.stack.split('\n')) {
           const matches = line.match(/^\s+at\s+(.*)/);
           if (matches) {
-            if (!isFirst) { // first line - current function
-                            // second line - caller (what we are looking for)
+            if(!isFirst) { 
+                
+                // first line - current function
+                // second line - caller (what we are looking for)
+                
               initiator = matches[1];
               break;
             }
@@ -37,7 +40,8 @@ var swap = require('@swap-coffee/sdk');
 
 var baseDirectory = __dirname;
 
-console.log(swap.RoutingApi);
+console.log(swap.ApiTokenAddress);
+console.log(new swap.ApiTokenAddress);
 
 const routingApi = new swap.RoutingApi();
 
