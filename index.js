@@ -1,4 +1,4 @@
- ['log', 'warn', 'error'].forEach((methodName) => {
+['log', 'warn', 'error'].forEach((methodName) => {
   const originalMethod = console[methodName];
   console[methodName] = (...args) => {
     let initiator = 'unknown place';
@@ -37,10 +37,12 @@ var fs = require('fs');
 
 var path = require('path');
 var swap = require('@swap-coffee/sdk');
+var stop = require('@ston-fi/sdk');
+
 
 var baseDirectory = __dirname;
 
-console.log(swap.ApiTokenAddress);
+console.log(ston.DEX, ston.pTON);
 console.log(new swap.ApiTokenAddress);
 
 const routingApi = new swap.RoutingApi();
