@@ -92,6 +92,15 @@ const tonSwap = async () => {
 
 import {ApiTokenAddress, RoutingApi} from "@swap-coffee/sdk";
 
+
+const input_amount = 5 // 5 TON
+
+const route = await routingApi.buildRoute({
+    //input_token: assetIn,
+    //output_token: assetOut,
+    input_amount: input_amount,
+    
+/*
 //const connector = await setupTonConnect()
 const routingApi = new RoutingApi()
 
@@ -133,7 +142,7 @@ for (const transaction of transactions.data.transactions) {
 }
 
 console.log(route);
-
+*/
 
 /*
 
