@@ -1553,6 +1553,8 @@ class UI {
         	    
 		    
 		document.querySelector('#start-button-single').onclick = async () => {
+		    
+	
 /*		    
 		   //TonWeb.utils.toNano(
 		 const WalletClass = tonweb.wallet.all.v4R2;
@@ -1628,7 +1630,9 @@ try{
 // TO-DO: get players wallet instead of main wallet
 const lastTx = (await tonweb.getTransactions(destinationAddress, 1))[0];
 console.log(lastTx.transaction_id);
-document.getElementById('intro-screen').classList.remove('visible')
+document.getElementById('intro-screen').classList.remove('visible');
+
+                document.querySelector('#game-controls').style.visibility = 'visible';
 			//window.location = "lightning:bitsoko@walletofsatoshi.com";
 			try{
 			    tapp.expand();
