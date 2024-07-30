@@ -26,17 +26,123 @@
 
 
 console.log('starting rubani');
+
+var insPORT = 8123;
 //import {TonWeb} from "tonweb";
 //import {mnemonicToWalletKey} from "@ton/crypto";
 import {TonConnect} from '@tonconnect/sdk'
 import {TonConnectUI} from '@tonconnect/ui'
 import {GameFiSDK, createWalletV4} from "@ton-community/gamefi-sdk";
-import {beginCell, toNano, Address} from "@ton/core";
+import {beginCell, toNano, Address, TonClient } from "@ton/ton";
+import { DEX, pTON } from "@ston-fi/sdk";
 
 
 
-var insPORT = 8123;
+const client = new TonClient({
+  endpoint: "https://testnet.toncenter.com/api/v2/jsonRPC",
+  apiKey: "22137c0e80f8524bedc10e31fcf4a73a0d4515d37fd96f6972053b54c76ab834"
+  
+});
 
+const router = client.open(new DEX.v1.Router());
+/*
+// swap 1 TON to STON but not less than 1 nano STON
+const txParams = await router.getSwapTonToJettonTxParams({
+  userWalletAddress: "", // ! replace with your address
+  proxyTon: new pTON.v1(),
+  offerAmount: toNano("1"),
+  askJettonAddress: "EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO", // STON
+  minAskAmount: "1",
+  queryId: 12345,
+});
+
+
+*/
+const tonSwap = async () => {
+        const txParams = await dex.getSwapTonToJettonTxParams({
+          offerAmount: toNano("1"), // swap 1 TON
+          askJettonAddress: "EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO", // for a STON
+          minAskAmount: toNano("0.1"), // but not less than 0.1 STON
+          proxyTon: new pTON.v1(),
+          //userWalletAddress: wallet,
+        });
+        
+        console.log(txParams);
+
+        /*
+        var tran = await tonConnectUI.sendTransaction({
+          validUntil: Date.now() + 1000000,
+          messages: [
+            {
+              address: txParams.to.toString(),
+              amount: txParams.value.toString(),
+              payload: txParams.body?.toBoc().toString("base64"),
+            },
+          ],
+        });
+        
+        console.log(tran);
+        */
+      };
+
+//tonSwap();
+
+
+
+
+import {ApiTokenAddress, RoutingApi} from "@swap-coffee/sdk";
+
+
+const input_amount = 5; // 5 TON
+const routingApi = new RoutingApi()
+const route = await routingApi.buildRoute({
+    //input_token: assetIn,
+    //output_token: assetOut,
+    input_amount: input_amount,
+})   
+/*
+//const connector = await setupTonConnect()
+const routingApi = new RoutingApi()
+
+const assetIn = new ApiTokenAddress({
+    blockchain: "ton",
+    address: "native" // stands for TON
+})
+
+const assetOut = new ApiTokenAddress({
+    blockchain: "ton",
+    address: "EQCl0S4xvoeGeFGijTzicSA8j6GiiugmJW5zxQbZTUntre-1" // CES
+})
+
+const input_amount = 5 // 5 TON
+
+// let's build an optimal route
+const route = await routingApi.buildRoute({
+    input_token: assetIn,
+    output_token: assetOut,
+    input_amount: input_amount,
+})
+console.log(route);
+// then we can build transactions payload
+const transactions = await routingApi.buildTransactionsV2({
+    sender_address: '0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq', // address of user's wallet
+    slippage: 0.1, // 10% slippage
+    paths: route.data.paths,
+})
+
+let messages = []
+
+for (const transaction of transactions.data.transactions) {
+    // swap.coffee takes care of all the boring stuff here :)
+    messages.push({
+        address: transaction.address,
+        amount: transaction.value,
+        payload: transaction.cell,
+    })
+}
+
+console.log(route);
+*/
 
 /*
 
@@ -211,6 +317,14 @@ http.createServer(async (request, response) => {
             request.url = '/index.html';
         }
 
+
+	
+	if(request.url.includes('/tonconnect-manifest.json')){
+	    
+	    response.setHeader('content-type', 'application/json'); 
+	    
+	    
+	}
         const requestUrl = url.parse(request.url);
 
         // Use path.normalize to prevent directory traversal
