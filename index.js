@@ -56,14 +56,14 @@ const assetOut = new ApiTokenAddress({
 const input_amount = 5; // 5 TON
 
 // let's build an optimal route
-const route = await routingApi.buildRoute({
+const route = routingApi.buildRoute({
     input_token: assetIn,
     output_token: assetOut,
     input_amount: input_amount,
 })
 console.log(route);
 // then we can build transactions payload
-const transactions = await routingApi.buildTransactionsV2({
+const transactions = routingApi.buildTransactionsV2({
     sender_address: '0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq', // address of user's wallet
     slippage: 0.1, // 10% slippage
     paths: route.data.paths,
