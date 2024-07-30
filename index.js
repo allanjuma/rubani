@@ -90,7 +90,7 @@ const tonSwap = async () => {
 
 
 
-import {ApiTokenAddress, RoutingApi} from "@swap-coffee/sdk";
+import ApiTokenAddress, {RoutingApi} from "@swap-coffee/sdk";
 
 //const connector = await setupTonConnect()
 const routingApi = new RoutingApi()
