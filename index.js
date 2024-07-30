@@ -94,7 +94,7 @@ import {ApiTokenAddress, RoutingApi} from "@swap-coffee/sdk";
 
 
 const input_amount = 5; // 5 TON
-
+const routingApi = new RoutingApi()
 const route = await routingApi.buildRoute({
     //input_token: assetIn,
     //output_token: assetOut,
