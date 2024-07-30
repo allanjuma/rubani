@@ -48,7 +48,7 @@ const client = new ton.TonClient({
   endpoint: "https://toncenter.com/api/v2/jsonRPC",
 });
 
-const dex = client.open(new DEX.v1.Router());
+const dex = client.open(new ston.DEX.v1.Router());
 
 
 
@@ -58,7 +58,7 @@ async () => {
           offerAmount: ton.toNano("1"), // swap 1 TON
           askJettonAddress: "EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO", // for a STON
           minAskAmount: ton.toNano("0.1"), // but not less than 0.1 STON
-          proxyTon: new pTON.v1(),
+          proxyTon: new ston.pTON.v1(),
           //userWalletAddress: wallet,
         });
 
