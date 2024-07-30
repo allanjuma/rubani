@@ -33,14 +33,14 @@ var url = require('url');
 var fs = require('fs');
 
 var path = require('path');
-var RoutingApi = require('@swap-coffee/sdk');
-var ApiTokenAddress = require('@swap-coffee/sdk');
+var swap = require('@swap-coffee/sdk');
 
 var baseDirectory = __dirname;
 
-console.log(RoutingApi);
+console.log(swap.RoutingApi);
 
-const routingApi = RoutingApi;
+const routingApi = new swap.RoutingApi();
+
 
 //const connector = await setupTonConnect()
 
