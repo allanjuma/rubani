@@ -33,23 +33,29 @@ var url = require('url');
 var fs = require('fs');
 
 var path = require('path');
+var RoutingApi = require('@swap-coffee/sdk');
+var ApiTokenAddress = require('@swap-coffee/sdk');
 
 var baseDirectory = __dirname;
 
 
-import {ApiTokenAddress, RoutingApi} from "@swap-coffee/sdk";
+
+
+const input_amount = 5; // 5 TON
+const routingApi = new RoutingApi()
 
 //const connector = await setupTonConnect()
 const routingApi = new RoutingApi()
 
-const assetIn: ApiTokenAddress = {
+const assetIn = new ApiTokenAddress({
     blockchain: "ton",
     address: "native" // stands for TON
-}
-const assetOut: ApiTokenAddress = {
+})
+
+const assetOut = new ApiTokenAddress({
     blockchain: "ton",
     address: "EQCl0S4xvoeGeFGijTzicSA8j6GiiugmJW5zxQbZTUntre-1" // CES
-}
+})
 
 const input_amount = 5 // 5 TON
 
@@ -62,7 +68,7 @@ const route = await routingApi.buildRoute({
 console.log(route);
 // then we can build transactions payload
 const transactions = await routingApi.buildTransactionsV2({
-    sender_address: connector.account?.address!!, // address of user's wallet
+    sender_address: '0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq', // address of user's wallet
     slippage: 0.1, // 10% slippage
     paths: route.data.paths,
 })
@@ -79,8 +85,6 @@ for (const transaction of transactions.data.transactions) {
 }
 
 console.log(route);
-
-
 
 
 
