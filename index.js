@@ -87,6 +87,53 @@ const tonSwap = async () => {
 
 //tonSwap();
 
+
+
+
+import {ApiTokenAddress, RoutingApi} from "@swap-coffee/sdk";
+
+//const connector = await setupTonConnect()
+const routingApi = new RoutingApi()
+
+const assetIn: ApiTokenAddress = {
+    blockchain: "ton",
+    address: "native" // stands for TON
+}
+const assetOut: ApiTokenAddress = {
+    blockchain: "ton",
+    address: "EQCl0S4xvoeGeFGijTzicSA8j6GiiugmJW5zxQbZTUntre-1" // CES
+}
+
+const input_amount = 5 // 5 TON
+
+// let's build an optimal route
+const route = await routingApi.buildRoute({
+    input_token: assetIn,
+    output_token: assetOut,
+    input_amount: input_amount,
+})
+console.log(route);
+// then we can build transactions payload
+const transactions = await routingApi.buildTransactionsV2({
+    sender_address: connector.account?.address!!, // address of user's wallet
+    slippage: 0.1, // 10% slippage
+    paths: route.data.paths,
+})
+
+let messages = []
+
+for (const transaction of transactions.data.transactions) {
+    // swap.coffee takes care of all the boring stuff here :)
+    messages.push({
+        address: transaction.address,
+        amount: transaction.value,
+        payload: transaction.cell,
+    })
+}
+
+console.log(route);
+
+
 /*
 
 
