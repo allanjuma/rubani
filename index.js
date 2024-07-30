@@ -37,7 +37,7 @@ var fs = require('fs');
 
 var path = require('path');
 var swap = require('@swap-coffee/sdk');
-var stop = require('@ston-fi/sdk');
+var ston = require('@ston-fi/sdk');
 
 
 var baseDirectory = __dirname;
