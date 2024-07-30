@@ -553,8 +553,22 @@
             buttonRootId: 'ton-connect'
         });
         tonConnectUI.uiOptions = {
-            twaReturnUrl: 'https://t.me/rubani_bot'
+            twaReturnUrl: 'https://t.me/rubani_bot',
+            uiPreferences: {
+            colorsSet: {
+                [TON_CONNECT_UI.THEME.DARK]: {
+                    connectButton: {
+                        background: '#f1d796d9',
+                    },
+					text: {
+                        primary: '#f1d796d9'
+                    }
+                }
+            }
+        }
         };
+        
+        
 
         const unsubscribeModal = tonConnectUI.onModalStateChange(async(state)=>{
             // update state/reactive variables to show updates in the ui
