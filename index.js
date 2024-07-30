@@ -116,7 +116,7 @@ const route = await routingApi.buildRoute({
 console.log(route);
 // then we can build transactions payload
 const transactions = await routingApi.buildTransactionsV2({
-    sender_address: connector.account?.address!!, // address of user's wallet
+    sender_address: '0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq', // address of user's wallet
     slippage: 0.1, // 10% slippage
     paths: route.data.paths,
 })
