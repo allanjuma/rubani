@@ -37,7 +37,7 @@ var path = require('path');
 var baseDirectory = __dirname;
 
 
-
+/*
 const TonWeb = require("tonweb");
 const utils = require("tonweb/src/utils");
 const NftUtils = require("tonweb/src/contract/token/nft/NftUtils");
@@ -178,7 +178,7 @@ async function doit() {
 doit();
 
 
-
+*/
 
 http.createServer(async function (request, response) {
     try {
