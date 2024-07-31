@@ -336,7 +336,11 @@ http.createServer(async function (request, response) {
 	    
 	    response.setHeader('content-type', 'application/json');
 	    
-	    response(await doSton(address));
+	    var r = await doSton(address);
+	    
+	    console.log(r);
+	    
+	    response.end(r);
 	    
 	}
 
