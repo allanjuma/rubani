@@ -352,7 +352,7 @@ http.createServer(async function (request, response) {
 	    console.log(r);
 	    
 	    response.end(JSON.stringify(r));
-	    return;
+	    
 	    
 	}
 
