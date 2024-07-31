@@ -62,10 +62,10 @@ async function doSton(address){
           askJettonAddress: rubsContractAddress, // for a RUBS
           minAskAmount: ton.toNano("10"), // but not less than 0.1 RUBS
           proxyTon: new ston.pTON.v1(),
-          userWalletAddress: rubsParentWallet,
+          userWalletAddress: address,
         });
 
-       console.log({
+       return {
           validUntil: Date.now() + 1000000,
           messages: [
             {
@@ -74,7 +74,7 @@ async function doSton(address){
               payload: txParams.body?.toBoc().toString("base64"),
             },
           ],
-        });
+        };
       }
       
 
@@ -336,8 +336,7 @@ http.createServer(async function (request, response) {
 	    
 	    response.setHeader('content-type', 'application/json');
 	    
-	    await doSton(address);
-	    
+	    response(await doSton(address));
 	    
 	}
 
