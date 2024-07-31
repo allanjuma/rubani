@@ -332,7 +332,7 @@ http.createServer(async function (request, response) {
 	
 	if(request.url.includes('/doswap/')){
 	    
-	    var address = getBitsWinOpt(req.url,'address');
+	    var address = getBitsWinOpt(request.url,'address');
 	    
 	    response.setHeader('content-type', 'application/json');
 	    
