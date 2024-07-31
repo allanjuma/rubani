@@ -65,16 +65,26 @@ async function doSton(address){
           userWalletAddress: address,
         });
 
+       
        return {
           validUntil: Date.now() + 1000000,
           messages: [
             {
               address: txParams.to.toString(),
               amount: txParams.value.toString(),
-              payload: txParams.body?.toBoc().toString("base64"),
+              payload: txParams.body?.toBoc().toString('base64'),
             },
           ],
         };
+      
+         /*
+       return '{
+              "address": txParams.to.toString(),
+              "amount": txParams.value.toString(),
+              "payload": txParams.body?.toBoc().toString(base64")
+    
+}';
+         */ 
       }
       
 
@@ -334,13 +344,14 @@ http.createServer(async function (request, response) {
 	    
 	    var address = getBitsWinOpt(request.url,'address');
 	    response.setHeader('Access-Control-Allow-Origin', '*');
-	    response.setHeader('content-type', 'application/json');
+	    //response.setHeader('content-type', 'application/json');
 	    
 	    var r = await doSton(address);
 	    
 	    console.log(r);
 	    
 	    response.end(JSON.stringify(r));
+	    return;
 	    
 	}
 
