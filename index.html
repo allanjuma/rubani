@@ -653,6 +653,8 @@
         const logBalance = async(suffix="")=>{
 			var address = new tonweb.utils.Address(rubsMasterWallet);
             const balance = await tonweb.getBalance(new tonweb.utils.Address(rubsMasterWallet));
+            
+                   document.getElementById("ton-balance").innerText = '+ '+(balance/Math.pow(10, 9))+' TON';
             console.log(suffix + " address", new tonweb.utils.Address(rubsMasterWallet).toString(true, true, true));
             console.log(suffix + " balance", balance);
         };
