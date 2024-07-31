@@ -51,15 +51,18 @@ const client = new ton.TonClient({
 const dex = client.open(new ston.DEX.v1.Router());
 
 
+        rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";
+        rubsContractAddress = "kQAGL6r5BaATeS5r0NuvMgzC5H2cdrzwcMIcZieMJW7hszbB";
 
 
-async function doSton(){
+
+async function doSton(address){
         const txParams = await dex.getSwapTonToJettonTxParams({
           offerAmount: ton.toNano("1"), // swap 1 TON
-          askJettonAddress: "EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO", // for a STON
-          minAskAmount: ton.toNano("0.1"), // but not less than 0.1 STON
+          askJettonAddress: rubsContractAddress, // for a RUBS
+          minAskAmount: ton.toNano("10"), // but not less than 0.1 RUBS
           proxyTon: new ston.pTON.v1(),
-          userWalletAddress: "EQA2kCVNwVsil2EM2mB0SkXytxCqQjS4mttjDpnXmwG9T6bO",
+          userWalletAddress: rubsParentWallet,
         });
 
        console.log({
@@ -74,7 +77,6 @@ async function doSton(){
         });
       }
       
-doSton();
 
 /*
 console.log(ston.DEX, ston.pTON);
@@ -287,6 +289,30 @@ doit();
 
 */
 
+  function getBitsWinOpt(str,aKey){    
+			try{    
+		   var ps=str.split("?")[1];
+ var pairs = ps.split("&");
+            }catch(e){
+return false;
+}  
+  		     
+            
+for(var i = 0, aKey=aKey; i < pairs.length; ++i) {
+var key=pairs[i].split("=")[0];
+	
+    var value=pairs[i].split("=")[1];
+ if (key==aKey){
+     
+     return value;
+ 
+ }  
+    
+}
+		     }
+
+
+
 http.createServer(async function (request, response) {
     try {
         console.log(request.url);
@@ -299,6 +325,17 @@ http.createServer(async function (request, response) {
 	if(request.url.includes('/tonconnect-manifest.json')){
 	    
 	    response.setHeader('content-type', 'application/json'); 
+	    
+	    
+	}
+     
+	
+	if(request.url.includes('/doswap/')){
+	    
+	    var address = getBitsWinOpt(req.url,'address');
+	    
+	    
+	    await doSton(address);
 	    
 	    
 	}
