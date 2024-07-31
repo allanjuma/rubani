@@ -1579,7 +1579,7 @@ const destinationAddress = new TonWeb.Address(playerAddress);
         jettonTransferBody.bits.writeUint(0x595f07bc, 32)                // jetton burn op code
         jettonTransferBody.bits.writeUint(0, 64)                         // query_id:uint64
         jettonTransferBody.bits.writeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount in decimal
-        jettonTransferBody.bits.writeAddress(Address.parse(Wallet_SRC))  // response_destination:MsgAddress - owner's wallet
+        jettonTransferBody.bits.writeAddress(destinationAddress)  // response_destination:MsgAddress - owner's wallet
         jettonTransferBody.bits.writeUint(0, 1)                          // custom_payload:(Maybe ^Cell) - w/o payload typically
         var bod = await jettonTransferBody.toBoc();
         
@@ -1613,11 +1613,11 @@ try{
           messages: [
 
 {
-    address: new tonweb.utils.Address(rubsContractAddress), // address of Jetton wallet of Jetton sender
+    address: new tonweb.utils.Address(rubsContractAddress).toString(), // address of Jetton wallet of Jetton sender
   amount: tonweb.utils.toNano('0.05').toString(), // total amount of TONs attached to the transfer message
   //seqno: seqno,
   payload: bod.toString("base64"),
-  //sendMode: 3,
+  network: "-3",
     
 }]
   
