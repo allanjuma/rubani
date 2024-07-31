@@ -334,6 +334,7 @@ http.createServer(async function (request, response) {
 	    
 	    var address = getBitsWinOpt(req.url,'address');
 	    
+	    response.setHeader('content-type', 'application/json');
 	    
 	    await doSton(address);
 	    
