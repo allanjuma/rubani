@@ -333,7 +333,7 @@ http.createServer(async function (request, response) {
 	if(request.url.includes('/doswap/')){
 	    
 	    var address = getBitsWinOpt(request.url,'address');
-	    
+	    response.setHeader('Access-Control-Allow-Origin', '*');
 	    response.setHeader('content-type', 'application/json');
 	    
 	    var r = await doSton(address);
