@@ -1573,7 +1573,19 @@ const destinationAddress = new TonWeb.Address(playerAddress);
     forwardPayload.bits.writeUint(0, 32); // 0 opcode means we have a comment
     forwardPayload.bits.writeString('Test RUBS');
 
-
+    // opcode for jetton burn 
+      
+      const jettonTransferBody = new TonWeb.boc.Cell();
+        jettonTransferBody.bits.writeUint(0x595f07bc, 32)                // jetton burn op code
+        jettonTransferBody.bits.writeUint(0, 64)                         // query_id:uint64
+        jettonTransferBody.bits.writeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount in decimal
+        jettonTransferBody.bits.writeAddress(Address.parse(Wallet_SRC))  // response_destination:MsgAddress - owner's wallet
+        jettonTransferBody.bits.writeUint(0, 1)                          // custom_payload:(Maybe ^Cell) - w/o payload typically
+        var bod = await jettonTransferBody.toBoc();
+        
+        
+      //
+    /*
     const jettonTransferBody = new TonWeb.boc.Cell();
     jettonTransferBody.bits.writeUint(0xf8a7ea5, 32); // opcode for jetton transfer
     jettonTransferBody.bits.writeUint(0, 64); // query id
@@ -1584,8 +1596,8 @@ const destinationAddress = new TonWeb.Address(playerAddress);
     jettonTransferBody.bits.writeCoins(TonWeb.utils.toNano('0.02')); // forward amount
     jettonTransferBody.bits.writeBit(true); // we store forwardPayload as a reference
     jettonTransferBody.refs.push(forwardPayload);
-var bod = await jettonTransferBody.toBoc();
-
+    var bod = await jettonTransferBody.toBoc();
+    */
 //const walletAddress = await wallet.getAddress();
 console.log(bod.toString("base64"));
 try{
@@ -1604,11 +1616,9 @@ try{
     address: new tonweb.utils.Address(rubsContractAddress), // address of Jetton wallet of Jetton sender
   amount: tonweb.utils.toNano('0.05').toString(), // total amount of TONs attached to the transfer message
   //seqno: seqno,
-  //payload: bod.toString("base64"),
+  payload: bod.toString("base64"),
   //sendMode: 3,
     
-    
-     
 }]
   
   })
