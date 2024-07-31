@@ -346,6 +346,7 @@ http.createServer(async function (request, response) {
 	    response.setHeader('Access-Control-Allow-Origin', '*');
 	    //response.setHeader('content-type', 'application/json');
 	    
+	    console.log(address);
 	    var r = await doSton(address);
 	    
 	    console.log(r);
