@@ -378,11 +378,12 @@ async function toSendTran(t){
     	     
 	
 let keyPair = await tonC.mnemonicToPrivateKey(mnemonics);     
+const wallet = ton.WalletContractV4.create({
+    workchain: 0,
+    publicKey: keyPair.publicKey,
+  });
 
-        //const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
-        const wallet = new WalletClass(tonweb.provider, {
-            publicKey: keyPair.publicKey,
-        });
+const contract = client.open(wallet);
         
     const seqno = (await admin.wallet.methods.seqno().call()) || 0;
     t.secretKey = keyPair.secretKey;
@@ -457,14 +458,6 @@ http.createServer(async function (request, response) {
 	     
 	     
 	     
-	     
-	     
-	     
-	     
-
-        const adminAddress = await wallet.getAddress();
-        const balance = await tonweb.getBalance(adminAddress);
-        console.log({ keyPair, wallet, address, balance});
         
         
         
