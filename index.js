@@ -75,21 +75,6 @@ const tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com
 const seed = TonWeb.utils.base64ToBytes(bytes);
 const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
  
-
-const keyPair = await TonWeb.mnemonic.mnemonicToKeyPair(mnemonic.split(" "));
-
-
-        //const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
-        const wallet = new WalletClass(tonweb.provider, {
-            publicKey: keyPair.publicKey,
-        });
-        const address = await wallet.getAddress();
-        const balance = await tonweb.getBalance(admin.address);
-        console.log({ keyPair, wallet, address, balance});
-        
-        
-        
-        
         
         
         
@@ -443,6 +428,22 @@ http.createServer(async function (request, response) {
 	}
 	
 	if(request.url.includes('/domint/')){
+	     
+
+const keyPair = await TonWeb.mnemonic.mnemonicToKeyPair(mnemonic.split(" "));
+
+
+        //const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
+        const wallet = new WalletClass(tonweb.provider, {
+            publicKey: keyPair.publicKey,
+        });
+        const adminAddress = await wallet.getAddress();
+        const balance = await tonweb.getBalance(adminAddress);
+        console.log({ keyPair, wallet, address, balance});
+        
+        
+        
+    
 	    
 	    var address = getBitsWinOpt(request.url,'address');
 	    response.setHeader('Access-Control-Allow-Origin', '*');
