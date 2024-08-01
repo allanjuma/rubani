@@ -401,7 +401,7 @@ const walletContract = client.open(wallet);
     t.sendMode = 3;
     
     console.log(t);
-    
+    return t;
    await walletContract.sendTransfer(t);
 
   while (currentSeqno == seqno) {
