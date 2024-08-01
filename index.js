@@ -418,14 +418,14 @@ const walletContract = client.open(wallet);
 
 function doMint(address, amount){
     
-    
+    console.log(ton.Address.parse(address));
     return {
       validUntil: Date.now() + 5 * 60 * 1000,
       messages: [
         {
           address: "kQAGL6r5BaATeS5r0NuvMgzC5H2cdrzwcMIcZieMJW7hszbB",
           amount: ton.toNano(0.04).toString(),
-          stateInit: undefined,
+          //stateInit: undefined,
           payload: mintBody(ton.Address.parse(address), amount, ton.toNano(0.02), 0)
             .toBoc()
             .toString("base64"),
