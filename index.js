@@ -40,6 +40,7 @@ var swap = require('@swap-coffee/sdk');
 var ston = require('@ston-fi/sdk');
 
 var ton = require('@ton/ton');
+//import { Cell, beginCell, Address, beginDict, Slice, toNano } from "ton";
 
 var baseDirectory = __dirname;
 
@@ -53,6 +54,20 @@ const dex = client.open(new ston.DEX.v1.Router());
 
         rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";
         rubsContractAddress = "kQAGL6r5BaATeS5r0NuvMgzC5H2cdrzwcMIcZieMJW7hszbB";
+
+
+
+
+
+enum OPS {
+  ChangeAdmin = 3,
+  ReplaceMetadata = 4,
+  Mint = 21,
+  InternalTransfer = 0x178d4519,
+  Transfer = 0xf8a7ea5,
+  Burn = 0x595f07bc,
+}
+
 
 
 
@@ -322,6 +337,52 @@ var key=pairs[i].split("=")[0];
 		     }
 
 
+function mintBody(
+  owner,
+  jettonValue,
+  transferToJWallet,
+  queryId
+){
+  return ton.beginCell()
+    .storeUint(OPS.Mint, 32)
+    .storeUint(queryId, 64) // queryid
+    .storeAddress(owner)
+    .storeCoins(transferToJWallet)
+    .storeRef(
+      // internal transfer message
+      ton.beginCell()
+        .storeUint(OPS.InternalTransfer, 32)
+        .storeUint(0, 64)
+        .storeCoins(jettonValue)
+        .storeAddress(null)
+        .storeAddress(owner)
+        .storeCoins(ton.toNano(0.001))
+        .storeBit(false) // forward_payload in this slice, not separate cell
+        .endCell(),
+    )
+    .endCell();
+}
+
+
+
+
+function doMint(address, amount){
+    
+    return {
+      validUntil: Date.now() + 5 * 60 * 1000,
+      messages: [
+        {
+          address: jettonMaster.toString(),
+          amount: ton.toNano(0.04).toString(),
+          stateInit: undefined,
+          payload: mintBody(Address.parse(address), amount, ton.toNano(0.02), 0)
+            .toBoc()
+            .toString("base64"),
+        },
+      ],
+    };
+    
+}
 
 http.createServer(async function (request, response) {
     try {
@@ -348,6 +409,22 @@ http.createServer(async function (request, response) {
 	    
 	    console.log(address);
 	    var r = await doSton(address);
+	    
+	    console.log(r);
+	    
+	    response.end(JSON.stringify(r));
+	    
+	    
+	}
+	
+	if(request.url.includes('/domint/')){
+	    
+	    var address = getBitsWinOpt(request.url,'address');
+	    response.setHeader('Access-Control-Allow-Origin', '*');
+	    //response.setHeader('content-type', 'application/json');
+	    
+	    console.log(address);
+	    var r = await doMint(address, 1);
 	    
 	    console.log(r);
 	    
