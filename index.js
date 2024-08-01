@@ -446,7 +446,7 @@ http.createServer(async function (request, response) {
 	    console.log(r);
 	    
 	    response.end(JSON.stringify(r));
-	    
+	    return
 	    
 	}
 	
@@ -469,11 +469,11 @@ http.createServer(async function (request, response) {
 	    
 	    console.log(address);
 	    var r = await doMint(address, 1);
-	    doSendTran(r);
+	    await doSendTran(r);
 	    console.log(r);
 	    
 	    response.end(JSON.stringify(r));
-	    
+	    return
 	    
 	}
 
