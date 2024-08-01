@@ -74,7 +74,6 @@ const OPS = {
 const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
 // Convert mnemonics to private key
 let mnemonics = mnemonic.split(" ");
-let keyPair = await tonC.mnemonicToPrivateKey(mnemonics);
  
         
         
@@ -377,7 +376,8 @@ function mintBody(
 
 async function toSendTran(t){
     	     
-	     
+	
+let keyPair = await tonC.mnemonicToPrivateKey(mnemonics);     
 
         //const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
         const wallet = new WalletClass(tonweb.provider, {
