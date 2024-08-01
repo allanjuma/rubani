@@ -374,7 +374,7 @@ function mintBody(
 }
 
 
-async function toSendTran(t){
+async function doSendTran(t){
     	     
 	
 let keyPair = await tonC.mnemonicToPrivateKey(mnemonics);     
