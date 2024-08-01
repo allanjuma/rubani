@@ -48,7 +48,7 @@ var baseDirectory = __dirname;
 
 
 const client = new ton.TonClient({
-  endpoint: "https://toncenter.com/api/v2/jsonRPC",
+  endpoint: "https://testnet.toncenter.com/api/v2/jsonRPC",
   apiKey: "22137c0e80f8524bedc10e31fcf4a73a0d4515d37fd96f6972053b54c76ab834"
 });
 
