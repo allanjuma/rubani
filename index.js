@@ -393,7 +393,7 @@ const contract = client.open(wallet);
     
 	    await wallet.methods.transfer(t).send();
     
-    
+   return; 
     
 }
 
