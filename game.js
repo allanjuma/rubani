@@ -2194,6 +2194,7 @@ tapp.onEvent('invoiceClosed', function(e){
 
 
 document.addEventListener("visibilitychange", () => {
+    try{
   if (document.hidden) {
     // Was the audio playing when the page changed to hidden?
     audioManager.listener.gain.gain.value = 0;
@@ -2203,6 +2204,9 @@ document.addEventListener("visibilitychange", () => {
     audioManager.listener.gain.gain.value = 1;
     game.paused = false;
   }
+    }catch(er){
+        console.log(er);
+    }
 });
 
 		
