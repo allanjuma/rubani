@@ -381,7 +381,7 @@ let keyPair = await tonC.mnemonicToPrivateKey(mnemonics);
 
 console.log(keyPair.publicKey);
 const wallet = ton.WalletContractV4.create({
-    workchain: 0,
+    workchain: -3,
     publicKey: keyPair.publicKey,
   });
   // print wallet workchain
