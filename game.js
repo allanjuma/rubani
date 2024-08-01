@@ -1828,9 +1828,14 @@ await wallet.methods.transfer({
 	async updateLevelCount() {
 	    
 		this._elemLevelCounter.innerText = game.level
+
+try{
 	    var btcRate = await fetchRates();
 	    game.btcRate = Math.floor(btcRate.baseEx);
 	    game.btcCurrency = btcRate.baseCd;
+}catch(er){
+    console.log(er);
+}
 	    
 	    
 	    
