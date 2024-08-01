@@ -2098,8 +2098,10 @@ function startMap() {
 	createWorld()
 	loop()
 
-	ui.informNextLevel(1)
-	game.paused = false
+	ui.informNextLevel(1);
+	game.paused = false;
+	
+	setSideView();
 }
 
 
