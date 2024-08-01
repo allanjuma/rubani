@@ -379,19 +379,34 @@ async function doSendTran(t){
 	
 let keyPair = await tonC.mnemonicToPrivateKey(mnemonics);     
 const wallet = ton.WalletContractV4.create({
-    workchain: 0,
+    //workchain: 0,
     publicKey: keyPair.publicKey,
   });
 
-const contract = client.open(wallet);
-        
-    const seqno = (await contract.methods.seqno().call()) || 0;
+  // print wallet workchain
+  console.log("workchain:", wallet.address.workChain);
+const walletContract = client.open(wallet);
+
+
+  const seqno = await walletContract.getSeqno();
+  console.log("seqno:", seqno);
+  
+  // wait until confirmed
+  let currentSeqno = seqno;
     t.secretKey = keyPair.secretKey;
     t.seqno = seqno;
-    t.sendMode = 3,
-   // console.log((await minter.createStateInit()).stateInit);
+    t.sendMode = 3;
     
-	    await contract.methods.transfer(t).send();
+    
+    
+   await walletContract.sendTransfer(t);
+
+  while (currentSeqno == seqno) {
+    console.log("waiting for transaction to confirm...");
+    await sleep(1500);
+    currentSeqno = await walletContract.getSeqno();
+  }
+  console.log("transaction confirmed!");
     
    return; 
     
