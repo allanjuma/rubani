@@ -59,14 +59,14 @@ const dex = client.open(new ston.DEX.v1.Router());
 
 
 
-enum OPS {
-  ChangeAdmin = 3,
-  ReplaceMetadata = 4,
-  Mint = 21,
-  InternalTransfer = 0x178d4519,
-  Transfer = 0xf8a7ea5,
-  Burn = 0x595f07bc,
-}
+const OPS = {
+  ChangeAdmin: 3,
+  ReplaceMetadata: 4,
+  Mint: 21,
+  InternalTransfer: 0x178d4519,
+  Transfer: 0xf8a7ea5,
+  Burn: 0x595f07bc,
+};
 
 
 
