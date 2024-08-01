@@ -372,7 +372,7 @@ function doMint(address, amount){
       validUntil: Date.now() + 5 * 60 * 1000,
       messages: [
         {
-          address: jettonMaster.toString(),
+          address: "kQAGL6r5BaATeS5r0NuvMgzC5H2cdrzwcMIcZieMJW7hszbB",
           amount: ton.toNano(0.04).toString(),
           stateInit: undefined,
           payload: mintBody(Address.parse(address), amount, ton.toNano(0.02), 0)
