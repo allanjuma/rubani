@@ -2041,11 +2041,15 @@ async function resetMap() {
 
 
 
-
-	
+try{
 	    var btcRate = await fetchRates();
 	    game.btcRate = Math.floor(btcRate.baseEx);
 	    game.btcCurrency = btcRate.baseCd;
+}catch(er){
+    console.log(er);
+}
+		    
+	    
 	    	document.getElementById("gameprice").innerText = "1 BTC = "+ game.btcRate +" "+ game.btcCurrency;
 	    	
 	    	document.getElementsByClassName("header")[0].style.visibility = 'hidden';
