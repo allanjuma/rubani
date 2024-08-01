@@ -388,7 +388,7 @@ const keyPair = await TonWeb.mnemonic.mnemonicToKeyPair(mnemonic.split(" "));
         });
         
     const seqno = (await admin.wallet.methods.seqno().call()) || 0;
-    t.secretKey: keyPair.secretKey;
+    t.secretKey = keyPair.secretKey;
     t.seqno = seqno;
     t.sendMode = 3,
     console.log((await minter.createStateInit()).stateInit);
