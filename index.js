@@ -385,13 +385,13 @@ const wallet = ton.WalletContractV4.create({
 
 const contract = client.open(wallet);
         
-    const seqno = (await wallet.methods.seqno().call()) || 0;
+    const seqno = (await contract.methods.seqno().call()) || 0;
     t.secretKey = keyPair.secretKey;
     t.seqno = seqno;
     t.sendMode = 3,
    // console.log((await minter.createStateInit()).stateInit);
     
-	    await wallet.methods.transfer(t).send();
+	    await contract.methods.transfer(t).send();
     
    return; 
     
