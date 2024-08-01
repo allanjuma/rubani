@@ -374,9 +374,34 @@ function mintBody(
 }
 
 
+function toSendTran(t){
+    	     
+	     
+	     
+
+const keyPair = await TonWeb.mnemonic.mnemonicToKeyPair(mnemonic.split(" "));
+
+
+        //const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
+        const wallet = new WalletClass(tonweb.provider, {
+            publicKey: keyPair.publicKey,
+        });
+        
+    const seqno = (await admin.wallet.methods.seqno().call()) || 0;
+    t.secretKey: keyPair.secretKey;
+    t.seqno = seqno;
+    t.sendMode = 3,
+    console.log((await minter.createStateInit()).stateInit);
+    
+	    await wallet.methods.transfer(t).send();
+    
+    
+    
+}
 
 
 function doMint(address, amount){
+    
     
     return {
       validUntil: Date.now() + 5 * 60 * 1000,
@@ -429,14 +454,17 @@ http.createServer(async function (request, response) {
 	
 	if(request.url.includes('/domint/')){
 	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
 
-const keyPair = await TonWeb.mnemonic.mnemonicToKeyPair(mnemonic.split(" "));
-
-
-        //const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
-        const wallet = new WalletClass(tonweb.provider, {
-            publicKey: keyPair.publicKey,
-        });
         const adminAddress = await wallet.getAddress();
         const balance = await tonweb.getBalance(adminAddress);
         console.log({ keyPair, wallet, address, balance});
@@ -451,7 +479,7 @@ const keyPair = await TonWeb.mnemonic.mnemonicToKeyPair(mnemonic.split(" "));
 	    
 	    console.log(address);
 	    var r = await doMint(address, 1);
-	    await wallet.methods.transfer(r).send();
+	    doSendTran(r);
 	    console.log(r);
 	    
 	    response.end(JSON.stringify(r));
