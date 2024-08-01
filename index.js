@@ -400,7 +400,7 @@ const walletContract = client.open(wallet);
     t.seqno = seqno;
     t.sendMode = 3;
     
-    
+    console.log(t);
     
    await walletContract.sendTransfer(t);
 
