@@ -1891,8 +1891,11 @@ try{
 			document.getElementById('new-level').style.visibility = 'hidden'
 			elem.classList.remove('animating')
 		}, 1000)
-		
+		try{
 		document.getElementById("gameprice").innerText = "1 BTC = "+ game.btcRate +" "+ game.btcCurrency;
+		}catch(er){
+		    console.log(er);
+		}
 	}
 
 
@@ -2056,13 +2059,14 @@ try{
 	    var btcRate = await fetchRates();
 	    game.btcRate = Math.floor(btcRate.baseEx);
 	    game.btcCurrency = btcRate.baseCd;
+	    	document.getElementById("gameprice").innerText = "1 BTC = "+ game.btcRate +" "+ game.btcCurrency;
+	    	
 }catch(er){
     console.log(er);
 }
 		    
 	    
-	    	document.getElementById("gameprice").innerText = "1 BTC = "+ game.btcRate +" "+ game.btcCurrency;
-	    	
+	    
 	    	document.getElementsByClassName("header")[0].style.visibility = 'hidden';
 	    	document.getElementsByClassName("score")[0].style.visibility = 'visible';
 	
