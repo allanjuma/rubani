@@ -424,7 +424,7 @@ function doMint(address, amount){
       messages: [
         {
           address: "kQAGL6r5BaATeS5r0NuvMgzC5H2cdrzwcMIcZieMJW7hszbB",
-          amount: ton.toNano(0).toString(),
+          amount: ton.toNano(0.003).toString(),
           //stateInit: undefined,
           payload: mintBody(ton.Address.parse(address), amount, ton.toNano(1), 0)
             .toBoc()
