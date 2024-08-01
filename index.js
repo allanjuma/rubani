@@ -374,7 +374,7 @@ function mintBody(
 }
 
 
-function toSendTran(t){
+async function toSendTran(t){
     	     
 	     
 	     
