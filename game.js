@@ -1,5 +1,7 @@
 let ui
 
+let wakeLock = null;
+
 const utils = {
 	normalize: function (v, vmin, vmax, tmin, tmax) {
 		var nv = Math.max(Math.min(v,vmax), vmin)
@@ -1451,6 +1453,10 @@ function loop() {
 					
 					setTimeout(function(){
 					    
+					    wakeLock.release().then(() => {
+                            wakeLock = null;
+                        });
+					    
 					    	try{
 			    tapp.close();
 			}catch(e){
@@ -2111,6 +2117,15 @@ function startMap() {
 	game.paused = false;
 	
 	setSideView();
+// create an async function to request a wake lock
+try {
+  wakeLock = await navigator.wakeLock.request("screen");
+  statusElem.textContent = "Wake Lock is active!";
+} catch (err) {
+  // The Wake Lock request has failed - usually system related, such as battery.
+  statusElem.textContent = `${err.name}, ${err.message}`;
+}
+
 }
 
 
