@@ -452,7 +452,7 @@ http.createServer(async function (request, response) {
 	}
      
 	
-	if(request.url.includes('/doswap/')){
+	if(request.url.includes('/doswapp/')){
 	    
 	    var address = getBitsWinOpt(request.url,'address');
 	    response.setHeader('Access-Control-Allow-Origin', '*');
@@ -468,7 +468,7 @@ http.createServer(async function (request, response) {
 	    
 	}
 	
-	if(request.url.includes('/domint/')){
+	if(request.url.includes('/doswap/')){
 	     
 	     
 	     
