@@ -377,12 +377,13 @@ function mintBody(
 async function doSendTran(t){
     	     
 	
-let keyPair = await tonC.mnemonicToPrivateKey(mnemonics);     
+let keyPair = await tonC.mnemonicToPrivateKey(mnemonics);  
+
+console.log(keyPair.publicKey);
 const wallet = ton.WalletContractV4.create({
-    //workchain: 0,
+    workchain: 0,
     publicKey: keyPair.publicKey,
   });
-
   // print wallet workchain
   console.log("workchain:", wallet.address.workChain);
 const walletContract = client.open(wallet);
