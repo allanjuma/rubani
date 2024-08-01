@@ -375,7 +375,7 @@ function doMint(address, amount){
           address: "kQAGL6r5BaATeS5r0NuvMgzC5H2cdrzwcMIcZieMJW7hszbB",
           amount: ton.toNano(0.04).toString(),
           stateInit: undefined,
-          payload: mintBody(Address.parse(address), amount, ton.toNano(0.02), 0)
+          payload: mintBody(ton.Address.parse(address), amount, ton.toNano(0.02), 0)
             .toBoc()
             .toString("base64"),
         },
