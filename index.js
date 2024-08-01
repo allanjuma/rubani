@@ -40,14 +40,16 @@ var swap = require('@swap-coffee/sdk');
 var ston = require('@ston-fi/sdk');
 
 var ton = require('@ton/ton');
+var tonC = require('@ton/crypto');
 //import { Cell, beginCell, Address, beginDict, Slice, toNano } from "ton";
 
-const TonWeb = require("tonweb");
+//const TonWeb = require("tonweb");
 var baseDirectory = __dirname;
 
 
 const client = new ton.TonClient({
   endpoint: "https://toncenter.com/api/v2/jsonRPC",
+  apiKey: "22137c0e80f8524bedc10e31fcf4a73a0d4515d37fd96f6972053b54c76ab834"
 });
 
 const dex = client.open(new ston.DEX.v1.Router());
@@ -69,11 +71,10 @@ const OPS = {
   Burn: 0x595f07bc,
 };
 
-const tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', { apiKey: "22137c0e80f8524bedc10e31fcf4a73a0d4515d37fd96f6972053b54c76ab834" }));
-    const WalletClass = tonweb.wallet.all['v3R2'];
-    
-const seed = TonWeb.utils.base64ToBytes(bytes);
 const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
+// Convert mnemonics to private key
+let mnemonics = mnemonic.split(" ");
+let keyPair = await tonC.mnemonicToPrivateKey(mnemonics);
  
         
         
@@ -377,10 +378,6 @@ function mintBody(
 async function toSendTran(t){
     	     
 	     
-	     
-
-const keyPair = await TonWeb.mnemonic.mnemonicToKeyPair(mnemonic.split(" "));
-
 
         //const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
         const wallet = new WalletClass(tonweb.provider, {
