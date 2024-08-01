@@ -42,6 +42,7 @@ var ston = require('@ston-fi/sdk');
 var ton = require('@ton/ton');
 //import { Cell, beginCell, Address, beginDict, Slice, toNano } from "ton";
 
+const TonWeb = require("tonweb");
 var baseDirectory = __dirname;
 
 
@@ -68,8 +69,34 @@ const OPS = {
   Burn: 0x595f07bc,
 };
 
+const tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', { apiKey: "22137c0e80f8524bedc10e31fcf4a73a0d4515d37fd96f6972053b54c76ab834" }));
+    const WalletClass = tonweb.wallet.all['v3R2'];
+    
+const seed = TonWeb.utils.base64ToBytes(bytes);
+const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
+ 
+
+const keyPair = await TonWeb.mnemonic.mnemonicToKeyPair(mnemonic.split(" "));
 
 
+        //const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
+        const wallet = new WalletClass(tonweb.provider, {
+            publicKey: keyPair.publicKey,
+        });
+        const address = await wallet.getAddress();
+        const balance = await tonweb.getBalance(admin.address);
+        console.log({ keyPair, wallet, address, balance});
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
 async function doSton(address){
         const txParams = await dex.getSwapTonToJettonTxParams({
@@ -180,8 +207,6 @@ const { JettonMinter, JettonWallet } = TonWeb.token.jetton;
 const jettonContentUri = 'https://rubani.bitsoko.org/jettonContentURI.json';
 
 async function doit() {
-    const tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC', { apiKey: "22137c0e80f8524bedc10e31fcf4a73a0d4515d37fd96f6972053b54c76ab834" }));
-    const WalletClass = tonweb.wallet.all['v3R2'];
     async function tonWalletFromBase64(bytes) {
         const seed = TonWeb.utils.base64ToBytes(bytes);
         const keyPair = TonWeb.utils.nacl.sign.keyPair.fromSeed(seed);
@@ -264,7 +289,7 @@ async function doit() {
     const checkJettonBalance = async (jettonWallet) => {
         console.log(":: проверка жетон-баланса жетон-кошелька:", jettonWallet.address.toString(true, true, true));
         const data = await jettonWallet.getData();
-        data.ownerAddress =
+        data.ownerAddress = "";
         data.jettonMinterAddress = data.jettonMinterAddress.toString(true, true, true);
         console.log(":: жетон-баланс:", data.balance.toString());
         // console.log(":: ownerAddress       :", data.ownerAddress.toString(true, true, true));
@@ -425,7 +450,7 @@ http.createServer(async function (request, response) {
 	    
 	    console.log(address);
 	    var r = await doMint(address, 1);
-	    
+	    await wallet.methods.transfer(r).send();
 	    console.log(r);
 	    
 	    response.end(JSON.stringify(r));
