@@ -505,7 +505,7 @@ http.createServer(async function (request, response) {
 	    //response.setHeader('content-type', 'application/json');
 	    
 	    console.log(address);
-	    var r = await doBurn(address, 0.001);
+	    var r = await doBurn(address, 1);
 	    
 	    console.log(r);
 	    
