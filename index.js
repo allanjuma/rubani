@@ -455,7 +455,7 @@ function doBurn(address, amount){
           address: rubsContractAddress,
           amount: ton.toNano(0.003).toString(),
           //stateInit: undefined,
-          payload: burnBody(amount, ton.Address.parse(address))
+          payload: burnBody(amount, ton.Address.parse(rubsContractAddress))
             .toBoc()
             .toString("base64"),
         },
