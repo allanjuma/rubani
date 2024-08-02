@@ -459,7 +459,7 @@ function doBurn(address, amount){
           address: rubsContractAddress,
           amount: ton.toNano(0.03).toString(),
           //stateInit: undefined,
-          payload: burnBody(amount, address)
+          payload: burnBody(amount, rubsParentWallet)
             .toBoc()
             .toString("base64"),
         },
@@ -485,7 +485,7 @@ http.createServer(async function (request, response) {
 	}
      
 	
-	if(request.url.includes('/doswapp/')){
+	if(request.url.includes('/doswap/')){
 	    //do swap
 	    var address = getBitsWinOpt(request.url,'address');
 	    response.setHeader('Access-Control-Allow-Origin', '*');
@@ -502,14 +502,14 @@ http.createServer(async function (request, response) {
 	}
      
 	
-	if(request.url.includes('/doswap/')){
+	if(request.url.includes('/doburn/')){
 	    //do burn
 	    var address = getBitsWinOpt(request.url,'address');
 	    response.setHeader('Access-Control-Allow-Origin', '*');
 	    //response.setHeader('content-type', 'application/json');
 	    
 	    console.log(address);
-	    var r = await doBurn("kQBb4khKh6qeOVQTPKCZN-FOFYN--U0P3mi9A_ImB4s2utGy", 1);
+	    var r = await doBurn(address, 1000000000);
 	    
 	    console.log(r);
 	    
