@@ -55,12 +55,22 @@ const client = new ton.TonClient({
 const dex = client.open(new ston.DEX.v1.Router());
 
 
-        rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";
-        rubsContractAddress = "kQATWYYz0jJDPMSBSHclvYT823nFpOBQ4lKrTIBwjoIi_aDR";
-        rubsContractMaster = "kQDGRBLBXY8nmj0SJRlS-yrvhlTPFYrPCaXGVzMP4Gfm6Tx4";
+        rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";     // unique
+        rubsContractAddress = "kQATWYYz0jJDPMSBSHclvYT823nFpOBQ4lKrTIBwjoIi_aDR";  //unique
+        
+        
+        
+        rubsContractMaster = "kQDGRBLBXY8nmj0SJRlS-yrvhlTPFYrPCaXGVzMP4Gfm6Tx4";  //same
 
-
-
+const jettonWalletAddress = ton.Address.parse(rubsContractAddress);
+  let jettonWalletDataResult = await client.runMethod(jettonWalletAddress, 'get_wallet_data');
+  jettonWalletDataResult.stack.readNumber();
+  const ownerAddress = jettonWalletDataResult.stack.readAddress();
+  const jettonMasterAddress = jettonWalletDataResult.stack.readAddress();
+  const jettonCode = jettonWalletDataResult.stack.readCell();
+  
+console.log(ownerAddress, jettonMasterAddress);
+console.log(jettonCode);
 
 
 const OPS = {
