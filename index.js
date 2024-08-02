@@ -375,13 +375,16 @@ function mintBody(
 
 
 function burnBody(amount, address){
+    console.log(ton.Address.parse(address), address);
     return ton.beginCell()
     .storeUint(OPS.Burn, 32) // action
-    .storeUint(1, 64) // query-id
+    .storeUint(0, 64)  // query-id
     .storeCoins(amount)
-    .storeAddress(address) 
-    .storeDict(null)
+    .storeAddress(ton.Address.parse(address) ) 
+    .storeUint(0, 1)
     .endCell();
+        
+        
 }
 
 
@@ -455,7 +458,7 @@ function doBurn(address, amount){
           address: rubsContractAddress,
           amount: ton.toNano(0.003).toString(),
           //stateInit: undefined,
-          payload: burnBody(amount, ton.Address.parse(address))
+          payload: burnBody(amount, address)
             .toBoc()
             .toString("base64"),
         },
