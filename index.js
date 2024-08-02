@@ -103,8 +103,7 @@ const mnemonic = "duty mistake ready edge wool toss know reject extend state jud
 // Convert mnemonics to private key
 let mnemonics = mnemonic.split(" ");
  
-        
-        
+
         
         
         
@@ -424,18 +423,33 @@ function transferBody(address, amount){
         .storeUint(0, 32) // 0 opcode means we have a comment
         .storeStringTail('Transfer RUBS.')
         .endCell();
-
-    return ton.beginCell()
+        
+     const messageBody = ton.beginCell()
         .storeUint(OPS.Transfer, 32) // opcode for jetton transfer
         .storeUint(0, 64) // query id
-        .storeCoins(ton.toNano(10)) // jetton amount, amount * 10^9
-        .storeAddress(destinationAddress) // TON wallet destination address
-        .storeAddress(destinationAddress) // response excess destination
+        .storeCoins(toNano(5)) // jetton amount, amount * 10^9
+        .storeAddress(destinationAddress)
+        .storeAddress(destinationAddress) // response destination
         .storeBit(0) // no custom payload
-        .storeCoins(ton.toNano(1).toString()) // forward amount (if >0, will send notification message)
+        .storeCoins(toNano('0.02')) // forward amount - if >0, will send notification message
         .storeBit(1) // we store forwardPayload as a reference
         .storeRef(forwardPayload)
         .endCell();
+
+    const internalMessage = ton.internal({
+        to: jettonWalletAddress,
+        value: toNano('0.1'),
+        bounce: true,
+        body: messageBody
+    });
+    const internalMessageCell = ton.beginCell()
+        .store(storeMessageRelaxed(internalMessage))
+        .endCell();    
+        
+        console.log(internalMessageCell);
+        
+      return  messageBody; 
+        
     
 }
 
@@ -522,6 +536,48 @@ function doTransfer(address, amount){
     
     console.log(ton.Address.parse(address), address);
     console.log(ton.Address.parse(rubsContractAddress), rubsContractAddress);
+    
+    
+    let keyPair = await mnemonicToPrivateKey(mnemonics);
+
+// Create wallet contract
+let workchain = 0; // Usually you need a workchain 0
+let wallet = WalletContractV4.create({ workchain, publicKey: keyPair.publicKey });
+let contract = client.open(wallet);
+
+// Create a transfer
+let seqno: number = await contract.getSeqno();
+await contract.sendTransfer({
+  seqno,
+  secretKey: keyPair.secretKey,
+  messages: [internal({
+    value: '0.01',
+    to: address,
+    body: 'Example transfer body',
+  })]
+});     
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     return {
       validUntil: Date.now() + 5 * 60 * 1000,
       messages: [
