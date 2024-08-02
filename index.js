@@ -501,7 +501,7 @@ function doTransfer(address, amount){
           address: rubsContractMaster,
           amount: ton.toNano(0.03).toString(),
           //stateInit: undefined,
-          payload: transferBody(rubsContractAddress, amount)
+          payload: transferBody(rubsParentWallet, amount)
             .toBoc()
             .toString("base64"),
         },
