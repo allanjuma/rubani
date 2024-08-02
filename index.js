@@ -456,7 +456,7 @@ function doBurn(address, amount){
       messages: [
         {
           address: rubsContractAddress,
-          amount: ton.toNano(0.003).toString(),
+          amount: ton.toNano(0.03).toString(),
           //stateInit: undefined,
           payload: burnBody(amount, address)
             .toBoc()
