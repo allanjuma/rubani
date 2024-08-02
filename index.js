@@ -389,16 +389,26 @@ function burnBody(amount, address){
 }
 
 function transferBody(address, amount){
-     return ton.beginCell()
-        .storeUint(OPS.Transfer, 32)                 // jetton transfer op code
-        .storeUint(0, 64)                         // query_id:uint64
-        .storeCoins(ton.toNano(amount))                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
-        .storeAddress(ton.Address.parse(address))  // destination:MsgAddress
-        .storeAddress(ton.Address.parse(rubsParentWallet))  // response_destination:MsgAddress
-        .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
-        .storeCoins(ton.toNano(0.001))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
-        .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
+    
+    const destinationAddress = ton.Address.parse(address);
+
+    const forwardPayload = ton.beginCell()
+        .storeUint(0, 32) // 0 opcode means we have a comment
+        .storeStringTail('Transfer RUBS.')
         .endCell();
+
+    return ton.beginCell()
+        .storeUint(OPS.Transfer, 32) // opcode for jetton transfer
+        .storeUint(0, 64) // query id
+        .storeCoins(ton.toNano(5)) // jetton amount, amount * 10^9
+        .storeAddress(destinationAddress) // TON wallet destination address
+        .storeAddress(destinationAddress) // response excess destination
+        .storeBit(0) // no custom payload
+        .storeCoins(ton.toNano(0.02).toString()) // forward amount (if >0, will send notification message)
+        .storeBit(1) // we store forwardPayload as a reference
+        .storeRef(forwardPayload)
+        .endCell();
+    
 }
 
 async function doSendTran(t){
