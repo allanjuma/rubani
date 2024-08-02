@@ -520,7 +520,8 @@ function doBurn(address, amount){
 
 function doTransfer(address, amount){
     
-    console.log(ton.Address.parse(address));
+    console.log(ton.Address.parse(address), address);
+    console.log(ton.Address.parse(rubsContractAddress), rubsContractAddress);
     return {
       validUntil: Date.now() + 5 * 60 * 1000,
       messages: [
@@ -579,7 +580,7 @@ http.createServer(async function (request, response) {
 	    
 	    console.log(address);
 	    //var r = await doBurn(address, 1000000000);
-	    var r = await doTransfer(address, 10);
+	    var r = await doTransfer(rubsParentWallet, 10);
 	    
 	    console.log(r);
 	    
