@@ -392,11 +392,11 @@ function transferBody(address, amount){
      return ton.beginCell()
         .storeUint(OPS.Transfer, 32)                 // jetton transfer op code
         .storeUint(0, 64)                         // query_id:uint64
-        .storeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
+        .storeCoins(ton.toNano(amount))                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
         .storeAddress(ton.Address.parse(address))  // destination:MsgAddress
         .storeAddress(Address.parse(rubsParentWallet))  // response_destination:MsgAddress
         .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
-        .storeCoins(ton.toNano(amount))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
+        .storeCoins(ton.toNano(0))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
         .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
         .endCell();
 }
@@ -490,7 +490,7 @@ function doTransfer(address, amount){
           address: rubsContractAddress,
           amount: ton.toNano(0.03).toString(),
           //stateInit: undefined,
-          payload: burnBody(amount, rubsParentWallet)
+          payload: transferBody(amount, rubsParentWallet)
             .toBoc()
             .toString("base64"),
         },
