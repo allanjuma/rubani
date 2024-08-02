@@ -401,7 +401,7 @@ function transferBody(address, amount){
     return ton.beginCell()
         .storeUint(OPS.Transfer, 32) // opcode for jetton transfer
         .storeUint(0, 64) // query id
-        .storeCoins(ton.toNano(5)) // jetton amount, amount * 10^9
+        .storeCoins(ton.toNano(10)) // jetton amount, amount * 10^9
         .storeAddress(destinationAddress) // TON wallet destination address
         .storeAddress(destinationAddress) // response excess destination
         .storeBit(0) // no custom payload
@@ -499,7 +499,7 @@ function doTransfer(address, amount){
       messages: [
         {
           address: rubsContractAddress,
-          amount: ton.toNano(0.001).toString(),
+          amount: ton.toNano(0.01).toString(),
           //stateInit: undefined,
           payload: transferBody(rubsParentWallet, amount)
             .toBoc()
