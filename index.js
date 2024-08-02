@@ -55,7 +55,7 @@ const client = new ton.TonClient({
 const dex = client.open(new ston.DEX.v1.Router());
 
 
-        rubsParentWallet = "kQBb4khKh6qeOVQTPKCZN-FOFYN--U0P3mi9A_ImB4s2utGy";
+        rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";
         rubsContractAddress = "kQA1Piulwi_V-FaC9ciJnZNUXMLeoCadE72oqgjQoa4rLbEW";
 
 
@@ -379,7 +379,7 @@ function burnBody(amount, address){
     return ton.beginCell()
     .storeUint(OPS.Burn, 32) // action
     .storeUint(0, 64)  // query-id
-    .storeCoins(amount)
+    .storeCoins(ton.toNano(amount))
     .storeAddress(ton.Address.parse(address) ) 
     .storeAddress(null) 
     .storeUint(0, 1)
@@ -388,6 +388,18 @@ function burnBody(amount, address){
         
 }
 
+function transferBody(address, amount){
+     return ton.beginCell()
+        .storeUint(OPS.Transfer, 32)                 // jetton transfer op code
+        .storeUint(0, 64)                         // query_id:uint64
+        .storeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
+        .storeAddress(ton.Address.parse(address))  // destination:MsgAddress
+        .storeAddress(Address.parse(rubsParentWallet))  // response_destination:MsgAddress
+        .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
+        .storeCoins(ton.toNano(amount))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
+        .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
+        .endCell();
+}
 
 async function doSendTran(t){
     	     
@@ -468,6 +480,25 @@ function doBurn(address, amount){
     
 }
 
+function doTransfer(address, amount){
+    
+    console.log(ton.Address.parse(address));
+    return {
+      validUntil: Date.now() + 5 * 60 * 1000,
+      messages: [
+        {
+          address: rubsContractAddress,
+          amount: ton.toNano(0.03).toString(),
+          //stateInit: undefined,
+          payload: burnBody(amount, rubsParentWallet)
+            .toBoc()
+            .toString("base64"),
+        },
+      ],
+    };
+    
+}
+
 http.createServer(async function (request, response) {
     try {
         console.log(request.url);
@@ -509,7 +540,8 @@ http.createServer(async function (request, response) {
 	    //response.setHeader('content-type', 'application/json');
 	    
 	    console.log(address);
-	    var r = await doBurn(address, 1000000000);
+	    //var r = await doBurn(address, 1000000000);
+	    var r = await doTransfer(address, 1000000000);
 	    
 	    console.log(r);
 	    
