@@ -396,7 +396,7 @@ function transferBody(address, amount){
         .storeAddress(ton.Address.parse(address))  // destination:MsgAddress
         .storeAddress(ton.Address.parse(rubsParentWallet))  // response_destination:MsgAddress
         .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
-        .storeCoins(ton.toNano(0))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
+        .storeCoins(ton.toNano(0.001))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
         .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
         .endCell();
 }
