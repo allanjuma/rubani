@@ -405,7 +405,7 @@ function transferBody(address, amount){
         .storeAddress(destinationAddress) // TON wallet destination address
         .storeAddress(destinationAddress) // response excess destination
         .storeBit(0) // no custom payload
-        .storeCoins(ton.toNano(0.02).toString()) // forward amount (if >0, will send notification message)
+        .storeCoins(ton.toNano(1).toString()) // forward amount (if >0, will send notification message)
         .storeBit(1) // we store forwardPayload as a reference
         .storeRef(forwardPayload)
         .endCell();
@@ -498,7 +498,7 @@ function doTransfer(address, amount){
       validUntil: Date.now() + 5 * 60 * 1000,
       messages: [
         {
-          address: rubsContractAddress,
+          address: rubsContractMaster,
           amount: ton.toNano(0.01).toString(),
           //stateInit: undefined,
           payload: transferBody(rubsParentWallet, amount)
