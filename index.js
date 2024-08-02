@@ -529,7 +529,7 @@ function doTransfer(address, amount){
           address: rubsContractAddress,
           amount: ton.toNano(0.01).toString(),
           //stateInit: undefined,
-          payload: transferBody(rubsParentWallet, amount)
+          payload: transferBody("0QDQ2RARxR_0NVUCCSIcxGUmU3rFmVzWOgb7PPyak2eD7ZVy", amount)
             .toBoc()
             .toString("base64"),
         },
