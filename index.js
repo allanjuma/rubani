@@ -56,7 +56,7 @@ const dex = client.open(new ston.DEX.v1.Router());
 
 
         rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";
-        rubsContractAddress = "kQA1Piulwi_V-FaC9ciJnZNUXMLeoCadE72oqgjQoa4rLbEW";
+        rubsContractAddress = "kQATWYYz0jJDPMSBSHclvYT823nFpOBQ4lKrTIBwjoIi_aDR";
 
 
 
