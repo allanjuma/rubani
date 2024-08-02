@@ -541,7 +541,7 @@ http.createServer(async function (request, response) {
 	    
 	    console.log(address);
 	    //var r = await doBurn(address, 1000000000);
-	    var r = await doTransfer(address, 1000000000);
+	    var r = await doTransfer(address, 10);
 	    
 	    console.log(r);
 	    
