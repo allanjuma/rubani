@@ -498,10 +498,10 @@ function doTransfer(address, amount){
       validUntil: Date.now() + 5 * 60 * 1000,
       messages: [
         {
-          address: rubsContractAddress,
+          address: rubsContractMaster,
           amount: ton.toNano(0.03).toString(),
           //stateInit: undefined,
-          payload: transferBody(rubsContractMaster, amount)
+          payload: transferBody(rubsContractAddress, amount)
             .toBoc()
             .toString("base64"),
         },
