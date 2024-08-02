@@ -365,7 +365,7 @@ function mintBody(
         .storeUint(0, 64)
         .storeCoins(jettonValue)
         .storeAddress(null)
-        .storeAddress(owner)
+        .storeAddress(Address.parse(owner))
         .storeCoins(ton.toNano(1))
         .storeBit(false) // forward_payload in this slice, not separate cell
         .endCell(),
@@ -379,7 +379,7 @@ function burnBody(amount, address){
     .storeUint(OPS.Burn, 32) // action
     .storeUint(1, 64) // query-id
     .storeCoins(amount)
-    .storeAddress(address)
+    .storeAddress(Address.parse(address)) 
     .storeDict(null)
     .endCell();
 }
@@ -455,7 +455,7 @@ function doBurn(address, amount){
           address: rubsContractAddress,
           amount: ton.toNano(0.003).toString(),
           //stateInit: undefined,
-          payload: burnBody(amount, ton.Address.parse(rubsContractAddress))
+          payload: burnBody(amount, ton.Address.parse(address))
             .toBoc()
             .toString("base64"),
         },
@@ -505,7 +505,7 @@ http.createServer(async function (request, response) {
 	    //response.setHeader('content-type', 'application/json');
 	    
 	    console.log(address);
-	    var r = await doBurn(address, 1);
+	    var r = await doBurn(address, 0.001);
 	    
 	    console.log(r);
 	    
