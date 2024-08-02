@@ -509,7 +509,7 @@ http.createServer(async function (request, response) {
 	    //response.setHeader('content-type', 'application/json');
 	    
 	    console.log(address);
-	    var r = await doBurn(rubsParentWallet, 1);
+	    var r = await doBurn("kQBb4khKh6qeOVQTPKCZN-FOFYN--U0P3mi9A_ImB4s2utGy", 1);
 	    
 	    console.log(r);
 	    
