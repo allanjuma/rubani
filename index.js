@@ -57,6 +57,7 @@ const dex = client.open(new ston.DEX.v1.Router());
 
         rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";
         rubsContractAddress = "kQATWYYz0jJDPMSBSHclvYT823nFpOBQ4lKrTIBwjoIi_aDR";
+        rubsContractMaster = "kQDGRBLBXY8nmj0SJRlS-yrvhlTPFYrPCaXGVzMP4Gfm6Tx4";
 
 
 
@@ -500,7 +501,7 @@ function doTransfer(address, amount){
           address: rubsContractAddress,
           amount: ton.toNano(0.03).toString(),
           //stateInit: undefined,
-          payload: transferBody(rubsParentWallet, amount)
+          payload: transferBody(rubsContractMaster, amount)
             .toBoc()
             .toString("base64"),
         },
