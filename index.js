@@ -375,7 +375,7 @@ function mintBody(
 
 
 function burnBody(amount, address){
-    return beginCell()
+    return ton.beginCell()
     .storeUint(OPS.Burn, 32) // action
     .storeUint(1, 64) // query-id
     .storeCoins(amount)
