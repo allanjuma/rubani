@@ -56,7 +56,7 @@ const dex = client.open(new ston.DEX.v1.Router());
 
 
         rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";
-        rubsContractAddress = "kQAGL6r5BaATeS5r0NuvMgzC5H2cdrzwcMIcZieMJW7hszbB";
+        rubsContractAddress = "kQB81EjWjxDuKk6uFM6DQDUYv50LZFaYtmRr0ms-V6UuOub5";
 
 
 
@@ -423,7 +423,7 @@ function doMint(address, amount){
       validUntil: Date.now() + 5 * 60 * 1000,
       messages: [
         {
-          address: "kQAGL6r5BaATeS5r0NuvMgzC5H2cdrzwcMIcZieMJW7hszbB",
+          address: rubsContractAddress,
           amount: ton.toNano(0.003).toString(),
           //stateInit: undefined,
           payload: mintBody(ton.Address.parse(address), amount, ton.toNano(1), 0)
