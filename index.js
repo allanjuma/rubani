@@ -394,7 +394,7 @@ function transferBody(address, amount){
         .storeUint(0, 64)                         // query_id:uint64
         .storeCoins(ton.toNano(amount))                      // amount:(VarUInteger 16) -  Jetton amount for transfer (decimals = 6 - jUSDT, 9 - default)
         .storeAddress(ton.Address.parse(address))  // destination:MsgAddress
-        .storeAddress(Address.parse(rubsParentWallet))  // response_destination:MsgAddress
+        .storeAddress(ton.Address.parse(rubsParentWallet))  // response_destination:MsgAddress
         .storeUint(0, 1)                          // custom_payload:(Maybe ^Cell)
         .storeCoins(ton.toNano(0))                 // forward_ton_amount:(VarUInteger 16) - if >0, will send notification message
         .storeUint(0,1)                           // forward_payload:(Either Cell ^Cell)
