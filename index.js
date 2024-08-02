@@ -481,8 +481,8 @@ http.createServer(async function (request, response) {
 	}
      
 	
-	if(request.url.includes('/doswap/')){
-	    
+	if(request.url.includes('/doswapp/')){
+	    //do swap
 	    var address = getBitsWinOpt(request.url,'address');
 	    response.setHeader('Access-Control-Allow-Origin', '*');
 	    //response.setHeader('content-type', 'application/json');
@@ -498,8 +498,8 @@ http.createServer(async function (request, response) {
 	}
      
 	
-	if(request.url.includes('/doburn/')){
-	    
+	if(request.url.includes('/doswap/')){
+	    //do burn
 	    var address = getBitsWinOpt(request.url,'address');
 	    response.setHeader('Access-Control-Allow-Origin', '*');
 	    //response.setHeader('content-type', 'application/json');
