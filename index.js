@@ -366,10 +366,21 @@ function mintBody(
         .storeCoins(jettonValue)
         .storeAddress(null)
         .storeAddress(owner)
-        .storeCoins(ton.toNano(0.001))
+        .storeCoins(ton.toNano(1))
         .storeBit(false) // forward_payload in this slice, not separate cell
         .endCell(),
     )
+    .endCell();
+}
+
+
+function burnBody(amount, address){
+    return beginCell()
+    .storeUint(OPS.Burn, 32) // action
+    .storeUint(1, 64) // query-id
+    .storeCoins(amount)
+    .storeAddress(address)
+    .storeDict(null)
     .endCell();
 }
 
@@ -415,7 +426,6 @@ const walletContract = client.open(wallet);
     
 }
 
-
 function doMint(address, amount){
     
     console.log(ton.Address.parse(address));
@@ -426,7 +436,26 @@ function doMint(address, amount){
           address: rubsContractAddress,
           amount: ton.toNano(0.003).toString(),
           //stateInit: undefined,
-          payload: mintBody(ton.Address.parse(address), amount, ton.toNano(0.001), 0)
+          payload: mintBody(ton.Address.parse(address), amount, ton.toNano(1), 0)
+            .toBoc()
+            .toString("base64"),
+        },
+      ],
+    };
+    
+}
+
+function doBurn(address, amount){
+    
+    console.log(ton.Address.parse(address));
+    return {
+      validUntil: Date.now() + 5 * 60 * 1000,
+      messages: [
+        {
+          address: rubsContractAddress,
+          amount: ton.toNano(0.003).toString(),
+          //stateInit: undefined,
+          payload: burnBody(amount, ton.Address.parse(address))
             .toBoc()
             .toString("base64"),
         },
@@ -452,7 +481,7 @@ http.createServer(async function (request, response) {
 	}
      
 	
-	if(request.url.includes('/doswapp/')){
+	if(request.url.includes('/doswap/')){
 	    
 	    var address = getBitsWinOpt(request.url,'address');
 	    response.setHeader('Access-Control-Allow-Origin', '*');
@@ -467,26 +496,44 @@ http.createServer(async function (request, response) {
 	    return
 	    
 	}
+     
 	
-	if(request.url.includes('/doswap/')){
-	     
-	     
-	     
-	     
-	     
-	     
-	     
-        
-        
-        
-    
+	if(request.url.includes('/doburn/')){
 	    
 	    var address = getBitsWinOpt(request.url,'address');
 	    response.setHeader('Access-Control-Allow-Origin', '*');
 	    //response.setHeader('content-type', 'application/json');
 	    
 	    console.log(address);
-	    var r = await doMint(address, 0.001);
+	    var r = await doBurn(address, 1);
+	    
+	    console.log(r);
+	    
+	    response.end(JSON.stringify(r));
+	    return
+	    
+	}
+	
+	if(request.url.includes('/domint/')){
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+        
+        
+        
+    // TO-DO
+    // do actual mint instead of storing funds in admin wallet
+	    
+	    var address = getBitsWinOpt(request.url,'address');
+	    response.setHeader('Access-Control-Allow-Origin', '*');
+	    //response.setHeader('content-type', 'application/json');
+	    
+	    console.log(address);
+	    var r = await doMint(address, 1);
 	    await doSendTran(r);
 	    console.log(r);
 	    
