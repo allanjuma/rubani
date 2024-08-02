@@ -62,6 +62,9 @@ const dex = client.open(new ston.DEX.v1.Router());
         
         rubsContractMaster = "kQDGRBLBXY8nmj0SJRlS-yrvhlTPFYrPCaXGVzMP4Gfm6Tx4";  //same
 
+async function getContractInfo(){
+    
+    
 const jettonWalletAddress = ton.Address.parse(rubsContractAddress);
   let jettonWalletDataResult = await client.runMethod(jettonWalletAddress, 'get_wallet_data');
   jettonWalletDataResult.stack.readNumber();
@@ -71,6 +74,22 @@ const jettonWalletAddress = ton.Address.parse(rubsContractAddress);
   
 console.log(ownerAddress, jettonMasterAddress);
 console.log(jettonCode);
+
+
+}
+
+getContractInfo();
+
+
+
+
+
+
+
+
+
+
+
 
 
 const OPS = {
