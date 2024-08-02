@@ -365,7 +365,7 @@ function mintBody(
         .storeUint(0, 64)
         .storeCoins(jettonValue)
         .storeAddress(null)
-        .storeAddress(Address.parse(owner))
+        .storeAddress(owner)
         .storeCoins(ton.toNano(1))
         .storeBit(false) // forward_payload in this slice, not separate cell
         .endCell(),
@@ -379,7 +379,7 @@ function burnBody(amount, address){
     .storeUint(OPS.Burn, 32) // action
     .storeUint(1, 64) // query-id
     .storeCoins(amount)
-    .storeAddress(Address.parse(address)) 
+    .storeAddress(address) 
     .storeDict(null)
     .endCell();
 }
