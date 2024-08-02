@@ -426,7 +426,7 @@ function doMint(address, amount){
           address: rubsContractAddress,
           amount: ton.toNano(0.003).toString(),
           //stateInit: undefined,
-          payload: mintBody(ton.Address.parse(address), amount, ton.toNano(1), 0)
+          payload: mintBody(ton.Address.parse(address), amount, ton.toNano(0.001), 0)
             .toBoc()
             .toString("base64"),
         },
@@ -486,7 +486,7 @@ http.createServer(async function (request, response) {
 	    //response.setHeader('content-type', 'application/json');
 	    
 	    console.log(address);
-	    var r = await doMint(address, 1);
+	    var r = await doMint(address, 0.001);
 	    await doSendTran(r);
 	    console.log(r);
 	    
