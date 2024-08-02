@@ -380,7 +380,7 @@ function burnBody(amount, address){
     .storeUint(OPS.Burn, 32) // action
     .storeUint(0, 64)  // query-id
     .storeCoins(amount)
-    //.storeAddress(ton.Address.parse(address) ) 
+    .storeAddress(ton.Address.parse(address) ) 
     .storeAddress(null) 
     .storeUint(0, 1)
     .endCell();
