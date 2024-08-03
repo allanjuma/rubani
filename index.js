@@ -57,6 +57,7 @@ const client = new ton.TonClient({
 
 const dex = client.open(new ston.DEX.v1.Router());
 
+/*
 const router = client.open(
   ston.DEX.v2.Router.create(
     "kQCas2p939ESyXM_BzFJzcIe3GD5S0tbjJDj6EBVn-SPsEkN" // CPI Router v2.0.0
@@ -66,7 +67,7 @@ const router = client.open(
 const proxyTon = ston.pTON.v2.create(
   "kQDwpyxrmYQlGDViPk-oqP4XK6J11I-bx7fJAlQCWmJB4m74" // pTON v2.0.0
 );
-
+*/
         rubsPinataApi = "90cdf115e5e86ba8ab81";     // unique
         rubsPinataSecret = "7e94dda9d9998778b2a7168142ab40ad9bed09e43e4e28b366d9bf7cd4dd0ab3";  //unique
         
