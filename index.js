@@ -84,7 +84,7 @@ const jettonWalletAddress = ton.Address.parse(rubsContractAddress);
   rubsContractMaster = jettonWalletDataResult.stack.readAddress();
   //const jettonCode = jettonWalletDataResult.stack.readCell();
   
-
+console.log(AssetsSDK.createWalletV4);
 
 const sdk = await GameFiSDK.create({
     storage: {
