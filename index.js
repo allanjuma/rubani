@@ -667,7 +667,7 @@ http.createServer(async function (request, response) {
 	    //response.setHeader('content-type', 'application/json');
 	    
 	    console.log(address);
-	    var r = await doBurn(rubsContractMaster, address, 10);
+	    var r = await doBurn(contract, address, 10);
 	    //var r = await doTransfer(rubsParentWallet, 10);
 	    
 	    console.log(r);
