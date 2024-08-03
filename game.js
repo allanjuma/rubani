@@ -1611,7 +1611,7 @@ try{
    // console.log("preparing to send jettons: "+expectedJettonWalletAddress.toString(true, true, true)+"...."+jettonWallet.address);
    
  
- var trans = await fetch("https://rubani.bitsoko.org/doburn/?address=kQAGL6r5BaATeS5r0NuvMgzC5H2cdrzwcMIcZieMJW7hszbB")
+ var trans = await fetch("https://rubani.bitsoko.org/doburn/?address=" +currentAccount.address+"&contract="+jettonWalletAdr)
   .then((response) => {
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
