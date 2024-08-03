@@ -530,6 +530,8 @@
 <script src="https://gateway.bitsoko.org/bitsAssets/js/qrcodesvg.js" async=""></script>
 <script async="">
 currentAccount = null;
+jettonBal = 0;
+tonBal = 0;
     async function initTon() {
 
         connector = new TonConnectSDK.TonConnect();
@@ -641,6 +643,7 @@ currentAccount = null;
         playerAddress = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";
         rubsMasterWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";
         rubsContractAddress = "kQB81EjWjxDuKk6uFM6DQDUYv50LZFaYtmRr0ms-V6UuOub5";
+        
 
 		/*
         const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
@@ -666,6 +669,8 @@ const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider,{addre
 const data = await jettonWallet.getData();
 console.log('Jetton balance:', data.balance.toString());
 console.log('Jetton owner address:', data.ownerAddress.toString(true, true, true));
+jettonBal = data.balance/Math.pow(10, 9);
+tonBal = balance/Math.pow(10, 9);
 
                    document.getElementById("rubs-balance").innerText = (data.balance/Math.pow(10, 9))+' RUBS';
         };
