@@ -601,6 +601,10 @@
                 const currentIsConnectedStatus = tonConnectUI.connected;
 
                 console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnectedStatus);
+                
+                const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider, {address: "kQDGRBLBXY8nmj0SJRlS-yrvhlTPFYrPCaXGVzMP4Gfm6Tx4"});
+                jettonWallet = await jettonMinter.getJettonWalletAddress(new TonWeb.utils.Address(currentWallet));
+
 
 				
 		        console.log(logBalance());
@@ -655,8 +659,14 @@
             const balance = await tonweb.getBalance(new tonweb.utils.Address(rubsMasterWallet));
             
                    document.getElementById("ton-balance").innerText = '+ '+(balance/Math.pow(10, 9))+' TON';
-            console.log(suffix + " address", new tonweb.utils.Address(rubsMasterWallet).toString(true, true, true));
-            console.log(suffix + " balance", balance);
+            console.log(" address", new tonweb.utils.Address(rubsMasterWallet).toString(true, true, true));
+            console.log(" balance", balance);
+const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider,{address: jettonWallet});
+const data = await jettonWallet.getData();
+console.log('Jetton balance:', data.balance.toString());
+console.log('Jetton owner address:', data.ownerAddress.toString(true, true, true));
+
+                   document.getElementById("rubs-balance").innerText = (data.balance/Math.pow(10, 9))+' RUBS';
         };
 
 		
