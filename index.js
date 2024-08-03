@@ -107,7 +107,7 @@ const jetton = await sdk.createJetton({
         amount: ton.toNano('100'),
     },
 });
-
+const jetton = sdk.openJetton(Address.parse('EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9c'));
 */
 }
 
@@ -144,7 +144,7 @@ const OPS = {
 async function doSton(address){
         const txParams = await dex.getSwapTonToJettonTxParams({
           offerAmount: ton.toNano("1"), // swap 1 TON
-          askJettonAddress: rubsContractAddress, // for a RUBS
+          askJettonAddress: rubsContractMaster, // for a RUBS
           minAskAmount: ton.toNano("10"), // but not less than 0.1 RUBS
           proxyTon: new ston.pTON.v1(),
           userWalletAddress: address,
