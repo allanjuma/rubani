@@ -1630,6 +1630,7 @@ try{
        
    }else{
        window.location = 'https://t.me/wallet?attach=wallet';
+       return;
    }
    
    
