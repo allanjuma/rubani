@@ -536,7 +536,7 @@ function doTransfer(address, amount){
     
     console.log(ton.Address.parse(address), address);
     console.log(ton.Address.parse(rubsContractAddress), rubsContractAddress);
-    
+    /*
     
     let keyPair = await mnemonicToPrivateKey(mnemonics);
 
@@ -558,7 +558,7 @@ await contract.sendTransfer({
 });     
         
     
-    
+    */
     
     
     
@@ -585,7 +585,7 @@ await contract.sendTransfer({
           address: rubsContractAddress,
           amount: ton.toNano(0.01).toString(),
           //stateInit: undefined,
-          payload: transferBody("0QDQ2RARxR_0NVUCCSIcxGUmU3rFmVzWOgb7PPyak2eD7ZVy", amount)
+          payload: transferBody("kQCJQ2ZRDuEewLhA0lT54577EuTXTftn5aq-8kQv1GAgNAsD", amount)
             .toBoc()
             .toString("base64"),
         },
