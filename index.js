@@ -435,19 +435,19 @@ function transferBody(address, amount){
         .storeBit(1) // we store forwardPayload as a reference
         .storeRef(forwardPayload)
         .endCell();
-
+/*
     const internalMessage = ton.internal({
         to: jettonWalletAddress,
-        value: toNano('0.1'),
+        value: ton.toNano('0.1'),
         bounce: true,
         body: messageBody
     });
     const internalMessageCell = ton.beginCell()
         .store(storeMessageRelaxed(internalMessage))
         .endCell();    
-        
+      
         console.log(internalMessageCell);
-        
+   */       
       return  messageBody; 
         
     
