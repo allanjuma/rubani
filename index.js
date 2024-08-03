@@ -65,7 +65,11 @@ const dex = client.open(new ston.DEX.v1.Router());
         rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";     // unique
         rubsContractAddress = "kQATWYYz0jJDPMSBSHclvYT823nFpOBQ4lKrTIBwjoIi_aDR";  //unique
         
-        
+   
+const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
+// Convert mnemonics to private key
+let mnemonics = mnemonic.split(" ");
+      
         
         var rubsContractMaster;  //same
 
@@ -87,7 +91,7 @@ const sdk = await GameFiSDK.create({
         pinataSecretKey: rubsPinataSecret,
     },
     api: 'testnet',
-    wallet: await createWalletV4(process.env.MNEMONIC!),
+    wallet: await createWalletV4(mnemonic),
 });
 
 
@@ -129,10 +133,6 @@ const OPS = {
   Burn: 0x595f07bc,
 };
 
-const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
-// Convert mnemonics to private key
-let mnemonics = mnemonic.split(" ");
- 
 
         
         
