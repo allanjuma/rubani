@@ -670,64 +670,6 @@ console.log('Jetton owner address:', data.ownerAddress.toString(true, true, true
         };
 
 		
-                const getMinterInfo = async()=>{
-                    const data = await minter.getJettonData();
-                    data.totalSupply = data.totalSupply.toString();
-                    data.adminAddress = data.adminTonWeb.token.jetton.JettonWallet.codeHexAddress.toString(true, true, true);
-                    console.log("MinterInfo.totalSupply:", data.totalSupply);
-                };
-
-        new tonweb.utils.Address(rubsContractAddress).toString(true, true, true)
-        const minter = new TonWeb.token.jetton.JettonMinter(tonweb.provider,{
-            adminAddress: new tonweb.utils.Address(currentAccount.address),
-            jettonContentUri: "https://rubani.bitsoko.org/jettonContentURI.json",
-            jettonWalletCodeHex: TonWeb.token.jetton.JettonWallet.codeHex
-        });
-
-        const mint = async()=>{
-
-            const minterAddress = await minter.getAddress();
-
-            //const seqno = (await wallet.methods.seqno().call()) || 0;
-            const bod = await minter.createMintBody({
-                //jettonAmount: TonWeb.utils.toNano('721'),
-                toAddress: new tonweb.utils.Address(rubsMasterWallet),
-                jettonAmount: TonWeb.utils.toNano('0.04'),
-                //response_destination: address,
-            });
-            bodd = await bod.toBoc();
-
-            console.log(await tonConnectUI.sendTransaction({
-                validUntil: Date.now() + 1000000,
-                messages: [{
-                    address: new tonweb.utils.Address(rubsContractAddress).toString(),
-                    //address: minterAddress.toString(true, true, true),
-                    amount: TonWeb.utils.toNano('0.005').toString(),
-                    //seqno: seqno,
-                    //payload: bodd.toString("base64"),
-                    //sendMode: 3,
-
-                }]
-
-            }));
-
-            /*
-            console.log(await wallet.methods.transfer({
-                secretKey: keyPair.secretKey,
-                toAddress: minterAddress.toString(true, true, true),
-                amount: TonWeb.utils.toNano('0.5'),
-                seqno: seqno,
-                payload: await minter.createMintBody({
-                    jettonAmount: TonWeb.utils.toNano('721'),
-                    destination: address,
-                    amount: TonWeb.utils.toNano('0.04')
-                }),
-                sendMode: 3,
-            }).send());
-            
-            */
-        }
-        ;
     }
     initTon();
 </script>
