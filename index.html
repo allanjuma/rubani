@@ -662,17 +662,27 @@ tonBal = 0;
 			var address = new tonweb.utils.Address(currentAccount.address);
             const balance = await tonweb.getBalance(new tonweb.utils.Address(currentAccount.address));
             
+            tonBal = balance/Math.pow(10, 9);
                    document.getElementById("ton-balance").innerText = '+ '+(balance/Math.pow(10, 9))+' TON';
             console.log(" address", new tonweb.utils.Address(currentAccount.address).toString(true, true, true));
             console.log(" balance", balance);
 const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider,{address: jettonWalletAdr});
+
+try{
+    
 const data = await jettonWallet.getData();
 console.log('Jetton balance:', data.balance.toString());
 console.log('Jetton owner address:', data.ownerAddress.toString(true, true, true));
 jettonBal = data.balance/Math.pow(10, 9);
-tonBal = balance/Math.pow(10, 9);
+document.getElementById("rubs-balance").innerText = (data.balance/Math.pow(10, 9))+' RUBS';
+                   
+}catch(err){
+    // wallet is inaccessible, probably uninitialized zo balance must be zero
+    jettonBal = 0;
+}
 
-                   document.getElementById("rubs-balance").innerText = (data.balance/Math.pow(10, 9))+' RUBS';
+                   
+                   
         };
 
 		
