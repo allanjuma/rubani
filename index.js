@@ -662,11 +662,12 @@ http.createServer(async function (request, response) {
 	if(request.url.includes('/doburn/')){
 	    //do burn
 	    var address = getBitsWinOpt(request.url,'address');
+	    var contract = getBitsWinOpt(request.url,'contract');
 	    response.setHeader('Access-Control-Allow-Origin', '*');
 	    //response.setHeader('content-type', 'application/json');
 	    
 	    console.log(address);
-	    var r = await doBurn(address, 10);
+	    var r = await doBurn(contract, address, 10);
 	    //var r = await doTransfer(rubsParentWallet, 10);
 	    
 	    console.log(r);
