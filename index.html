@@ -597,7 +597,7 @@
 
                 const currentWallet = tonConnectUI.wallet;
                 const currentWalletInfo = tonConnectUI.walletInfo;
-                const currentAccount = tonConnectUI.account;
+                currentAccount = tonConnectUI.account;
                 const currentIsConnectedStatus = tonConnectUI.connected;
 
                 console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnectedStatus);
@@ -655,11 +655,11 @@
         const address = await wallet.getAddress();
 		*/
         const logBalance = async(suffix="")=>{
-			var address = new tonweb.utils.Address(rubsMasterWallet);
-            const balance = await tonweb.getBalance(new tonweb.utils.Address(rubsMasterWallet));
+			var address = new tonweb.utils.Address(currentAccount.address);
+            const balance = await tonweb.getBalance(new tonweb.utils.Address(currentAccount.address));
             
                    document.getElementById("ton-balance").innerText = '+ '+(balance/Math.pow(10, 9))+' TON';
-            console.log(" address", new tonweb.utils.Address(rubsMasterWallet).toString(true, true, true));
+            console.log(" address", new tonweb.utils.Address(currentAccount.address).toString(true, true, true));
             console.log(" balance", balance);
 const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider,{address: jettonWalletAdr});
 const data = await jettonWallet.getData();
@@ -679,7 +679,7 @@ console.log('Jetton owner address:', data.ownerAddress.toString(true, true, true
 
         new tonweb.utils.Address(rubsContractAddress).toString(true, true, true)
         const minter = new TonWeb.token.jetton.JettonMinter(tonweb.provider,{
-            adminAddress: new tonweb.utils.Address(rubsMasterWallet),
+            adminAddress: new tonweb.utils.Address(currentAccount.address),
             jettonContentUri: "https://rubani.bitsoko.org/jettonContentURI.json",
             jettonWalletCodeHex: TonWeb.token.jetton.JettonWallet.codeHex
         });
