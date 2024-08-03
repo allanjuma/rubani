@@ -102,7 +102,7 @@ const jetton = await sdk.createJetton({
     symbol: 'TEST',
 }, {
     premint: {
-        to: sdk.sender?.address!,
+        to: rubsParentWallet,
         amount: ton.toNano('100'),
     },
 });
