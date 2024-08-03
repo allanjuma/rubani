@@ -87,7 +87,7 @@ const jettonWalletAddress = ton.Address.parse(rubsContractAddress);
 
 const sdk = await GameFiSDK.create({
     storage: {
-        pinataApiKey: rubsPinataAi,
+        pinataApiKey: rubsPinataApi,
         pinataSecretKey: rubsPinataSecret,
     },
     api: 'testnet',
