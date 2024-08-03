@@ -42,6 +42,7 @@ var ston = require('@ston-fi/sdk');
 var ton = require('@ton/ton');
 var tonC = require('@ton/crypto');
 var GameFiSDK = require('@ton-community/gamefi-sdk');
+var AssetsSDK = require('@ton-community/assets-sdk');
 //import { Cell, beginCell, Address, beginDict, Slice, toNano } from "ton";
 
 
@@ -91,7 +92,7 @@ const sdk = await GameFiSDK.create({
         pinataSecretKey: rubsPinataSecret,
     },
     api: 'testnet',
-    wallet: await createWalletV4(mnemonic),
+    wallet: await AssetsSDK.createWalletV4(mnemonic),
 });
 
 
