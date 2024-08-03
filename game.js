@@ -1235,9 +1235,11 @@ function spawnCoins() {
     }else{
     
     
-	const nCoins = 1 + Math.floor(Math.random()*2)
-	const d = world.seaRadius + world.planeDefaultHeight + utils.randomFromRange(-1,1) * (world.planeAmpHeight-20)
-	const amplitude = 10 + Math.round(Math.random()*10)
+	//const nCoins = 1 + Math.floor(Math.random()*2);
+	const nCoins = randomInteger(1, 3);
+	const d = world.seaRadius + world.planeDefaultHeight + utils.randomFromRange(-1,1) * (world.planeAmpHeight-20);
+	const amplitude = 10 + Math.round(Math.random()*10);
+	
 	for (let i=0; i<nCoins; i++) {
 		const coin = new Coin()
 		coin.angle = - (i*0.05)
@@ -1248,7 +1250,7 @@ function spawnCoins() {
 	}
 	
 	// Add value of coin based on the level multiplier
-	game.statistics.coinsSpawned += (nCoins*game.level)
+	game.statistics.coinsSpawned += (nCoins*game.level);
 	
     }
 }
@@ -1982,7 +1984,7 @@ function createWorld() {
 		pauseLifeSpawn: 400,
 
 		levelCount: 11,
-		distanceForLevelUpdate: randomInteger(200, 300),
+		distanceForLevelUpdate: randomInteger(400, 600),
 
 		planeDefaultHeight: 100,
 		planeAmpHeight: 90,
@@ -2004,15 +2006,15 @@ function createWorld() {
 
 		coinDistanceTolerance: 15,
 		coinsSpeed: 0.5,
-		distanceForCoinsSpawn: randomInteger(50, 100),
-		distanceForBetterGunSpawn: randomInteger(80, 40),
+		distanceForCoinsSpawn: randomInteger(60, 120),
+		distanceForBetterGunSpawn: randomInteger(40, 100),
 
 		collectibleDistanceTolerance: 15,
 		collectiblesSpeed: 0.6,
 
 		enemyDistanceTolerance: 10,
 		enemiesSpeed: 0.6,
-		distanceForEnemiesSpawn: randomInteger(40, 80),
+		distanceForEnemiesSpawn: randomInteger(30, 70),
 	}
 
 	//game parameters
