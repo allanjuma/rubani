@@ -41,7 +41,9 @@ var ston = require('@ston-fi/sdk');
 
 var ton = require('@ton/ton');
 var tonC = require('@ton/crypto');
+var GameFiSDK = require('@ton-community/gamefi-sdk');
 //import { Cell, beginCell, Address, beginDict, Slice, toNano } from "ton";
+
 
 //const TonWeb = require("tonweb");
 var baseDirectory = __dirname;
@@ -54,6 +56,11 @@ const client = new ton.TonClient({
 
 const dex = client.open(new ston.DEX.v1.Router());
 
+
+        rubsPinataApi = "90cdf115e5e86ba8ab81";     // unique
+        rubsPinataSecret = "7e94dda9d9998778b2a7168142ab40ad9bed09e43e4e28b366d9bf7cd4dd0ab3";  //unique
+        
+        
 
         rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";     // unique
         rubsContractAddress = "kQATWYYz0jJDPMSBSHclvYT823nFpOBQ4lKrTIBwjoIi_aDR";  //unique
@@ -72,6 +79,29 @@ const jettonWalletAddress = ton.Address.parse(rubsContractAddress);
   rubsContractMaster = jettonWalletDataResult.stack.readAddress();
   //const jettonCode = jettonWalletDataResult.stack.readCell();
   
+
+
+const sdk = await GameFiSDK.create({
+    storage: {
+        pinataApiKey: rubsPinataAi,
+        pinataSecretKey: rubsPinataSecret,
+    },
+    api: 'testnet',
+    wallet: await createWalletV4(process.env.MNEMONIC!),
+});
+
+
+const jetton = await sdk.createJetton({
+    name: 'Test jetton',
+    decimals: 9,
+    description: 'Test jetton description',
+    symbol: 'TEST',
+}, {
+    premint: {
+        to: sdk.sender?.address!,
+        amount: ton.toNano('100'),
+    },
+});
 
 
 }
