@@ -151,7 +151,7 @@ const OPS = {
         
 
 async function doSton(address){
-    /*
+  
         const txParams = await dex.getSwapTonToJettonTxParams({
           offerAmount: ton.toNano("1"), // swap 1 TON
           askJettonAddress: rubsContractMaster, // for a RUBS
@@ -159,8 +159,8 @@ async function doSton(address){
           proxyTon: new ston.pTON.v1(),
           userWalletAddress: address,
         });
-*/
-       
+
+    /*     
 // swap 1 TON to TestRED but not less than 1 nano TestRED
 const txParams = await router.getSwapTonToJettonTxParams({
   userWalletAddress: address, // ! replace with your address
@@ -170,7 +170,7 @@ const txParams = await router.getSwapTonToJettonTxParams({
   minAskAmount: ton.toNano("10"),
   queryId: 12345,
 }); 
-
+*/
        return {
           validUntil: Date.now() + 1000000,
           messages: [
