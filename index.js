@@ -92,7 +92,7 @@ const sdk = await GameFiSDK.create({
         pinataSecretKey: rubsPinataSecret,
     },
     api: 'testnet',
-    wallet: await AssetsSDK.createHighloadV2(mnemonic),
+    wallet: await AssetsSDK.createHighloadV2(mnemonics),
 });
 
 
