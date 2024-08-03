@@ -427,11 +427,11 @@ function transferBody(address, amount){
      const messageBody = ton.beginCell()
         .storeUint(OPS.Transfer, 32) // opcode for jetton transfer
         .storeUint(0, 64) // query id
-        .storeCoins(toNano(5)) // jetton amount, amount * 10^9
+        .storeCoins(ton.toNano(5)) // jetton amount, amount * 10^9
         .storeAddress(destinationAddress)
         .storeAddress(destinationAddress) // response destination
         .storeBit(0) // no custom payload
-        .storeCoins(toNano('0.02')) // forward amount - if >0, will send notification message
+        .storeCoins(ton.toNano('0.02')) // forward amount - if >0, will send notification message
         .storeBit(1) // we store forwardPayload as a reference
         .storeRef(forwardPayload)
         .endCell();
