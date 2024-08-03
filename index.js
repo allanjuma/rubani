@@ -544,17 +544,17 @@ function doMint(address, amount){
     
 }
 
-function doBurn(address, amount){
+function doBurn(contract, address, amount){
     
     console.log(ton.Address.parse(address));
     return {
       validUntil: Date.now() + 5 * 60 * 1000,
       messages: [
         {
-          address: rubsContractAddress,
+          address: contract,
           amount: ton.toNano(0.03).toString(),
           //stateInit: undefined,
-          payload: burnBody(amount, rubsParentWallet)
+          payload: burnBody(amount, address)
             .toBoc()
             .toString("base64"),
         },
@@ -666,8 +666,8 @@ http.createServer(async function (request, response) {
 	    //response.setHeader('content-type', 'application/json');
 	    
 	    console.log(address);
-	    //var r = await doBurn(address, 1000000000);
-	    var r = await doTransfer(rubsParentWallet, 10);
+	    var r = await doBurn(address, 10);
+	    //var r = await doTransfer(rubsParentWallet, 10);
 	    
 	    console.log(r);
 	    
