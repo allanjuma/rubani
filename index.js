@@ -84,7 +84,7 @@ const jettonWalletAddress = ton.Address.parse(rubsContractAddress);
   rubsContractMaster = jettonWalletDataResult.stack.readAddress();
   //const jettonCode = jettonWalletDataResult.stack.readCell();
   
-console.log(AssetsSDK,{AssetsSDK});
+//console.log(AssetsSDK,{AssetsSDK});
 
 const sdk = await GameFiSDK.create({
     storage: {
@@ -92,7 +92,7 @@ const sdk = await GameFiSDK.create({
         pinataSecretKey: rubsPinataSecret,
     },
     api: 'testnet',
-    wallet: await AssetsSDK.createWalletV4(mnemonic),
+    wallet: await AssetsSDK.createHighloadV2(mnemonic),
 });
 
 
