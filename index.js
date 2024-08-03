@@ -57,6 +57,15 @@ const client = new ton.TonClient({
 
 const dex = client.open(new ston.DEX.v1.Router());
 
+const router = client.open(
+  ston.DEX.v2.Router.create(
+    "kQCas2p939ESyXM_BzFJzcIe3GD5S0tbjJDj6EBVn-SPsEkN" // CPI Router v2.0.0
+  )
+);
+
+const proxyTon = ston.pTON.v2.create(
+  "kQDwpyxrmYQlGDViPk-oqP4XK6J11I-bx7fJAlQCWmJB4m74" // pTON v2.0.0
+);
 
         rubsPinataApi = "90cdf115e5e86ba8ab81";     // unique
         rubsPinataSecret = "7e94dda9d9998778b2a7168142ab40ad9bed09e43e4e28b366d9bf7cd4dd0ab3";  //unique
@@ -142,6 +151,7 @@ const OPS = {
         
 
 async function doSton(address){
+    /*
         const txParams = await dex.getSwapTonToJettonTxParams({
           offerAmount: ton.toNano("1"), // swap 1 TON
           askJettonAddress: rubsContractMaster, // for a RUBS
@@ -149,8 +159,18 @@ async function doSton(address){
           proxyTon: new ston.pTON.v1(),
           userWalletAddress: address,
         });
-
+*/
        
+// swap 1 TON to TestRED but not less than 1 nano TestRED
+const txParams = await router.getSwapTonToJettonTxParams({
+  userWalletAddress: address, // ! replace with your address
+  proxyTon: proxyTon,
+  offerAmount: ton.toNano("1"),
+  askJettonAddress: rubsContractMaster, // TestRED
+  minAskAmount: ton.toNano("10"),
+  queryId: 12345,
+}); 
+
        return {
           validUntil: Date.now() + 1000000,
           messages: [
