@@ -551,7 +551,7 @@ function doBurn(contract, address, amount){
       validUntil: Date.now() + 5 * 60 * 1000,
       messages: [
         {
-          address: ton.Address.parse(rubsContractMaster),
+          address: rubsContractMaster.toString(),
           amount: ton.toNano(0.05).toString(),
           //stateInit: undefined,
           payload: burnBody(amount, address)
