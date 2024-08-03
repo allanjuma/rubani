@@ -462,7 +462,7 @@ function transferBody(address, amount){
         .storeAddress(destinationAddress)
         .storeAddress(destinationAddress) // response destination
         .storeBit(0) // no custom payload
-        .storeCoins(ton.toNano('0.02')) // forward amount - if >0, will send notification message
+        .storeCoins(ton.toNano('0.05')) // forward amount - if >0, will send notification message
         .storeBit(1) // we store forwardPayload as a reference
         .storeRef(forwardPayload)
         .endCell();
@@ -552,7 +552,7 @@ function doBurn(contract, address, amount){
       messages: [
         {
           address: contract,
-          amount: ton.toNano(0.03).toString(),
+          amount: ton.toNano(0.05).toString(),
           //stateInit: undefined,
           payload: burnBody(amount, address)
             .toBoc()
