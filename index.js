@@ -119,9 +119,9 @@ const sdk = AssetsSDK.AssetsSDK.create({
 
 const jetton = sdk.openJetton(ton.Address.parse(rubsContractAddress));
 
-console.log(jetton.getWalletAddress);
-console.log(await jetton.getWalletAddress);
-console.log(jetton.sendMint);
+console.log(jetton.getWallet());
+console.log(await jetton.getWallet());
+console.log(jetton.sendMint());
 
 
 /*
