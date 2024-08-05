@@ -74,7 +74,7 @@ const proxyTon = ston.pTON.v2.create(
         
 
         rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";     // unique
-        rubsContractAddress = "kQATWYYz0jJDPMSBSHclvYT823nFpOBQ4lKrTIBwjoIi_aDR";  //unique
+        rubsContractAddress = "kQC6yFic6HKWd4CA8qb64OyeN1mrKXuq_lMju7y2qqPHL0rJ";  //unique
         
    
 const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
@@ -573,7 +573,7 @@ function doBurn(contract, address, amount){
       messages: [
         {
           address: contract,
-          amount: ton.toNano(0.05).toString(),
+          amount: ton.toNano(0).toString(),
           //stateInit: undefined,
           payload: burnBody(amount, address)
             .toBoc()
