@@ -55,6 +55,16 @@ const utils = {
 }
 
 
+function getBitsOpt(aKey) {
+    var pairs = window.location.hash.slice(1).split("&");
+    for (var i = 0, aKey = aKey; i < pairs.length; ++i) {
+        var key = pairs[i].split("=")[0];
+        var value = pairs[i].split("=")[1];
+        if (key == aKey) {
+            return value;
+        }
+    }
+}
 
 
 
@@ -93,6 +103,8 @@ class SceneManager {
 		}
 	}
 }
+
+
 
 const sceneManager = new SceneManager()
 
