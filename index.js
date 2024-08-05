@@ -95,17 +95,30 @@ const jettonWalletAddress = ton.Address.parse(rubsContractAddress);
   //const jettonCode = jettonWalletDataResult.stack.readCell();
   
 //console.log(AssetsSDK,{AssetsSDK});
-/*
-const sdk = await GameFiSDK.create({
-    storage: {
-        pinataApiKey: rubsPinataApi,
-        pinataSecretKey: rubsPinataSecret,
-    },
-    api: 'testnet',
-    wallet: await AssetsSDK.createHighloadV2(mnemonics),
+
+// create an instance of the TonClient4
+const NETWORK = 'testnet';
+const api = await createApi(NETWORK);
+
+// create a sender from the wallet (in this case, Highload Wallet V2)
+const keyPair = await AssetsSDK.importKey(mnemonic);
+const sender = await AssetsSDK.createSender('highload-v2', keyPair, api);
+
+// define the storage parameters (in this case, Pinata)
+const storage = {
+    pinataApiKey: rubsPinataApi,
+    pinataSecretKey: rubsPinataSecret,
+}
+
+// create the SDK instance
+const sdk = AssetsSDK.create({
+    api: api,          // required, the TonClient4 instance
+    storage: storage,  // optional, the storage instance (Pinata, S3 or your own)
+    sender: sender,    // optional, the sender instance (WalletV4, TonConnect or your own)
 });
 
 
+/*
 const jetton = await sdk.createJetton({
     name: 'Test jetton',
     decimals: 9,
