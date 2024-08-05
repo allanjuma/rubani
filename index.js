@@ -122,7 +122,7 @@ console.log(sdk);
 const jetton = sdk.openJetton(ton.Address.parse("kQBOOOsLX6P_jwrtXenbnpdXIpljuR2DMnKXtxrdJY2XnFLv"));
 const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 
-console.log(await jetW.sendBurn(100));
+console.log(await jetW.sendBurn(100,100));
 
 
 /*
