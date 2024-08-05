@@ -130,7 +130,7 @@ const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 
 
     //const RECEIVER_ADDRESS = ton.Address.parse(rubsParentWallet).toRawString();
-    const RECEIVER_ADDRESS = ton.Address.parse(rubsParentWallet);
+    const RECEIVER_ADDRESS = ton.Address.parse("0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg");
     await jetton.sendMint(sender, sender.address, ton.toNano(100));
    
     const myJettonWallet = await jetton.getWallet(sender.address);
