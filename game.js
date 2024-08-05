@@ -2249,6 +2249,19 @@ tapp.onEvent('invoiceClosed', function(e){
 		.catch((err) => {
 			ui.showError(err.message)
 		})
+		
+    //
+		
+		
+	
+
+	if(getBitsOpt("dl")=="contract"){
+ dialog.showModal();
+		
+	}
+	
+	//
+	
 }
 
 
