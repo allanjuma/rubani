@@ -1587,7 +1587,7 @@ class UI {
 			
 const comment = new Uint8Array([... new Uint8Array(4), ... new TextEncoder().encode('text comment')]);
 */
-const destinationAddress = new TonWeb.Address(playerAddress);
+const destinationAddress = new TonWeb.Address(currentAccount.address);
 
     const forwardPayload = new TonWeb.boc.Cell();
     forwardPayload.bits.writeUint(0, 32); // 0 opcode means we have a comment
