@@ -638,7 +638,18 @@ Market Potential: With a growing number of mobile gamers, RUBANI has significant
     currentAccount = null;
     jettonBal = 0;
     tonBal = 0;
+    
+        // create a new instance of TonConnectUI
+        //const provider = new TonConnectUI();
+        // create a new instance of TonConnectProvider
+
+        tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC',{
+            apiKey: '22137c0e80f8524bedc10e31fcf4a73a0d4515d37fd96f6972053b54c76ab834'
+        }));
+        rubsContractAddress = "kQBOOOsLX6P_jwrtXenbnpdXIpljuR2DMnKXtxrdJY2XnFLv";
+
     async function initTon() {
+        
 
         connector = new TonConnectSDK.TonConnect();
 
@@ -710,7 +721,7 @@ Market Potential: With a growing number of mobile gamers, RUBANI has significant
                 console.log(currentWallet, currentWalletInfo, currentAccount, currentIsConnectedStatus);
 
                 const jettonMinter = new TonWeb.token.jetton.JettonMinter(tonweb.provider,{
-                    address: "kQDGRBLBXY8nmj0SJRlS-yrvhlTPFYrPCaXGVzMP4Gfm6Tx4"
+                    address: rubsContractAddress
                 });
                 jettonWalletAdr = await jettonMinter.getJettonWalletAddress(new TonWeb.utils.Address(currentAccount.address));
 
@@ -736,17 +747,6 @@ Market Potential: With a growing number of mobile gamers, RUBANI has significant
             }
         }
         );
-
-        // create a new instance of TonConnectUI
-        //const provider = new TonConnectUI();
-        // create a new instance of TonConnectProvider
-
-        tonweb = new TonWeb(new TonWeb.HttpProvider('https://testnet.toncenter.com/api/v2/jsonRPC',{
-            apiKey: '22137c0e80f8524bedc10e31fcf4a73a0d4515d37fd96f6972053b54c76ab834'
-        }));
-        playerAddress = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";
-        rubsMasterWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";
-        rubsContractAddress = "kQBOOOsLX6P_jwrtXenbnpdXIpljuR2DMnKXtxrdJY2XnFLv";
 
         /*
         const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
