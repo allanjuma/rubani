@@ -118,6 +118,8 @@ const sdk = AssetsSDK.AssetsSDK.create({
 });
 
 console.log(rubsContractMaster);
+console.log(ton.Address.parse(rubsContractMaster));
+console.log(ton.Address.parse(rubsContractMaster).toRawString());
 
 const jetton = sdk.openJetton(ton.Address.parse(rubsContractMaster));
 const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
