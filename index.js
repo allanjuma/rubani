@@ -92,7 +92,7 @@ const jettonWalletAddress = ton.Address.parse(rubsContractAddress);
   let jettonWalletDataResult = await client.runMethod(jettonWalletAddress, 'get_wallet_data');
   jettonWalletDataResult.stack.readNumber();
   const ownerAddress = jettonWalletDataResult.stack.readAddress();
-  rubsContractMaster = jettonWalletDataResult.stack.readAddress();
+  rubsContractMaster = jettonWalletDataResult.stack.readAddress().toString();
   //const jettonCode = jettonWalletDataResult.stack.readCell();
   
 //console.log(AssetsSDK,{AssetsSDK});
