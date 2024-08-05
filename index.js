@@ -145,8 +145,7 @@ const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 
 
 
-/*
-const collection = await sdk.createNftCollection({
+const collection = await sdk.createSbtCollection({
     collectionContent: {
         name: 'Test collection',
         description: 'Test collection description',
@@ -161,6 +160,12 @@ const collection = await sdk.createNftCollection({
 
 
 console.log(collection);
+
+/*
+
+
+
+
 */
 //console.log(jetton.getWallet());
 //console.log(jetton.sendMint());
