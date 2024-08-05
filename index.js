@@ -122,6 +122,13 @@ console.log(sdk);
 //const jetton = sdk.openJetton(ton.Address.parse("kQBOOOsLX6P_jwrtXenbnpdXIpljuR2DMnKXtxrdJY2XnFLv"));
 const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 
+
+
+    const JETTON_ADDRESS = Address.parse('MY_JETTON_ADDRESS');
+    const jetton = sdk.openJetton(JETTON_ADDRESS);
+
+    const RECEIVER_ADDRESS = Address.parse('RECEIVER_ADDRESS');
+    await jetton.sendMint(sender, RECEIVER_ADDRESS, 1200000n);
 //console.log(await jetton.getData());
 //console.log(await jetW.sendBurn(100,100));
 
