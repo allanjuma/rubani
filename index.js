@@ -129,11 +129,11 @@ const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 
     const jetton = await sdk.deployJetton({
         name: 'Test jetton 4',
-        decimals: 9,
+        decimals: 0,
         description: 'Test jetton',
         symbol: 'TEST',
     }, {
-        adminAddress: rubsParentWallet,
+        adminAddress: sender.address,
         premintAmount: ton.toNano('100'),
     });
 
