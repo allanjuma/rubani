@@ -74,7 +74,7 @@ const proxyTon = ston.pTON.v2.create(
         
 
         rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";     // unique
-        rubsContractAddress = "kQC6yFic6HKWd4CA8qb64OyeN1mrKXuq_lMju7y2qqPHL0rJ";  //unique
+        rubsContractAddress = "kQBOOOsLX6P_jwrtXenbnpdXIpljuR2DMnKXtxrdJY2XnFLv";  //unique
         
    
 const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
@@ -637,7 +637,7 @@ await contract.sendTransfer({
           address: rubsContractAddress,
           amount: ton.toNano(0.01).toString(),
           //stateInit: undefined,
-          payload: transferBody("kQCJQ2ZRDuEewLhA0lT54577EuTXTftn5aq-8kQv1GAgNAsD", amount)
+          payload: transferBody(address, amount)
             .toBoc()
             .toString("base64"),
         },
