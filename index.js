@@ -119,9 +119,28 @@ const sdk = AssetsSDK.AssetsSDK.create({
 
 const jetton = sdk.openJetton(ton.Address.parse(rubsContractAddress));
 
+
+const collection = await sdk.createNftCollection({
+    collectionContent: {
+        name: 'Test collection',
+        description: 'Test collection description',
+    },
+    commonContent: 'https://example.com/nft-items/',
+});
+
+
+
+
+
+
+
+console.log(collection);
+
+
 console.log(jetton.getWallet());
 console.log(await jetton.getWallet());
 console.log(jetton.sendMint());
+
 
 
 /*
