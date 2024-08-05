@@ -74,12 +74,12 @@ const proxyTon = ston.pTON.v2.create(
         
         
 
-        rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";     // unique
-        rubsContractAddress = "kQC6yFic6HKWd4CA8qb64OyeN1mrKXuq_lMju7y2qqPHL0rJ";  //unique
+        //rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";     // unique
+        //rubsContractAddress = "kQC6yFic6HKWd4CA8qb64OyeN1mrKXuq_lMju7y2qqPHL0rJ";  //unique
          
 
-       // rubsParentWallet = "0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq";     // unique
-       // rubsContractAddress = "kQDqJGsQAHy2VSDczNOduBtT13NyZs6gqlyZpnxePYPaldPJ";  //unique
+        rubsParentWallet = "0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq";     // unique
+        rubsContractAddress = "kQDqJGsQAHy2VSDczNOduBtT13NyZs6gqlyZpnxePYPaldPJ";  //unique
         
    
 const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
