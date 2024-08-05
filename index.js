@@ -117,6 +117,8 @@ const sdk = AssetsSDK.create({
     sender: sender,    // optional, the sender instance (WalletV4, TonConnect or your own)
 });
 
+const jetton = sdk.openJetton(ton.Address.parse(rubsContractAddress));
+console.log(jetton);
 
 /*
 const jetton = await sdk.createJetton({
