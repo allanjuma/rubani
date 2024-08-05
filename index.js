@@ -111,7 +111,7 @@ const storage = {
 }
 
 // create the SDK instance
-const sdk = AssetsSDK.create({
+const sdk = AssetsSDK.AssetsSDK.create({
     api: api,          // required, the TonClient4 instance
     storage: storage,  // optional, the storage instance (Pinata, S3 or your own)
     sender: sender,    // optional, the sender instance (WalletV4, TonConnect or your own)
