@@ -90,8 +90,8 @@ let mnemonics = mnemonic.split(" ");
         var rubsContractMaster;  //same
 
 async function getContractInfo(){
-    
-    
+    try{
+        
 const jettonWalletAddress = ton.Address.parse(rubsContractAddress);
   let jettonWalletDataResult = await client.runMethod(jettonWalletAddress, 'get_wallet_data');
   jettonWalletDataResult.stack.readNumber();
@@ -186,6 +186,10 @@ const jetton = await sdk.createJetton({
 });
 const jetton = sdk.openJetton(Address.parse('EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9c'));
 */
+}catch(er){
+        console.log(er);
+    }
+    
 }
 
 getContractInfo();
