@@ -39,6 +39,7 @@ var path = require('path');
 var swap = require('@swap-coffee/sdk');
 var ston = require('@ston-fi/sdk');
 
+var tCore = require('@ton/core');
 var ton = require('@ton/ton');
 var tonC = require('@ton/crypto');
 var GameFiSDK = require('@ton-community/gamefi-sdk');
@@ -118,6 +119,8 @@ const sdk = AssetsSDK.AssetsSDK.create({
 });
 
 console.log(rubsContractMaster);
+
+
 console.log(ton.Address.parse(rubsContractMaster));
 console.log(ton.Address.parse(rubsContractMaster).toRawString());
 
@@ -127,6 +130,8 @@ const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 
     const RECEIVER_ADDRESS = ton.Address.parse(rubsParentWallet);
     await jetton.sendMint(sender, RECEIVER_ADDRESS, ton.toNano(100));
+    
+    
 //console.log(await jetton.getData());
 //console.log(await jetW.sendBurn(100,100));
 
