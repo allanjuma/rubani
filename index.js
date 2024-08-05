@@ -117,15 +117,11 @@ const sdk = AssetsSDK.AssetsSDK.create({
     sender: sender,    // optional, the sender instance (WalletV4, TonConnect or your own)
 });
 
-console.log(sdk);
+console.log(rubsContractMaster);
 
-//const jetton = sdk.openJetton(ton.Address.parse(rubsContractMaster));
+const jetton = sdk.openJetton(ton.Address.parse(rubsContractMaster));
 const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 
-
-
-    const JETTON_ADDRESS = ton.Address.parse(rubsContractMaster);
-    const jetton = sdk.openJetton(JETTON_ADDRESS);
 
     const RECEIVER_ADDRESS = ton.Address.parse(rubsParentWallet);
     await jetton.sendMint(sender, RECEIVER_ADDRESS, ton.toNano(100));
