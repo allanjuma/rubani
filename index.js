@@ -143,7 +143,7 @@ const collection = await sdk.createNftCollection({
 console.log(collection);
 */
 //console.log(jetton.getWallet());
-console.log(await jetton.getData());
+//console.log(await jetton.getData());
 //console.log(jetton.sendMint());
 
 
