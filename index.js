@@ -110,6 +110,8 @@ const storage = {
     pinataSecretKey: rubsPinataSecret,
 }
 
+console.log(AssetsSDK.PinataStorageParams);
+
 // create the SDK instance
 const sdk = AssetsSDK.AssetsSDK.create({
     api: api,          // required, the TonClient4 instance
