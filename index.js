@@ -122,8 +122,23 @@ console.log(sdk);
 const jetton = sdk.openJetton(ton.Address.parse("kQBOOOsLX6P_jwrtXenbnpdXIpljuR2DMnKXtxrdJY2XnFLv"));
 const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 
-console.log(await jetW.sendBurn(100,100));
+//console.log(await jetton.getData());
+//console.log(await jetW.sendBurn(100,100));
 
+
+
+    const jetton = await sdk.deployJetton({
+        name: 'Test jetton 4',
+        decimals: 9,
+        description: 'Test jetton',
+        symbol: 'TEST',
+    }, {
+        adminAddress: rubsParentWallet,
+        premintAmount: ton.toNano('100'),
+    });
+
+    console.log('Created jetton with address', jetton.address);
+    
 
 /*
 const collection = await sdk.createNftCollection({
@@ -143,7 +158,6 @@ const collection = await sdk.createNftCollection({
 console.log(collection);
 */
 //console.log(jetton.getWallet());
-//console.log(await jetton.getData());
 //console.log(jetton.sendMint());
 
 
