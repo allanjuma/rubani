@@ -110,8 +110,6 @@ const storage = {
     pinataSecretKey: rubsPinataSecret,
 }
 
-console.log(AssetsSDK.PinataStorageParams);
-
 // create the SDK instance
 const sdk = AssetsSDK.AssetsSDK.create({
     api: api,          // required, the TonClient4 instance
@@ -121,9 +119,11 @@ const sdk = AssetsSDK.AssetsSDK.create({
 
 console.log(sdk);
 
-const jetton = sdk.openJetton(ton.Address.parse(rubsContractAddress));
+const jetton = sdk.openJetton(ton.Address.parse("kQBOOOsLX6P_jwrtXenbnpdXIpljuR2DMnKXtxrdJY2XnFLv"));
 
 
+
+/*
 const collection = await sdk.createNftCollection({
     collectionContent: {
         name: 'Test collection',
@@ -139,7 +139,7 @@ const collection = await sdk.createNftCollection({
 
 
 console.log(collection);
-
+*/
 
 //console.log(jetton.getWallet());
 //console.log(await jetton.getWallet());
