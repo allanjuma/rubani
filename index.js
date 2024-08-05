@@ -132,10 +132,13 @@ const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
     //const RECEIVER_ADDRESS = ton.Address.parse(rubsParentWallet).toRawString();
     const RECEIVER_ADDRESS = ton.Address.parse("0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg");
     await jetton.sendMint(sender, sender.address, ton.toNano(100));
-    await jetW.sendBurn(ton.toNano(50));
+    
    
     const myJettonWallet = await jetton.getWallet(sender.address);
     await myJettonWallet.send(sender, RECEIVER_ADDRESS, ton.toNano(100)); 
+    await myJettonWallet.sendBurn(ton.toNano(50));
+    
+//console.log(await jetW.sendBurn(100,100));
     
 //console.log(await jetton.getData());
 //console.log(await jetW.sendBurn(100,100));
