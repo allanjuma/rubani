@@ -98,7 +98,7 @@ const jettonWalletAddress = ton.Address.parse(rubsContractAddress);
 
 // create an instance of the TonClient4
 const NETWORK = 'testnet';
-const api = await createApi(NETWORK);
+const api = await AssetsSDK.createApi(NETWORK);
 
 // create a sender from the wallet (in this case, Highload Wallet V2)
 const keyPair = await AssetsSDK.importKey(mnemonic);
