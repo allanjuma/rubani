@@ -78,8 +78,10 @@ const proxyTon = ston.pTON.v2.create(
         //rubsContractAddress = "kQC6yFic6HKWd4CA8qb64OyeN1mrKXuq_lMju7y2qqPHL0rJ";  //unique
          
 
-        rubsParentWallet = "0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq";     // unique
-        rubsContractAddress = "kQDqJGsQAHy2VSDczNOduBtT13NyZs6gqlyZpnxePYPaldPJ";  //unique
+        rubsParentWallet = "0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq";     // unique HighLoad
+        //rubsContractAddress = "kQDqJGsQAHy2VSDczNOduBtT13NyZs6gqlyZpnxePYPaldPJ";  //unique HighLoad
+        rubsContractAddress = "kQBOOOsLX6P_jwrtXenbnpdXIpljuR2DMnKXtxrdJY2XnFLv";
+
         
    
 const mnemonic = "duty mistake ready edge wool toss know reject extend state judge grit empower rifle phrase raise spring easily census picture pen sibling traffic absent";
