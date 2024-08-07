@@ -1592,7 +1592,7 @@ const comment = new Uint8Array([... new Uint8Array(4), ... new TextEncoder().enc
 const destinationAddress = new TonWeb.Address(currentAccount.address);
 
 try{
-    
+    /* 
    // console.log("preparing to send jettons: "+expectedJettonWalletAddress.toString(true, true, true)+"...."+jettonWallet.address);
    if(jettonBal>10){
  
@@ -1604,7 +1604,7 @@ try{
     return response.json();
   });
   
-  /*
+ 
   
     // opcode for jetton burn 
       
@@ -1640,7 +1640,44 @@ var bod2 =  await new TonWeb.token.jetton.JettonWallet(tonweb.provider,{
    
    */
    
+      
    
+
+
+
+    const forwardPayload = new TonWeb.boc.Cell();
+    forwardPayload.bits.writeUint(0, 32); // 0 opcode means we have a comment
+    forwardPayload.bits.writeString('Transfer RUBS to burn address');
+
+    
+    const jettonTransferBody = new TonWeb.boc.Cell();
+    jettonTransferBody.bits.writeUint(0xf8a7ea5, 32); // opcode for jetton transfer
+    jettonTransferBody.bits.writeUint(1, 64); // query id
+    jettonTransferBody.bits.writeCoins(new TonWeb.utils.BN('10')); // jetton amount, amount * 10^9
+    jettonTransferBody.bits.writeAddress(burnAddress);
+    jettonTransferBody.bits.writeAddress(destinationAddress); // response destination
+    jettonTransferBody.bits.writeBit(false); // no custom payload
+    jettonTransferBody.bits.writeCoins(TonWeb.utils.toNano('0.001')); // forward amount
+    jettonTransferBody.bits.writeBit(true); // we store forwardPayload as a reference
+    jettonTransferBody.refs.push(forwardPayload);
+    var bod = await jettonTransferBody.toBoc();
+   
+var trans = {
+          validUntil: Date.now() + 1000000,
+          messages: [
+
+{
+    address: new tonweb.utils.Address(rubsContractAddress).toString(), // address of Jetton wallet of Jetton sender
+  amount: tonweb.utils.toNano('0.05').toString(), // total amount of TONs attached to the transfer message
+  //seqno: seqno,
+  payload: bod.toString("base64"),
+  network: "-3",
+    
+}]
+  
+  };
+
+ 
    
    } else if(tonBal>0.01){
    
@@ -1658,31 +1695,7 @@ var bod2 =  await new TonWeb.token.jetton.JettonWallet(tonweb.provider,{
    }
    
    
-   
-   
-/*
 
-
-    const forwardPayload = new TonWeb.boc.Cell();
-    forwardPayload.bits.writeUint(0, 32); // 0 opcode means we have a comment
-    forwardPayload.bits.writeString('Transfer RUBS to burn address');
-
-    
-    const jettonTransferBody = new TonWeb.boc.Cell();
-    jettonTransferBody.bits.writeUint(0xf8a7ea5, 32); // opcode for jetton transfer
-    jettonTransferBody.bits.writeUint(1, 64); // query id
-    jettonTransferBody.bits.writeCoins(new TonWeb.utils.BN('5')); // jetton amount, amount * 10^9
-    jettonTransferBody.bits.writeAddress(burnAddress);
-    jettonTransferBody.bits.writeAddress(destinationAddress); // response destination
-    jettonTransferBody.bits.writeBit(false); // no custom payload
-    jettonTransferBody.bits.writeCoins(TonWeb.utils.toNano('0.001')); // forward amount
-    jettonTransferBody.bits.writeBit(true); // we store forwardPayload as a reference
-    jettonTransferBody.refs.push(forwardPayload);
-    var bod = await jettonTransferBody.toBoc();
-   
-//const walletAddress = await wallet.getAddress();
-
- */
    
    
  
@@ -1691,21 +1704,6 @@ var bod2 =  await new TonWeb.token.jetton.JettonWallet(tonweb.provider,{
      
    /* 
    
-  console.log(await tonConnectUI.sendTransaction({
-          validUntil: Date.now() + 1000000,
-          messages: [
-
-{
-    address: new tonweb.utils.Address(rubsContractAddress).toString(), // address of Jetton wallet of Jetton sender
-  amount: tonweb.utils.toNano('0.05').toString(), // total amount of TONs attached to the transfer message
-  //seqno: seqno,
-  payload: bod.toString("base64"),
-  network: "-3",
-    
-}]
-  
-  })
-  );
   
   
     
