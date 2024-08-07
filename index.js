@@ -147,7 +147,7 @@ const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 
 console.log(sdk);
 
-const jetton2 =  await AssetsSDK.createJetton({
+const jetton2 =  await AssetsSDK.AssetsSDK.createJetton({
     name: 'Rubani',
     decimals: 1,
     description: 'Official in-game test currency',
