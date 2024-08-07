@@ -135,8 +135,8 @@ const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
     
    
     const myJettonWallet = await jetton.getWallet(sender.address);
-    await myJettonWallet.send(sender, RECEIVER_ADDRESS, ton.toNano(100)); 
-    await myJettonWallet.sendBurn(sender, ton.toNano(50));
+    await myJettonWallet.send(sender, RECEIVER_ADDRESS, ton.toNano(50)); 
+    await myJettonWallet.sendBurn(sender, ton.toNano(5));
     
 //console.log(await jetW.sendBurn(100,100));
     
@@ -145,7 +145,7 @@ const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 
 
 
-const collection = await sdk.createSbtCollection({
+const collection = await sdk.deloySbtCollection({
     collectionContent: {
         name: 'Test collection',
         description: 'Test collection description',
