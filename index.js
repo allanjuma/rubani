@@ -145,7 +145,7 @@ const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 
 
 
-const collection = await sdk.deloySbtCollection({
+const collection = await sdk.createSbtCollection({
     collectionContent: {
         name: 'Test collection',
         description: 'Test collection description',
