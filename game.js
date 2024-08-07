@@ -1592,10 +1592,10 @@ const comment = new Uint8Array([... new Uint8Array(4), ... new TextEncoder().enc
 const destinationAddress = new TonWeb.Address(currentAccount.address);
 
 try{
-    /* 
+    
    // console.log("preparing to send jettons: "+expectedJettonWalletAddress.toString(true, true, true)+"...."+jettonWallet.address);
    if(jettonBal>10){
- 
+ /* 
  var trans = await fetch("https://rubani.bitsoko.org/doburn/?address=" +currentAccount.address+"&contract="+jettonWalletAdr)
   .then((response) => {
     if (!response.ok) {
@@ -1653,8 +1653,8 @@ var bod2 =  await new TonWeb.token.jetton.JettonWallet(tonweb.provider,{
     const jettonTransferBody = new TonWeb.boc.Cell();
     jettonTransferBody.bits.writeUint(0xf8a7ea5, 32); // opcode for jetton transfer
     jettonTransferBody.bits.writeUint(1, 64); // query id
-    jettonTransferBody.bits.writeCoins(new TonWeb.utils.BN('10')); // jetton amount, amount * 10^9
-    jettonTransferBody.bits.writeAddress(burnAddress);
+    jettonTransferBody.bits.writeCoins(new TonWeb.utils.BN(10)); // jetton amount, amount * 10^9
+    jettonTransferBody.bits.writeAddress(rubsBurnAddress);
     jettonTransferBody.bits.writeAddress(destinationAddress); // response destination
     jettonTransferBody.bits.writeBit(false); // no custom payload
     jettonTransferBody.bits.writeCoins(TonWeb.utils.toNano('0.001')); // forward amount
