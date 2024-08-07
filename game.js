@@ -1677,6 +1677,39 @@ var trans = {
   
   };
 
+
+
+
+
+
+
+            const jettonWallet = new TonWeb.token.jetton.JettonWallet(tonweb.provider,{
+                address: jettonWalletAdr
+            });
+var p = await jettonWallet.createTransferBody({
+               // queryId: seqno, // any number
+                jettonAmount: new TonWeb.utils.BN('10'),
+                toAddress: new TonWeb.utils.Address(rubsBurnAddress),
+                responseAddress: new TonWeb.utils.Address(destinationAddress)
+            }); var p = await p.toBoc()
+
+	var trans = {
+            //secretKey: keyPair.secretKey,
+            toAddress:  new tonweb.utils.Address(rubsContractAddress).toString(),
+            amount: TonWeb.utils.toNano('0.05'), // TON
+            //seqno: seqno,
+            payload: p.toString("base64"),
+            sendMode: 3,
+        };
+
+
+
+
+
+
+
+
+
  
    
    } else if(tonBal>0.01){
