@@ -144,7 +144,24 @@ const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 //console.log(await jetW.sendBurn(100,100));
 
 
+const jetton = await sdk.createJetton({
+    name: 'Rubani',
+    decimals: 1,
+    description: 'Official in-game test currency',
+    symbol: 'RUBS-TEST-004',
+    image: "https://violet-traditional-rabbit-103.mypinata.cloud/ipfs/QmUgZ3kWg36tCVSZeVKXkvsdXkn6dqigqjoBZto9Y8h37z"
+}, {
+    premint: {
+        to: rubsParentWallet,
+        amount: ton.toNano('100'),
+    },
+});
 
+    const RECEIVER_ADDRESS = ton.Address.parse("0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg");
+    await jetton.sendMint(sender, sender.address, ton.toNano(100));
+    
+    
+/*
 const collection = await sdk.createSbtCollection({
     collectionContent: {
         name: 'Test collection',
@@ -156,19 +173,14 @@ const collection = await sdk.createSbtCollection({
 
 
 
-
-
-
 console.log(collection);
 
-/*
+
 
 
 
 
 */
-//console.log(jetton.getWallet());
-//console.log(jetton.sendMint());
 
 
 
