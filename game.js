@@ -1673,7 +1673,7 @@ try{
    
    
    
-  //console.log(await tonConnectUI.sendTransaction(trans));
+  console.log(await tonConnectUI.sendTransaction(trans));
    
    
    
