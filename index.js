@@ -80,7 +80,7 @@ const proxyTon = ston.pTON.v2.create(
 
         rubsParentWallet = "0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq";     // unique HighLoad
         //rubsContractAddress = "kQDqJGsQAHy2VSDczNOduBtT13NyZs6gqlyZpnxePYPaldPJ";  //unique HighLoad
-        rubsContractAddress = "kQBOOOsLX6P_jwrtXenbnpdXIpljuR2DMnKXtxrdJY2XnFLv";
+        rubsContractAddress = "kQDtmze7wpNzGuZxGsL1VAhpks1J6uIyJ1pGaykSy0W5SmNG";
 
         
    
