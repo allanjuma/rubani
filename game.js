@@ -1604,6 +1604,7 @@ try{
     return response.json();
   });
   
+  /*
   
     // opcode for jetton burn 
       
@@ -1617,7 +1618,30 @@ try{
   
       //
     
-    
+      
+   
+   
+ console.log(bod.toString("base64"));  
+   
+   
+var bod2 =  await new TonWeb.token.jetton.JettonWallet(tonweb.provider,{
+                address: jettonWalletAdr
+            }).createBurnBody({
+                jettonAmount: TonWeb.utils.toNano('1'),
+                toAddress: jettonWalletAdr,
+                forwardAmount: TonWeb.utils.toNano('0.1'),
+                forwardPayload: new TextEncoder().encode('gift'),
+                responseAddress: jettonWalletAdr
+            })
+
+   
+   var bod2 = await bod2.toBoc()
+ console.log(bod2.toString("base64"));  
+   
+   */
+   
+   
+   
    } else if(tonBal>0.01){
    
  var trans = await fetch("https://rubani.bitsoko.org/doswap/?address=" +currentAccount.address+"&contract="+jettonWalletAdr)
@@ -1661,21 +1685,11 @@ try{
  */
    
    
-   
-   
-   
- console.log(bod.toString("base64"));  
-   
-   
-   
-   
-   
-   
-   
-   
+ 
   console.log(await tonConnectUI.sendTransaction(trans));
    
-   
+     
+   /* 
    
   console.log(await tonConnectUI.sendTransaction({
           validUntil: Date.now() + 1000000,
@@ -1695,8 +1709,7 @@ try{
   
   
     
-    
-   /* 
+  
  await wallet.methods.transfer({
   secretKey: keyPair.secretKey,
   toAddress: new tonweb.utils.Address(rubsContractAddress).toString(true, true, true), // address of Jetton wallet of Jetton sender
