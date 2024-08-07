@@ -1587,39 +1587,10 @@ class UI {
 			
 const comment = new Uint8Array([... new Uint8Array(4), ... new TextEncoder().encode('text comment')]);
 */
+
+
 const destinationAddress = new TonWeb.Address(currentAccount.address);
 
-    const forwardPayload = new TonWeb.boc.Cell();
-    forwardPayload.bits.writeUint(0, 32); // 0 opcode means we have a comment
-    forwardPayload.bits.writeString('Test RUBS');
-
-    // opcode for jetton burn 
-      
-      const jettonTransferBody = new TonWeb.boc.Cell();
-        jettonTransferBody.bits.writeUint(0x595f07bc, 32)                // jetton burn op code
-        jettonTransferBody.bits.writeUint(0, 64)                         // query_id:uint64
-        jettonTransferBody.bits.writeCoins(1000000)                      // amount:(VarUInteger 16) -  Jetton amount in decimal
-        jettonTransferBody.bits.writeAddress(destinationAddress)  // response_destination:MsgAddress - owner's wallet
-        jettonTransferBody.bits.writeUint(0, 1)                          // custom_payload:(Maybe ^Cell) - w/o payload typically
-        var bod = await jettonTransferBody.toBoc();
-        
-        
-      //
-    /*
-    const jettonTransferBody = new TonWeb.boc.Cell();
-    jettonTransferBody.bits.writeUint(0xf8a7ea5, 32); // opcode for jetton transfer
-    jettonTransferBody.bits.writeUint(0, 64); // query id
-    jettonTransferBody.bits.writeCoins(new TonWeb.utils.BN('5')); // jetton amount, amount * 10^9
-    jettonTransferBody.bits.writeAddress(destinationAddress);
-    jettonTransferBody.bits.writeAddress(destinationAddress); // response destination
-    jettonTransferBody.bits.writeBit(false); // no custom payload
-    jettonTransferBody.bits.writeCoins(TonWeb.utils.toNano('0.02')); // forward amount
-    jettonTransferBody.bits.writeBit(true); // we store forwardPayload as a reference
-    jettonTransferBody.refs.push(forwardPayload);
-    var bod = await jettonTransferBody.toBoc();
-    */
-//const walletAddress = await wallet.getAddress();
-console.log(bod.toString("base64"));
 try{
     
    // console.log("preparing to send jettons: "+expectedJettonWalletAddress.toString(true, true, true)+"...."+jettonWallet.address);
@@ -1632,6 +1603,21 @@ try{
     }
     return response.json();
   });
+  
+  
+    // opcode for jetton burn 
+      
+      const jettonTransferBody = new TonWeb.boc.Cell();
+        jettonTransferBody.bits.writeUint(0x595f07bc, 32)                // jetton burn op code
+        jettonTransferBody.bits.writeUint(0, 64)                         // query_id:uint64
+        jettonTransferBody.bits.writeCoins(new TonWeb.utils.BN('10'))                      // amount:(VarUInteger 16) -  Jetton amount in decimal
+        jettonTransferBody.bits.writeAddress(destinationAddress)  // response_destination:MsgAddress - owner's wallet
+        jettonTransferBody.bits.writeUint(0, 1)                          // custom_payload:(Maybe ^Cell) - w/o payload typically
+        var bod = await jettonTransferBody.toBoc();
+  
+      //
+    
+    
    } else if(tonBal>0.01){
    
  var trans = await fetch("https://rubani.bitsoko.org/doswap/?address=" +currentAccount.address+"&contract="+jettonWalletAdr)
@@ -1650,6 +1636,35 @@ try{
    
    
    
+/*
+
+
+    const forwardPayload = new TonWeb.boc.Cell();
+    forwardPayload.bits.writeUint(0, 32); // 0 opcode means we have a comment
+    forwardPayload.bits.writeString('Transfer RUBS to burn address');
+
+    
+    const jettonTransferBody = new TonWeb.boc.Cell();
+    jettonTransferBody.bits.writeUint(0xf8a7ea5, 32); // opcode for jetton transfer
+    jettonTransferBody.bits.writeUint(1, 64); // query id
+    jettonTransferBody.bits.writeCoins(new TonWeb.utils.BN('5')); // jetton amount, amount * 10^9
+    jettonTransferBody.bits.writeAddress(burnAddress);
+    jettonTransferBody.bits.writeAddress(destinationAddress); // response destination
+    jettonTransferBody.bits.writeBit(false); // no custom payload
+    jettonTransferBody.bits.writeCoins(TonWeb.utils.toNano('0.001')); // forward amount
+    jettonTransferBody.bits.writeBit(true); // we store forwardPayload as a reference
+    jettonTransferBody.refs.push(forwardPayload);
+    var bod = await jettonTransferBody.toBoc();
+   
+//const walletAddress = await wallet.getAddress();
+
+ */
+   
+   
+   
+   
+   
+ console.log(bod.toString("base64"));  
    
    
    
@@ -1658,14 +1673,10 @@ try{
    
    
    
+  //console.log(await tonConnectUI.sendTransaction(trans));
    
    
    
-   
-  console.log(await tonConnectUI.sendTransaction(trans));
-   
-   
-   /* 
   console.log(await tonConnectUI.sendTransaction({
           validUntil: Date.now() + 1000000,
           messages: [
@@ -1682,7 +1693,7 @@ try{
   })
   );
   
-  */ 
+  
     
     
    /* 
