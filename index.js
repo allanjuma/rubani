@@ -143,6 +143,7 @@ const jetW = sdk.openJettonWallet(ton.Address.parse(rubsContractAddress));
 //console.log(await jetton.getData());
 //console.log(await jetW.sendBurn(100,100));
 
+console.log(sdk);
 
 const jetton2 = await sdk.createJetton({
     name: 'Rubani',
