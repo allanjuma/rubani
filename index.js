@@ -109,7 +109,8 @@ const api = await AssetsSDK.createApi(NETWORK);
 
 // create a sender from the wallet (in this case, Highload Wallet V2)
 const keyPair = await AssetsSDK.importKey(mnemonic);
-const sender = await AssetsSDK.createSender('highload-v2', keyPair, api);
+//const sender = await AssetsSDK.createSender('highload-v2', keyPair, api);
+const sender = await AssetsSDK.createSender('v3R2', keyPair, api);
 
 // define the storage parameters (in this case, Pinata)
 const storage = {
