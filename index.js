@@ -74,13 +74,13 @@ const proxyTon = ston.pTON.v2.create(
         
         
 
-        //rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";     // unique
-        //rubsContractAddress = "kQC6yFic6HKWd4CA8qb64OyeN1mrKXuq_lMju7y2qqPHL0rJ";  //unique
+        rubsParentWallet = "0QA_FaPINkfLXs_KY0O9Sw_GkAiY8QthpAqyYIzjhW03a4cg";     // unique
+        rubsContractAddress = "kQC6yFic6HKWd4CA8qb64OyeN1mrKXuq_lMju7y2qqPHL0rJ";  //unique
          
 
-        rubsParentWallet = "0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq";     // unique HighLoad
+        //rubsParentWallet = "0QAIyQCZPGdzcPQoaqqs47_Y8WJadR9ARKr4aajnSA1lowYq";     // unique HighLoad
         //rubsContractAddress = "kQDqJGsQAHy2VSDczNOduBtT13NyZs6gqlyZpnxePYPaldPJ";  //unique HighLoad
-        rubsContractAddress = "kQDtmze7wpNzGuZxGsL1VAhpks1J6uIyJ1pGaykSy0W5SmNG";
+        //rubsContractAddress = "kQDtmze7wpNzGuZxGsL1VAhpks1J6uIyJ1pGaykSy0W5SmNG";
 
         
    
