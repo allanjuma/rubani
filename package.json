@@ -14,6 +14,14 @@
       "@tonconnect/ui": "latest",
       "@ton-community/assets-sdk": "beta",
       "@ton-community/gamefi-sdk": "latest",
-      "boxen": "5.1.2"
+      "boxen": "5.1.2",
+      "@hashgraph/sdk": "latest",
+      "@hashgraph/hedera-wallet-connect": "latest",
+      "@hashgraph/proto": "latest",
+      "@walletconnect/modal": "latest",
+      "@walletconnect/qrcode-modal": "latest",
+      "@walletconnect/utils": "latest",
+      "@walletconnect/modal-core": "latest"
+
   }
 }
