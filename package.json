@@ -21,7 +21,8 @@
       "@walletconnect/modal": "latest",
       "@walletconnect/qrcode-modal": "latest",
       "@walletconnect/utils": "latest",
-      "@walletconnect/modal-core": "latest"
+      "@walletconnect/modal-core": "latest",
+      "dotenv": "latest"
 
   }
 }
