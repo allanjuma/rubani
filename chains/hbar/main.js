@@ -1,5 +1,4 @@
 
-
 //import { HashConnect } from 'hashconnect/dist/cjs/main.js';
 
 import { HashConnect } from 'hashconnect';
@@ -14,7 +13,7 @@ let appMetadata = {
     icon: "https://absolute.url/to/icon.png"
 }
 
-let initData = await this.hashconnect.init(appMetadata, "testnet", false);
+let initData = await hashconnect.init(appMetadata, "testnet", false);
 console.log(initData);
 
 
