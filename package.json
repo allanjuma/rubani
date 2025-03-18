@@ -2,7 +2,7 @@
   "name": "rubani",
   "version": "0.1.0",
   "private": true,
-  "_type": "module",
+  "type": "module",
   "dependencies": {
       "identicon": "latest",
       "tonweb": "0.0.3",
@@ -22,7 +22,7 @@
       "@walletconnect/qrcode-modal": "latest",
       "@walletconnect/utils": "latest",
       "@walletconnect/modal-core": "latest",
-      "hashconnect": "0.2.9",
+      "hashconnect": "latest",
       "dotenv": "latest"
 
   },
