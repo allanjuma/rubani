@@ -28,6 +28,9 @@
 });
 console.log('starting rubani');
 
+
+require("dotenv").config();
+
 var insPORT = 8123;
 
 var http = require('http');
@@ -38,9 +41,11 @@ var fs = require('fs');
 var path = require('path');
 
 
-tonChain = require("./chains/ton/main.js");
+//tonChain = require("./chains/ton/main.js");
 hbarChain = require("./chains/hbar/main.js");
 
+
+var baseDirectory = __dirname;
 
 
 http.createServer(async function (request, response) {
