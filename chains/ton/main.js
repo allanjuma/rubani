@@ -1,3 +1,5 @@
+var exports = module.exports = {};
+//
 
 var swap = require('@swap-coffee/sdk');
 var ston = require('@ston-fi/sdk');
@@ -200,7 +202,7 @@ const OPS = {
         
         
 
-async function doSton(address){
+exports.doSton = async function doSton(address){
   
         const txParams = await dex.getSwapTonToJettonTxParams({
           offerAmount: ton.toNano("1"), // swap 1 TON
@@ -554,7 +556,7 @@ function transferBody(address, amount){
     
 }
 
-async function doSendTran(t){
+exports.doSendTran = async function doSendTran(t){
     	     
 	
 const keyPair = await tonC.mnemonicToWalletKey(mnemonic.split(" "));
@@ -614,7 +616,7 @@ function doMint(address, amount){
     
 }
 
-function doBurn(contract, address, amount){
+exports.doBurn = async function doBurn(contract, address, amount){
     
     console.log(ton.Address.parse(address));
     return {
