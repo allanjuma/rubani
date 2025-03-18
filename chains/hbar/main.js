@@ -1,6 +1,6 @@
 //import { HashConnect } from 'hashconnect/dist/cjs/main.js';
 
-import { HashConnect, HashConnectConnectionState, SessionData } from 'hashconnect';
+import { HashConnect } from 'hashconnect';
 import { LedgerId } from '@hashgraph/sdk';
 
 const appMetadata = {
