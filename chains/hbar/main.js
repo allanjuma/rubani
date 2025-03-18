@@ -1,24 +1,4 @@
-// import the 'Client' module from the Hedera JS SDK
-import {
-    AccountId,
-    AccountCreateTransaction,
-    AccountDeleteTransaction,
-    Wallet,
-    LocalProvider,
-    PrivateKey,
-    Hbar,
-    TokenAssociateTransaction,
-    TokenCreateTransaction,
-    TokenDeleteTransaction,
-    TokenGrantKycTransaction,
-    TransferTransaction,
-    TokenWipeTransaction,
-    TransactionId,
-    Logger,
-    LogLevel,
-    LedgerId,
-    Client
-} from "@hashgraph/sdk";
+
 
 
 //import { HashConnect } from 'hashconnect/dist/cjs/main.js';
