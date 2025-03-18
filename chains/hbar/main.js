@@ -62,7 +62,7 @@ function setUpHashConnectEvents() {
     })
 }
 
-function sendTransaction(accountId: string, transaction: Transaction) {
+function sendTransaction(accountId, transaction) {
     hashconnect.sendTransaction(accountId, transaction).then(response => {
         //handle success
     }).catch(err => {
