@@ -19,6 +19,7 @@ const operatorAccount = process.env.ACCOUNT_ID;
 const operatorPrivateKey = process.env.PRIVATE_KEY;
 
 
+console.log(operatorPrivateKey, operatorAccount);
 
 // Configure a testnet client with our Account ID & private key
 
@@ -33,3 +34,5 @@ console.log(client);
 // ...
 
 }
+
+main();
