@@ -31,7 +31,7 @@ console.log('starting rubani');
 
 import { HashConnect } from 'hashconnect/dist/cjs/main.js';
 
-import { dotenv } from 'dotenv/config';
+import 'dotenv/config';
 
 var insPORT = 8123;
 
