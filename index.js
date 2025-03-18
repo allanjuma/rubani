@@ -29,11 +29,15 @@
 console.log('starting rubani');
 
 
+var insPORT = 8123;
+
+/*
+//ES6
+
 import { HashConnect } from 'hashconnect';
 
 import 'dotenv/config';
 
-var insPORT = 8123;
 import http from 'http';
 import url from 'url';
 import { fileURLToPath } from 'url';
@@ -43,14 +47,16 @@ import path from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-//var url = require('url');
-//var fs = require('fs');
+*/
+var url = require('url');
+var fs = require('fs');
+var http = require('http');
 
-//var path = require('path');
+var path = require('path');
 
 
 //tonChain = require("./chains/ton/main.js");
-//hbarChain = require("./chains/hbar/main.js");
+hbarChain = require("./chains/hbar/main.js");
 
 var baseDirectory = __dirname;
 
