@@ -1,4 +1,3 @@
-
 // import the 'Client' module from the Hedera JS SDK
 import {
     AccountId,
@@ -22,7 +21,7 @@ import {
 } from "@hashgraph/sdk";
 
 
-import { HashConnect } from 'hashconnect/dist/cjs/main';
+import { HashConnect } from 'hashconnect/dist/cjs/main.js';
 
 
 let hashconnect = new HashConnect();
