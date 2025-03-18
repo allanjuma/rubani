@@ -3,8 +3,8 @@ require("dotenv").config();
 
 
 // import the 'Client' module from the Hedera JS SDK
+const { Client, CryptoTransferTransaction } = require("@hashgraph/sdk");
 
-const { Client } = require("@hashgraph/sdk");
 
 
 /* create a new asynchronous function */
