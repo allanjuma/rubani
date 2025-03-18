@@ -53,7 +53,7 @@ import {
 
 var insPORT = 8123;
 
-/*
+
 //ES6
 
 import { HashConnect } from 'hashconnect';
@@ -68,8 +68,7 @@ import path from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-*/
+/*
 var url = require('url');
 var fs = require('fs');
 var http = require('http');
@@ -77,6 +76,7 @@ var http = require('http');
 var path = require('path');
 
 
+*/
 //tonChain = require("./chains/ton/main.js");
 hbarChain = require("./chains/hbar/main.js");
 
