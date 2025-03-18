@@ -1,5 +1,3 @@
-var exports = module.exports = {};
-
 
 
 
