@@ -21,7 +21,7 @@ import {
 } from "@hashgraph/sdk";
 
 
-import { HashConnect } from 'hashconnect/dist/cjs/main.js';
+//import { HashConnect } from 'hashconnect/dist/cjs/main.js';
 
 
 let hashconnect = new HashConnect();
