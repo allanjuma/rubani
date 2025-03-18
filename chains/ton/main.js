@@ -13,8 +13,6 @@ var AssetsSDK = require('@ton-community/assets-sdk');
 
 
 //const TonWeb = require("tonweb");
-var baseDirectory = __dirname;
-
 
 const client = new ton.TonClient({
   endpoint: "https://testnet.toncenter.com/api/v2/jsonRPC",
