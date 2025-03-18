@@ -16,8 +16,89 @@ import {
     TransactionId,
     Logger,
     LogLevel,
+    LedgerId,
     Client
 } from "@hashgraph/sdk";
+import { HashConnect, HashConnectConnectionState, SessionData } from 'hashconnect';
+
+
+
+const appMetadata = {
+    name: "<Your dapp name>",
+    description: "<Your dapp description>",
+    icons: ["<Image url>"],
+    url: "<Dapp url>"
+}
+
+let hashconnect: HashConnect;
+let state: HashConnectConnectionState = HashConnectConnectionState.Disconnected;
+let pairingData: SessionData;
+
+async init() {
+    //create the hashconnect instance
+    hashconnect = new HashConnect(LedgerId.MAINNET, "<Your project ID>", appMetadata, true);
+
+    //register events
+    setUpHashConnectEvents();
+
+    //initialize
+    await hashconnect.init();
+
+    //open pairing modal
+    hashconnect.openPairingModal();
+}
+
+setUpHashConnectEvents() {
+    hashconnect.pairingEvent.on((newPairing) => {
+        pairingData = newPairing;
+    })
+
+    hashconnect.disconnectionEvent.on((data) => {
+        pairingData = null;
+    });
+
+    hashconnect.connectionStatusChangeEvent.on((connectionStatus) => {
+        state = connectionStatus;
+    })
+}
+
+sendTransaction(accountId: string, transaction: Transaction) {
+    hashconnect.sendTransaction(accountId, transaction).then(response => {
+        //handle success
+    }).catch(err => {
+        //handle error
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* create a new asynchronous function */
@@ -222,4 +303,5 @@ async function main() {
     provider.close();
 }
 
-void main();
+//void main();
+void init();
