@@ -29,10 +29,10 @@ const appMetadata = {
     icons: ["<Image url>"],
     url: "<Dapp url>"
 }
-
-let hashconnect: HashConnect;
-let state: HashConnectConnectionState = HashConnectConnectionState.Disconnected;
-let pairingData: SessionData;
+//HashConnectConnectionState = HashConnectConnectionState.Disconnected;
+let hashconnect= HashConnect;
+let state= HashConnectConnectionState;
+let pairingData= SessionData;
 
 async init() {
     //create the hashconnect instance
