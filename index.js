@@ -35,9 +35,12 @@ import 'dotenv/config';
 
 var insPORT = 8123;
 import http from 'http';
-import url from 'url';
+import { fileURLToPath, url } from 'url';
 import fs from 'fs';
 import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 //var url = require('url');
 //var fs = require('fs');
