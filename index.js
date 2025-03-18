@@ -44,7 +44,7 @@ var path = require('path');
 //tonChain = require("./chains/ton/main.js");
 //hbarChain = require("./chains/hbar/main.js");
 
-import { HashConnect } from 'hashconnect/dist/cjs/main';
+import { HashConnect } from 'hashconnect/dist/cjs/main.js';
 var baseDirectory = __dirname;
 
 
