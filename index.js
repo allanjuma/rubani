@@ -34,13 +34,15 @@ import { HashConnect } from 'hashconnect/dist/cjs/main.js';
 import 'dotenv/config';
 
 var insPORT = 8123;
+import http from 'http';
+import url from 'url';
+import fs from 'fs';
+import path from 'path';
 
-var http = require('http');
+//var url = require('url');
+//var fs = require('fs');
 
-var url = require('url');
-var fs = require('fs');
-
-var path = require('path');
+//var path = require('path');
 
 
 //tonChain = require("./chains/ton/main.js");
