@@ -1,5 +1,4 @@
 
-
 // import the 'Client' module from the Hedera JS SDK
 import {
     AccountCreateTransaction,
@@ -41,7 +40,10 @@ async function main() {
         provider,
     );
 
-const client = Client.forTestnet()
+//const client = Client.forTestnet()
+
+// From a pre-configured network
+const client = Client.forPreviewnet();
 
 //Set the operator with the account ID and private key
 client.setOperator(process.env.OPERATOR_ID, process.env.OPERATOR_KEY);
