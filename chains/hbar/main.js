@@ -1,6 +1,5 @@
 
 
-
 // import the 'Client' module from the Hedera JS SDK
 import {
     AccountCreateTransaction,
@@ -16,6 +15,7 @@ import {
     TransferTransaction,
     TokenWipeTransaction,
     TransactionId,
+    Client
 } from "@hashgraph/sdk";
 
 
@@ -41,6 +41,12 @@ async function main() {
         provider,
     );
 
+const client = Client.forTestnet()
+
+//Set the operator with the account ID and private key
+client.setOperator(process.env.OPERATOR_ID, process.env.OPERATOR_KEY);
+console.log(client);
+return;
     const newKey = PrivateKey.generate();
 
     console.log(`private key = ${newKey.toString()}`);
