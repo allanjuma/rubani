@@ -11,7 +11,7 @@ const appMetadata = {
 }
 
     //create the hashconnect instance
-    hashconnect = new HashConnect(LedgerId.MAINNET, "<Your project ID>", appMetadata, true);
+    var hashconnect = new HashConnect(LedgerId.MAINNET, "<Your project ID>", appMetadata, true);
 
 //let hashconnect: HashConnect;
 //let state: HashConnectConnectionState = HashConnectConnectionState.Disconnected;
