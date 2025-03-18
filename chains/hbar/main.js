@@ -1,7 +1,8 @@
 
 
-
 //import { HashConnect } from 'hashconnect/dist/cjs/main.js';
+
+import { HashConnect } from 'hashconnect';
 
 
 let hashconnect = new HashConnect();
