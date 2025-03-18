@@ -1,4 +1,3 @@
-
 //import { HashConnect } from 'hashconnect/dist/cjs/main.js';
 
 import { HashConnect } from 'hashconnect';
@@ -10,6 +9,7 @@ let hashconnect = new HashConnect();
 let appMetadata = {
     name: "dApp Example",
     description: "An example hedera dApp",
+    url: "https://rubani.bitsoko.org",
     icon: "https://absolute.url/to/icon.png"
 }
 
