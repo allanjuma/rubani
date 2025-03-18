@@ -42,7 +42,7 @@ var path = require('path');
 
 
 //tonChain = require("./chains/ton/main.js");
-hbarChain = require("./chains/hbar/main.js");
+//hbarChain = require("./chains/hbar/main.js");
 
 
 HashConnect = require("./node_modules/hashconnect/dist/cjs/main.js");
