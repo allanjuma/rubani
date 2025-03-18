@@ -34,7 +34,7 @@ let hashconnect= HashConnect;
 let state= HashConnectConnectionState;
 let pairingData= SessionData;
 
-async init() {
+async function init() {
     //create the hashconnect instance
     hashconnect = new HashConnect(LedgerId.MAINNET, "<Your project ID>", appMetadata, true);
 
