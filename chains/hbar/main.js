@@ -69,8 +69,8 @@ async function main() {
         const debugLogger = new Logger(LogLevel.Debug);
         client.setLogger(debugLogger);
 
-console.log(client);
-return;
+//console.log(client);
+//return;
     const newKey = PrivateKey.generate();
 
     console.log(`private key = ${newKey.toString()}`);
