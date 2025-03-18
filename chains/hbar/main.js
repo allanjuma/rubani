@@ -10,13 +10,14 @@ const appMetadata = {
     icon: "https://absolute.url/to/icon.png"
 }
 
+    //create the hashconnect instance
+    hashconnect = new HashConnect(LedgerId.MAINNET, "<Your project ID>", appMetadata, true);
+
 //let hashconnect: HashConnect;
 //let state: HashConnectConnectionState = HashConnectConnectionState.Disconnected;
 //let pairingData: SessionData;
 
 async function init() {
-    //create the hashconnect instance
-    hashconnect = new HashConnect(LedgerId.MAINNET, "<Your project ID>", appMetadata, true);
 
     //register events
     setUpHashConnectEvents();
