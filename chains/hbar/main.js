@@ -2,21 +2,55 @@
 
 import { HashConnect } from 'hashconnect';
 
+import { HashConnect, HashConnectConnectionState, SessionData } from 'hashconnect';
+import { LedgerId } from '@hashgraph/sdk';
 
-let hashconnect = new HashConnect();
-
-
-let appMetadata = {
+const appMetadata = {
     name: "dApp Example",
     description: "An example hedera dApp",
     url: "https://rubani.bitsoko.org",
     icon: "https://absolute.url/to/icon.png"
 }
 
-let initData = await hashconnect.init(appMetadata, "testnet", false);
-console.log(initData);
+let hashconnect: HashConnect;
+let state: HashConnectConnectionState = HashConnectConnectionState.Disconnected;
+let pairingData: SessionData;
 
+async init() {
+    //create the hashconnect instance
+    hashconnect = new HashConnect(LedgerId.MAINNET, "<Your project ID>", appMetadata, true);
 
+    //register events
+    setUpHashConnectEvents();
+
+    //initialize
+    await hashconnect.init();
+
+    //open pairing modal
+    hashconnect.openPairingModal();
+}
+
+setUpHashConnectEvents() {
+    hashconnect.pairingEvent.on((newPairing) => {
+        pairingData = newPairing;
+    })
+
+    hashconnect.disconnectionEvent.on((data) => {
+        pairingData = null;
+    });
+
+    hashconnect.connectionStatusChangeEvent.on((connectionStatus) => {
+        state = connectionStatus;
+    })
+}
+
+sendTransaction(accountId: string, transaction: Transaction) {
+    hashconnect.sendTransaction(accountId, transaction).then(response => {
+        //handle success
+    }).catch(err => {
+        //handle error
+    })
+}
 
 
 
