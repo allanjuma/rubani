@@ -48,7 +48,7 @@ async function init() {
     hashconnect.openPairingModal();
 }
 
-setUpHashConnectEvents() {
+function setUpHashConnectEvents() {
     hashconnect.pairingEvent.on((newPairing) => {
         pairingData = newPairing;
     })
@@ -62,7 +62,7 @@ setUpHashConnectEvents() {
     })
 }
 
-sendTransaction(accountId: string, transaction: Transaction) {
+function sendTransaction(accountId: string, transaction: Transaction) {
     hashconnect.sendTransaction(accountId, transaction).then(response => {
         //handle success
     }).catch(err => {
