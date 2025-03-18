@@ -56,7 +56,8 @@ var insPORT = 8123;
 
 //ES6
 
-import { HashConnect } from 'hashconnect';
+//import { HashConnect } from 'hashconnect';
+import { HashConnect } from 'hashconnect/dist/cjs/main';
 
 import 'dotenv/config';
 
