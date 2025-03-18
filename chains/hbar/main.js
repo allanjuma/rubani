@@ -14,7 +14,7 @@ const appMetadata = {
 //let state: HashConnectConnectionState = HashConnectConnectionState.Disconnected;
 //let pairingData: SessionData;
 
-async init() {
+async function init() {
     //create the hashconnect instance
     hashconnect = new HashConnect(LedgerId.MAINNET, "<Your project ID>", appMetadata, true);
 
@@ -271,4 +271,4 @@ async function main() {
 }
 
 //void main();
-void init();
+init();
