@@ -22,7 +22,7 @@
       "@walletconnect/qrcode-modal": "latest",
       "@walletconnect/utils": "latest",
       "@walletconnect/modal-core": "latest",
-      "@hashgraph/hashconnect": "latest",
+      "hashconnect": "latest",
       "dotenv": "latest"
 
   }
