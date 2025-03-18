@@ -31,6 +31,6 @@ HEALTHCHECK --retries=10 --interval=1m --timeout=30s CMD curl --fail http://127.
 
 
 
-ENTRYPOINT  cd /game && git pull && npm install && node --es-module-specifier-resolution=node index.js
+ENTRYPOINT  cd /game && git pull && npm install && node --experimental-specifier-resolution=node index.js
 
 
