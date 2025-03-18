@@ -56,9 +56,6 @@ var insPORT = 8123;
 
 //ES6
 
-//import { HashConnect } from 'hashconnect';
-import { HashConnect } from 'hashconnect';
-console.log(HashConnect);
 import 'dotenv/config';
 
 import http from 'http';
