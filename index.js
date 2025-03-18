@@ -45,6 +45,7 @@ var path = require('path');
 hbarChain = require("./chains/hbar/main.js");
 
 
+HashConnect = require("./node_modules/hashconnect/dist/cjs/main.js");
 var baseDirectory = __dirname;
 
 
