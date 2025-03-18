@@ -35,7 +35,8 @@ import 'dotenv/config';
 
 var insPORT = 8123;
 import http from 'http';
-import { fileURLToPath, url } from 'url';
+import url from 'url';
+import { fileURLToPath } from 'url';
 import fs from 'fs';
 import path from 'path';
 
