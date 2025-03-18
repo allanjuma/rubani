@@ -1,6 +1,6 @@
 //import { HashConnect } from 'hashconnect/dist/cjs/main.js';
 
-import { HashConnect } from 'hashconnect';
+import { HashConnect, HashConnectConnectionState } from 'hashconnect';
 import { LedgerId } from '@hashgraph/sdk';
 
 const appMetadata = {
@@ -12,11 +12,11 @@ const appMetadata = {
 
     //create the hashconnect instance
     var hashconnect = new HashConnect(LedgerId.MAINNET, "<Your project ID>", appMetadata, true);
-    var state;
+    var SessionData;
 
-//let hashconnect: HashConnect;
-//let state: HashConnectConnectionState = HashConnectConnectionState.Disconnected;
-//let pairingData: SessionData;
+//let hashconnect = HashConnect;
+let state = HashConnectConnectionState.Disconnected;
+let pairingData = SessionData;
 
 async function init() {
 
@@ -30,6 +30,7 @@ async function init() {
     hashconnect.openPairingModal();
 }
 
+/*
 function setUpHashConnectEvents() {
     hashconnect.pairingEvent.on((newPairing) => {
         pairingData = newPairing;
@@ -52,7 +53,7 @@ function sendTransaction(accountId, transaction) {
     })
 }
 
-
+*/
 init()
 
 
