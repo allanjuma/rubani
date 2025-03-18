@@ -29,7 +29,7 @@
 console.log('starting rubani');
 
 
-import { HashConnect } from '@hashgraph/hashconnect';
+import { HashConnect } from 'hashconnect';
 
 import 'dotenv/config';
 
