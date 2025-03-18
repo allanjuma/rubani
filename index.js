@@ -76,7 +76,7 @@ var path = require('path');
 
 */
 //tonChain = require("./chains/ton/main.js");
-import * as hbarChain from "./chains/hbar/main.js";
+//import * as hbarChain from "./chains/hbar/main.js";
 
 var baseDirectory = __dirname;
 
