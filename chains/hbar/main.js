@@ -30,7 +30,7 @@ async function init() {
     hashconnect.openPairingModal();
 }
 
-/*
+
 function setUpHashConnectEvents() {
     hashconnect.pairingEvent.on((newPairing) => {
         pairingData = newPairing;
@@ -53,7 +53,7 @@ function sendTransaction(accountId, transaction) {
     })
 }
 
-*/
+
 init()
 
 
