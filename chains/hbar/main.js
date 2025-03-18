@@ -1,3 +1,4 @@
+
 // import the 'Client' module from the Hedera JS SDK
 import {
     AccountId,
@@ -19,67 +20,22 @@ import {
     LedgerId,
     Client
 } from "@hashgraph/sdk";
-import { HashConnect, HashConnectConnectionState, SessionData } from 'hashconnect';
 
 
+import { HashConnect } from 'hashconnect/dist/cjs/main';
 
-const appMetadata = {
-    name: "<Your dapp name>",
-    description: "<Your dapp description>",
-    icons: ["<Image url>"],
-    url: "<Dapp url>"
-}
-//HashConnectConnectionState = HashConnectConnectionState.Disconnected;
-let hashconnect= HashConnect;
-let state= HashConnectConnectionState;
-let pairingData= SessionData;
 
-async function init() {
-    //create the hashconnect instance
-    hashconnect = new HashConnect(LedgerId.MAINNET, "<Your project ID>", appMetadata, true);
+let hashconnect = new HashConnect();
 
-    //register events
-    setUpHashConnectEvents();
 
-    //initialize
-    await hashconnect.init();
-
-    //open pairing modal
-    hashconnect.openPairingModal();
+let appMetadata = {
+    name: "dApp Example",
+    description: "An example hedera dApp",
+    icon: "https://absolute.url/to/icon.png"
 }
 
-function setUpHashConnectEvents() {
-    hashconnect.pairingEvent.on((newPairing) => {
-        pairingData = newPairing;
-    })
-
-    hashconnect.disconnectionEvent.on((data) => {
-        pairingData = null;
-    });
-
-    hashconnect.connectionStatusChangeEvent.on((connectionStatus) => {
-        state = connectionStatus;
-    })
-}
-
-function sendTransaction(accountId, transaction) {
-    hashconnect.sendTransaction(accountId, transaction).then(response => {
-        //handle success
-    }).catch(err => {
-        //handle error
-    })
-}
-
-
-
-
-
-
-
-
-
-
-
+let initData = await this.hashconnect.init(appMetadata, "testnet", false);
+console.log(initData);
 
 
 
