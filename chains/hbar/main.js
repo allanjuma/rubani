@@ -1,7 +1,5 @@
 //import { HashConnect } from 'hashconnect/dist/cjs/main.js';
 
-import { HashConnect } from 'hashconnect';
-
 import { HashConnect, HashConnectConnectionState, SessionData } from 'hashconnect';
 import { LedgerId } from '@hashgraph/sdk';
 
