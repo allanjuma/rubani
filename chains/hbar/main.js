@@ -36,11 +36,6 @@ async function main() {
 
     const provider = new LocalProvider();
 
-    const wallet = new Wallet(
-        process.env.OPERATOR_ID,
-        process.env.OPERATOR_KEY,
-        provider,
-    );
  /**
          * 1. Setup operatorId and operatorKey
          */
@@ -72,16 +67,24 @@ async function main() {
         const debugLogger = new Logger(LogLevel.Debug);
         client.setLogger(debugLogger);
 
+    const wallet = new Wallet(
+        process.env.OPERATOR_ID,
+        process.env.OPERATOR_KEY,
+        client,
+    );
 //console.log(client);
 //return;
+
+/*
     const newKey = PrivateKey.generate();
 
     console.log(`private key = ${newKey.toString()}`);
     console.log(`public key = ${newKey.publicKey.toString()}`);
+    */
 
     try {
         let transaction = await new AccountCreateTransaction()
-            .setKeyWithoutAlias(newKey.publicKey)
+            .setKeyWithoutAlias(operatorId)
             .setInitialBalance(new Hbar(2))
             .freezeWithSigner(wallet);
         transaction = await transaction.signWithSigner(wallet);
