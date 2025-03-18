@@ -23,7 +23,8 @@
       "@walletconnect/utils": "latest",
       "@walletconnect/modal-core": "latest",
       "hashconnect": "latest",
-      "dotenv": "latest"
+      "dotenv": "latest",
+      "specifier-resolution-node": "latest"
 
   },
   "overrides": {
