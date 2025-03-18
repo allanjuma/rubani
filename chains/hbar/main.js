@@ -1,6 +1,6 @@
-
 // import the 'Client' module from the Hedera JS SDK
 import {
+    AccountId,
     AccountCreateTransaction,
     AccountDeleteTransaction,
     Wallet,
@@ -14,6 +14,8 @@ import {
     TransferTransaction,
     TokenWipeTransaction,
     TransactionId,
+    Logger,
+    LogLevel,
     Client
 } from "@hashgraph/sdk";
 
@@ -39,14 +41,34 @@ async function main() {
         process.env.OPERATOR_KEY,
         provider,
     );
+ /**
+         * 1. Setup operatorId and operatorKey
+         */
+        const operatorId = AccountId.fromString(
+            process.env.OPERATOR_ID,
+        );
+        const operatorKey = PrivateKey.fromStringECDSA(
+            process.env.OPERATOR_KEY,
+        );
 
-//const client = Client.forTestnet()
+        /**
+         * 2. Create a custom network with GRPC web proxies
+         */
+        const nodes = {
+            "https://testnet-node02-00-grpc.hedera.com:443": new AccountId(5),
+            "https://testnet-node03-00-grpc.hedera.com:443": new AccountId(6),
+            "https://testnet-node04-00-grpc.hedera.com:443": new AccountId(7),
+        };
 
-// From a pre-configured network
-const client = Client.forPreviewnet();
+        /**
+         * 3. Setup the client using "Client"
+         */
+        const client = Client.forNetwork(nodes);
 
-//Set the operator with the account ID and private key
-client.setOperator(process.env.OPERATOR_ID, process.env.OPERATOR_KEY);
+        client.setOperator(operatorId, operatorKey);
+        const debugLogger = new Logger(LogLevel.Debug);
+        client.setLogger(debugLogger);
+
 console.log(client);
 return;
     const newKey = PrivateKey.generate();
