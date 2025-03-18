@@ -1,9 +1,10 @@
-require("dotenv").config();
+var exports = module.exports = {};
+
 
 
 
 // import the 'Client' module from the Hedera JS SDK
-const {
+import {
     AccountCreateTransaction,
     AccountDeleteTransaction,
     Wallet,
