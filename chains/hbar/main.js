@@ -10,9 +10,9 @@ const appMetadata = {
     icon: "https://absolute.url/to/icon.png"
 }
 
-let hashconnect: HashConnect;
-let state: HashConnectConnectionState = HashConnectConnectionState.Disconnected;
-let pairingData: SessionData;
+//let hashconnect: HashConnect;
+//let state: HashConnectConnectionState = HashConnectConnectionState.Disconnected;
+//let pairingData: SessionData;
 
 async init() {
     //create the hashconnect instance
@@ -42,7 +42,7 @@ setUpHashConnectEvents() {
     })
 }
 
-sendTransaction(accountId: string, transaction: Transaction) {
+sendTransaction(accountId, transaction) {
     hashconnect.sendTransaction(accountId, transaction).then(response => {
         //handle success
     }).catch(err => {
@@ -51,7 +51,7 @@ sendTransaction(accountId: string, transaction: Transaction) {
 }
 
 
-
+init()
 
 
 
