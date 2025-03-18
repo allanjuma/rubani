@@ -29,7 +29,10 @@
 console.log('starting rubani');
 
 
-require("dotenv").config();
+import { HashConnect } from 'hashconnect/dist/cjs/main.js';
+
+import { dotenv } from 'dotenv';
+//require("dotenv").config();
 
 var insPORT = 8123;
 
@@ -44,7 +47,6 @@ var path = require('path');
 //tonChain = require("./chains/ton/main.js");
 //hbarChain = require("./chains/hbar/main.js");
 
-import { HashConnect } from 'hashconnect/dist/cjs/main.js';
 var baseDirectory = __dirname;
 
 
