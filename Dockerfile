@@ -3,34 +3,46 @@
 # Based on Ubuntu latest version
 ############################################################
 
+# Use Node.js LTS version as base image
+FROM node:20-slim
 
-# Set the base image to Ubuntu
-FROM ubuntu:latest
-# File Author / Maintainer
-MAINTAINER allan@bitsoko
+# Install git and other required packages
+RUN apt-get update && apt-get install -y \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 
-ARG DEBIAN_FRONTEND=noninteractive
+# Install Angular CLI globally
+RUN npm install -g @angular/cli
 
-RUN apt-get update && apt-get install -y curl gnupg git
+# Set working directory
+WORKDIR /app
 
+# Clone the repository
+RUN git clone https://bitsoko:12Gitlabsrus34@git.bitsoko.org/games/rubani.git .
 
+# Install dependencies
+RUN npm install
 
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
+# Build the application for production
+RUN npm run build
 
-RUN apt-get update && apt-get install -y nodejs
+# Expose ports for both dev and prod
+EXPOSE 4200 8080
 
+# Create an entrypoint script
+RUN echo '#!/bin/sh\n\
+cd /app\n\
+git pull\n\
+if [ "$NODE_ENV" = "production" ]; then\n\
+    echo "Running in production mode..."\n\
+    npx http-server dist/dapp -p 8080\n\
+else\n\
+    echo "Running in development mode..."\n\
+    ng serve --host 0.0.0.0 --port 4200\n\
+fi' > /entrypoint.sh && \
+chmod +x /entrypoint.sh
 
-
-WORKDIR /
-
-RUN git clone https://github.com/http-party/http-server.git && cd http-server && npm install
-
-RUN cd / && git clone https://bitsoko:12Gitlabsrus34@git.bitsoko.org/games/rubani.git game
-
-HEALTHCHECK --retries=10 --interval=1m --timeout=30s CMD curl --fail http://127.0.0.1:8123/ || exit 1
-
-
-
-ENTRYPOINT  cd /game && git pull && npm install && node --import=specifier-resolution-node/register index.js
+# Set the entrypoint
+ENTRYPOINT ["/entrypoint.sh"]
 
 
