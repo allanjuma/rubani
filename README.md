@@ -1,6 +1,6 @@
 # Rubani Game
 
-A 3D web-based game where players collect $RUBS tokens and win NFT prizes. Built with Three.js, Angular, and blockchain integration.
+A 3D web-based game where players collect $RUBS tokens and win NFT prizes. Built with Three.js, Angular, and hedera blockchain integration.
 
 ## Overview
 
@@ -17,7 +17,6 @@ Rubani is an interactive 3D game that combines gaming mechanics with cryptocurre
 - Angular (Frontend framework)
 - GSAP (Animations)
 - Blockchain Integration (TON and HBAR)
-- Bitsoko Services
 
 ## Prerequisites
 
@@ -41,11 +40,6 @@ npm install
 yarn install
 ```
 
-3. Set up environment variables:
-Create a `.env` file in the root directory with the following variables:
-```
-BITSOKO_API_KEY=your_api_key
-```
 
 ## Running the Game
 
