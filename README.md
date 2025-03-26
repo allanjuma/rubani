@@ -144,7 +144,6 @@ The token burning interface where players can:
 
 - The game's main components are in the `src` directory
 - 3D models and assets are loaded from external sources
-- Blockchain integration is handled through Bitsoko's services
 
 ## Contributing
 
@@ -166,5 +165,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - Sound effects from [zapsplat.com](https://www.zapsplat.com) and [freesound.org](https://freesound.org)
 - Three.js community for 3D graphics support
-- Bitsoko for blockchain integration services
 - Special thanks to [yakudoo](https://github.com/yakudoo/TheAviator)
