@@ -32,7 +32,7 @@ Rubani is an interactive 3D game that combines gaming mechanics with cryptocurre
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/games/rubani.git
+git clone https://github.com/allanjuma/rubani.git
 cd rubani
 ```
 
@@ -69,7 +69,6 @@ docker run -it --rm \
 
 #### Docker Development Notes:
 - The `-v $(pwd):/app` flag mounts your local directory to enable hot reload
-- The `-v /app/node_modules` flag preserves container node_modules
 - Hot reload is enabled by default in development mode
 - Changes to your local files will automatically trigger rebuilds
 
@@ -118,14 +117,11 @@ The main game interface where players can:
 - Navigate the 3D environment
 - Collect $RUBS tokens
 - Interact with vehicles
-- View their current token balance
 
 ### Token Burning Interface
 <img src="screenshots/burn-token-page.png" alt="Token Burning" width="400"/>
 The token burning interface where players can:
 - Burn their collected $RUBS tokens
-- Earn NFT rewards
-- Track their progress towards rewards
 - View their burning history
 
 ## Development Status
