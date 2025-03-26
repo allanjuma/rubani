@@ -113,7 +113,7 @@ http://localhost:8123
 ## Game Screenshots
 
 ### Game Play Interface
-![Game Play](screenshots/game-play-page.png)
+<img src="screenshots/game-play-page.png" alt="Game Play" width="400"/>
 The main game interface where players can:
 - Navigate the 3D environment
 - Collect $RUBS tokens
@@ -121,12 +121,24 @@ The main game interface where players can:
 - View their current token balance
 
 ### Token Burning Interface
-![Token Burning](screenshots/burn-token-page.png)
+<img src="screenshots/burn-token-page.png" alt="Token Burning" width="400"/>
 The token burning interface where players can:
 - Burn their collected $RUBS tokens
 - Earn NFT rewards
 - Track their progress towards rewards
 - View their burning history
+
+## Development Status
+
+### Completed Features
+- ✅ Burn $RUBS to start new games
+- ✅ Earn newly minted $RUBS when you win a game
+- ✅ Lose burnt $RUBS when you lose a game
+
+### Planned Features
+- 🔄 Add multiplayer support
+- 🔄 Add unique NFT collectibles with different qualities for gameplay
+- 🔄 Improve scene graphics and rewards model
 
 ## Development
 
