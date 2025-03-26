@@ -167,3 +167,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Sound effects from [zapsplat.com](https://www.zapsplat.com) and [freesound.org](https://freesound.org)
 - Three.js community for 3D graphics support
 - Bitsoko for blockchain integration services
+- Special thanks to [yakudoo](https://github.com/yakudoo/TheAviator)
